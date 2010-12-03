@@ -19,7 +19,7 @@ $showTel = intval($params->get('showTel', 0));
 <h2 class="mod_title"><?php echo JText::_('HỖ TRỢ TRỰC TUYẾN');?></h2>
 <?php
 Xu_ly_yahoo($yahooID, $nameYahoo, $telYahoo, $showYahoo, $typeYahoo, $showName, $showTel);
-Xu_ly_skype($skypeID, $nameSkype, $telSkype, $showSkype, $typeSkype, $showSkype, $showSkype);
+//Xu_ly_skype($skypeID, $nameSkype, $telSkype, $showSkype, $typeSkype, $showSkype, $showSkype);
 ?>
 <?php
 function Xu_ly_yahoo($yahooID, $nameYahoo, $telYahoo, $showYahoo, $typeYahoo, $showName, $showTel)
