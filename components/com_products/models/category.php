@@ -201,6 +201,7 @@ class ModelProductCategory extends JModel
 	}
 	
 	function getRating($productid){
+	/*
 		$db =& JFactory::getDBO();			
 		$where = ' productid = '. $productid;		
 		$query = "SELECT COUNT(rating) as count, SUM(rating) as total 
@@ -215,6 +216,7 @@ class ModelProductCategory extends JModel
 		} else {
 			return 0;
 		}
+		*/
 	}
 	
 	function getChildCat($cid)
