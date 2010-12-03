@@ -39,7 +39,11 @@ class ModelProductFrontpage extends JModel
 					WHERE p.published = 1 ";
 			// search for size or manufacturer	
 			$query .= " ORDER BY p.id DESC";
+			
+			echo $query;
+			
 			$db->setQuery( $query, $limitstart, $limit);
+			
 			$this->_newProducts = $db->loadObjectList();
 		}
 

@@ -17,38 +17,14 @@ class ProductViewFrontpage extends JView
 		global $option, $mainframe;
 		
 		// config 
-		$params =& $mainframe->getPageParameters('com_products');
+		//$params =& $mainframe->getPageParameters('com_products');
 		
 		$limit = 12;
 
 		
 		$model = &$this->getModel();
 		
-		
-		$listNew = $model->getListProduct($limit, $limitstart);
-		
-		// SEO title
-		$doc =& JFactory::getDocument();
-		$titleSEO = '';
-		if (!empty($catName)) {
-			$titleSEO = $catName;
-			if (!empty($manufacturerName)){
-			$titleSEO = $catName . ' | Nhà sản xuất ' . $manufacturerName;
-			}
-		}
-		$doc->setTitle($titleSEO);
-		$doc->setDescription('Các Sản phẩm '. $catName .' tại BiBishop.com - SHOP THOI TRANG');
-		
-		$text_price = $params->get('text_price', 'Sắp có hàng');
-		// REF Ass
-		$this->assignRef('text_price', $text_price);
-		$this->assignRef('listProduct', $listProduct);
-		$this->assignRef('total', $total);
-		$this->assignRef('catName', $catName);
-		$this->assignRef('titleCatName', $titleCatName);		
-		$this->assignRef('catid', $catid);
-		$this->assignRef('pagination', $pagination);
-		parent::display($tpl);
+	
 	}
 	
 	function checkImage($proid){

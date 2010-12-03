@@ -48,6 +48,7 @@ class ProductViewCategory extends JView
 		$total = $model->getTotal();
 		$catName = $model->getCatName();
 
+		
 		$pagination = new JPagination($total, $limitstart, $limit);
 		
 		$titleCatName = JFilterOutput::stringURLSafe(trim($catName));
@@ -74,7 +75,7 @@ class ProductViewCategory extends JView
 			}
 		}
 		$doc->setTitle($titleSEO);
-		$doc->setDescription('Các Sản phẩm '. $catName .' tại BiBishop.com - SHOP THOI TRANG');
+		$doc->setDescription('Các Sản phẩm '. $catName .' tại TTShop.com - SHOP DT');
 		
 		$text_price = $params->get('text_price', 'Sắp có hàng');
 		// REF Ass
