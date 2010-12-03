@@ -58,8 +58,8 @@ class ProductViewDetail extends JView
 			$datetime = date_create($comment->date);
 			$comment->date = date_format($datetime, 'd/m/Y');
 		}
-		$doc->setTitle($titleSEO);		
-		$doc->setDescription('Sản phẩm '. $product->name .' tại BiBishop.com - SHOP THOI TRANG');
+		//$doc->setTitle($titleSEO);		
+		//$doc->setDescription('Sản phẩm '. $product->name .' tại BiBishop.com - SHOP THOI TRANG');
 		
 		$rating = $model->getRating($product->id);	
 		$proimages = $this->addTabA($product->mediumimage);

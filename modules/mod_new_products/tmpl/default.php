@@ -10,7 +10,6 @@
 defined('_JEXEC') or die('Restricted access');
 global $option;
 ?>
-
 <div class="pro_new">
 	<?php foreach ($catpro as $i => $pro) { ?>
 			<div class="pro_item">
