@@ -1,0 +1,116 @@
+@charset "utf-8";
+/*------------------------------------------------------------------------
+# WP SlideShow
+# ------------------------------------------------------------------------
+# Copyright (C) 2010 WAMP Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: WAMP Co., Ltd
+# Websites:  http://www.wampvn.com -  http://www.wamp.vn
+
+-------------------------------------------------------------------------*/
+/* Most common stuff you'll need to change */
+
+	.wp-slider-wrapper {
+						 overflow: hidden;
+						 width:794px;
+						 height:280px;
+						 position:relative;
+						display:none;
+				 	     /* behavior: url(border-radius.htc); */
+						}
+	.corner_t {
+				background: url(img/corner_t.png) no-repeat left top; 
+				position:absolute;
+				top:0;
+				left:0;
+				width:2px;
+				height:2px;
+				z-index: 2;								
+	}
+	.corner_b {
+				background: url(img/corner_b.png) no-repeat left bottom; 
+				position:absolute;
+				bottom:0;
+				left:0;
+				width:2px;
+				height:2px;
+				z-index: 2;								
+	}
+	.wp-slider { background: #fff; }
+	
+	/* Use this to keep the slider content contained in a box even when JavaScript is disabled */
+	.wp-slider-no-js .wp-slider { height: 200px; overflow: auto !important; padding-right: 20px }
+	
+	/* Change the width of the entire slider (without dynamic arrows) */
+	.wp-slider, .wp-slider .panel { width: 600px } 
+	
+	/* Change margin and width of the slider (with dynamic arrows) */
+	.wp-slider-wrapper.arrows .wp-slider, .wp-slider-wrapper.arrows .wp-slider .panel { width: 600px }
+	.wp-slider-wrapper.arrows .wp-slider { margin: 0 10px }
+	
+	/* Arrow styling */
+	.wp-nav-left a, .wp-nav-right a { background: #000; color: #fff; padding: 5px; width: 100px }
+	
+	/* Tab nav */
+	.wp-nav ul li a.current { background: #39c }
+	
+	/* Panel padding */
+	
+	
+	/* Preloader */
+	.wp-slider p.loading { padding: 20px; text-align: center }
+
+/* Don't change anything below here unless you know what you're doing */
+
+	/* Tabbed nav */
+	.coda-nav { width:209px;
+				position:absolute;
+				right:0;
+				top:0;
+				z-index:1;
+										
+		}
+	.wp-slider {
+				border-radius:3px 0 0 3px  ;
+			   -moz-border-radius: 3px 0 0 3px  ;
+			   -webkit-border-radius: 3px 0 0 3px  ;
+	}
+	.tab1 a {  border-radius:0 3px 0 0  ;
+			   -moz-border-radius: 0 3px 0 0  ;
+			   -webkit-border-radius: 0 3px 0 0  ; }	
+	.tab5 a {  border-radius:0 0 3px 0  ;
+			   -moz-border-radius: 0 0 3px 0  ;
+			   -webkit-border-radius: 0 0 3px  0  ; }	
+	.coda-nav ul { clear: both; 
+					display: block; 
+					margin: auto; 
+					overflow: hidden;
+	}
+	.coda-nav ul li { display: block; }
+	.coda-nav ul li a { background: url(img/slide_nav_bg.jpg) no-repeat center right; 
+						color: #5b5b5b; 
+						display: table-cell; 
+						height:56px;
+	 					width:209px; 
+						text-decoration: none;
+						vertical-align: middle;
+						zoom:1;
+								
+	}
+	.coda-nav ul li a.current, .coda-nav ul li a.current:hover {
+						background: url(img/slide_nav_active.png) no-repeat center right; 
+						color:#fff;
+	}
+	.coda-nav ul li a:hover { background: url(img/slide_nav_hover.jpg) no-repeat top right;  }
+	.coda-nav ul li a span {
+						display:block;
+						font-size:11px;
+						padding:0 10px 0 30px !important;
+	}
+	
+	/* Miscellaneous */
+	.wp-slider { float: left; overflow: hidden; position: relative }
+	.wp-slider .panel { display: block; float: left }
+	.wp-slider .panel-container { position: relative }
+	.wp-nav-left, .wp-nav-right { float: left }
+	.wp-nav-left a, .wp-nav-right a { display: block; text-align: center; text-decoration: none }

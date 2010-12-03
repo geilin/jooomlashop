@@ -1,0 +1,46 @@
+#olderitemtitle, #neweritemtitle, #relateditemtitle {
+	text-decoration:underline;
+
+	font-weight:bold;
+
+	text-align: left;
+
+	color: #666;
+
+	margin-left: 10px;
+
+	
+
+}
+
+.extranews_tooltip{
+
+	text-align: justify;
+
+}
+
+.extranews_date{
+	font-size:11px;
+	color: #999;
+
+}
+
+.extranews_nextpage{
+
+	margin-left: 30px;
+
+}
+
+.extranews_priviuospage{
+
+	margin-right: 30px;
+
+}
+
+#relateditemlist, #neweritemlist, #olderitemlist{
+	margin:10px 0 0 50px;
+}
+
+
+
+

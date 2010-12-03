@@ -1,0 +1,40 @@
+
+table#cart {
+	border-collapse: collapse;
+	margin:0;
+	width: 100%;
+}
+	
+	table#cart th {
+		color:#666;
+		text-align: center;
+		white-space: nowrap;
+		border-bottom:1px solid #ddd;
+	}
+	
+
+	table#cart td {
+		padding: 5px 10px;
+		text-align: center;
+	}
+	table#cart th { 
+		height:20px;
+		padding: 2px 10px;
+		text-align: center;
+	}
+	
+	table#cart .item_name {
+		width: 100%;
+	}
+	
+	table#cart .quantity input {
+		text-align: center;
+	}
+			
+	
+	.center {
+		text-align: center;
+	}
+	.b_blue { color:#3366cc; font-weight:bold;}
+	
+	#line_dott { border-bottom:1px dotted #ddd }

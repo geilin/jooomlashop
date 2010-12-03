@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Cart</name>
+	<author>Le Van Hen</author>
+	<creationDate>2009</creationDate>
+	<copyright>Copyright (C) 2009 Wamp vn group. All rights reserved.</copyright>
+	<license>thương mại</license>
+	<authorEmail>levanhen01@yahoo.com</authorEmail>
+	<authorUrl>http://wampvn.com</authorUrl>
+	<version>1.0</version>
+	<description>Cart</description>
+	<files>
+		<filename module="mod_cart">mod_cart.php</filename>
+		<filename>index.html</filename>		
+		<filename>tmpl/index.html</filename>
+		<filename>tmpl/default.php</filename>	
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="Chèn css cho div" />
+	</params>
+</install>

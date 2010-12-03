@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="template">
+	<name>Thời Trang Trẻ</name>
+	<creationDate>2010</creationDate>
+	<author>wampvn.com</author>
+	<copyright>WAMP Co., Ltd</copyright>
+	<authorEmail>minhnguyen@wampvn.com</authorEmail>
+	<authorUrl>wampvn.com</authorUrl>
+	<version>1.0</version>
+	<description>Thời Trang Trẻ</description>
+	<files>
+		<filename>component.php</filename>
+		<filename>tpl_function.php</filename>
+		<filename>wp_tool.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>params.ini</filename>
+		<filename>template_thumbnail.png</filename>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>style</folder>
+		<folder>js</folder>
+	</files>
+	<positions>
+		<position>search_pro</position>
+		<position>titletext</position>
+		<position>logotop</position>
+		<position>menutop</position>
+		<position>new_product</position>
+		<position>breadcrumbs</position>
+		<position>new_female</position>
+		<position>new_male</position>
+		<position>right_cart</position>
+		<position>suportonline</position>
+		<position>right_news</position>
+		<position>right_phukien</position>
+		<position>right_1</position>
+		<position>right_2</position>
+		<position>footer</position>
+		<position>menufooter</position>
+		<position>footer</position>
+	</positions>
+	<params>
+		<param name="titlePage" type="text" default="" size="50" label="Title Page"
+			description="Title Page DESCRIPTION" />
+	</params>
+</install>

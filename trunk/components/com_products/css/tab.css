@@ -1,0 +1,283 @@
+		UL.tabNavigation {
+		    list-style: none;
+		    margin: 0;
+		    padding: 0;
+			background:url(../images/homepage-tab-div.gif) repeat-x bottom left;
+			line-height:1.7;
+
+		}
+
+		UL.tabNavigation LI {
+		    display: inline;
+			padding:0;
+		}
+
+
+		UL.tabNavigation LI span.tab {
+		    color: #5b5b5b;
+		    text-decoration: none;
+			font-weight:bold;
+			font-size:12px;
+			height:27px;
+			display:inline-block;
+			text-align:center;
+			margin-right:3px;
+			line-height:27px;
+			cursor:pointer;
+
+		}
+
+		UL.tabNavigation LI span.app_tab { 
+			width:165px;
+			background:url(../images/app_tab.jpg) no-repeat top left;
+		} 
+		UL.tabNavigation LI span.app_tab:hover { 
+			width:165px;
+			background:url(../images/app_tab.jpg) no-repeat top center;
+		} 
+		UL.tabNavigation LI span.selected.app_tab:hover,
+		UL.tabNavigation LI span.selected.app_tab {
+			width:165px;
+			background:url(../images/app_tab.jpg) no-repeat top right;
+			color:#3366cc;
+			cursor:default;
+		} 
+		
+
+		UL.tabNavigation LI span.hinhanh_tab { 
+			width:79px;
+			background:url(../images/hinhanh_tab.jpg) no-repeat top left;
+		} 
+		UL.tabNavigation LI span.hinhanh_tab:hover { 
+			width:79px;
+			background:url(../images/hinhanh_tab.jpg) no-repeat top center;
+		} 
+		UL.tabNavigation LI span.selected.hinhanh_tab:hover,
+		UL.tabNavigation LI span.selected.hinhanh_tab {
+			width:79px;
+			background:url(../images/hinhanh_tab.jpg) no-repeat top right;
+			    color: #17A1B9;
+			cursor:default;
+		}
+
+
+
+		UL.tabNavigation LI span.thongtin_tab { 
+			width:125px;
+			background:url(../images/thongtin_tab.jpg) no-repeat top left;
+		} 
+
+		UL.tabNavigation LI span.thongtin_tab:hover { 
+
+			width:125px;
+
+			background:url(../images/thongtin_tab.jpg) no-repeat top center;
+
+		} 
+
+		UL.tabNavigation LI span.selected.thongtin_tab:hover,
+		UL.tabNavigation LI span.selected.thongtin_tab {
+			width:125px;
+			background:url(../images/thongtin_tab.jpg) no-repeat top right;
+			    color:#17A1B9;
+			cursor:default;
+
+		}
+
+		
+
+		UL.tabNavigation LI span.baiviet_tab { 
+
+			width:84px;
+
+			background:url(../images/baiviet_tab.jpg) no-repeat top left;
+
+		} 
+
+		UL.tabNavigation LI span.baiviet_tab:hover { 
+
+			width:84px;
+
+			background:url(../images/baiviet_tab.jpg) no-repeat top center;
+
+		} 
+
+		UL.tabNavigation LI span.selected.baiviet_tab:hover,
+
+		UL.tabNavigation LI span.selected.baiviet_tab {
+
+			width:84px;
+cursor:default;
+			background:url(../images/baiviet_tab.jpg) no-repeat top right;
+
+		}
+
+		
+
+		UL.tabNavigation LI span.danhgia_tab { 
+
+			width:92px;
+
+			background:url(../images/danhgia_tab.jpg) no-repeat top left;
+
+		} 
+
+		UL.tabNavigation LI span.danhgia_tab:hover { 
+
+			width:92px;
+
+			background:url(../images/danhgia_tab.jpg) no-repeat top center;
+
+		} 
+
+		UL.tabNavigation LI span.selected.danhgia_tab:hover,
+		UL.tabNavigation LI span.selected.danhgia_tab {
+			width:92px;
+			background:url(../images/danhgia_tab.jpg) no-repeat top right;
+			color:#3366cc;
+			cursor:default;
+
+		}
+
+		
+
+		UL.tabNavigation LI span.selected,
+
+		UL.tabNavigation LI span:hover {
+
+		   color: #5b5b5b;
+
+		   border-bottom:none !important;
+
+		}
+
+		div.tabs  div.border_tab_div  {
+			padding:12px 11px 10px;
+			border-left: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+		}
+
+		div.tabs .tab_div {
+
+			background:url(../images/bot_tab_l.jpg) no-repeat left bottom;
+
+			margin:0;
+
+			padding:0;			
+
+		}
+
+		div.tabs .tab_div .tab_div_r { background:url(../images/bot_tab_r.jpg) no-repeat right bottom;
+
+										padding-bottom:4px
+
+		}
+
+		div.tabs > div h2 {
+
+			margin-top: 0;
+
+		}
+
+
+
+		#first {
+
+		    background-color: #ffff;
+
+		}
+
+
+
+		#second {
+
+		    background-color: #ffff;
+
+		}
+
+
+
+		#third {
+
+		    background-color: #ffff;
+
+		}
+
+		
+
+		/* form comment  */
+
+		.comment_form { background:url(../images/comment_bot_l.jpg) no-repeat scroll left bottom; }
+
+		.comment_bot_r { background:url(../images/comment_bot_r.jpg) no-repeat scroll right bottom;
+
+						padding-bottom:4px; }
+
+		.comment_bd { 	background:url(../images/comment_bd.jpg) repeat-y center bottom; }
+
+		.comment_form  h3  { padding:0; margin:0;
+							color:#5b5b5b; 
+							background:url(../images/comment_head_l.jpg) top left no-repeat;
+							border-bottom:#cccccc solid 1px;
+							padding-left:10px;
+							font-size:12px; 
+							font-weight:normal;														
+							}
+
+		.comment_form  h3 span { background:url(../images/comment_head_r.jpg) top right no-repeat;
+
+								display:block;
+
+								padding:10px 0;
+
+								width:100%;
+
+		}
+
+		.comment_form_div  h3 span { 
+
+							background:url(../images/form_cm_r.jpg) top right no-repeat;
+}
+
+		.comment_ct  { padding:10px 10px 8px 10px; }
+
+		.comment_ct p { margin:2px 0; padding:0;  }
+
+		.comment_ct  label { display:inline-block;
+
+							  width:100px; }
+
+		.comment_ct textarea.text_area { width:400px; height:80px; }	  
+
+		.comment_ct	.bt_commnent { 
+										background:url(../images/goidi_green.jpg) left center no-repeat;
+										border:none;
+										width:89px;
+										height:17px;
+										cursor:pointer;
+										margin:5px 0 0 0;
+
+								 }
+
+		.comment_ct	.bt_huybo { background:url(../images/huybo.jpg) left center no-repeat;
+										border:none;
+										width:89px;
+										height:17px;
+								 margin:5px 0 0 0;
+
+		} 
+
+		
+		
+
+		#third table.MsoNormalTable, #third table.MsoNormal { border:none !important; }
+
+		.article_head { margin:0; 
+						padding:2px 5px 2px 0; 
+											
+		 }
+		 
+		 .article_head a { color:#3366cc; }
+		 .article_head a:hover {  text-decoration:underline;  }
+		 .article_head a.blue { color:#3366cc;  }
+		 .article_head a.blue:hover {  text-decoration:underline;  }

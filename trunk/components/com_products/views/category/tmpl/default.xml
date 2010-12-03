@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Standard List Category">
+		<message>
+			<![CDATA[STANDARD CATEGORY LAYOUT DESC]]>
+		</message>
+	</layout>
+	<state>
+		<name>List Category</name>
+		<description>CATEGORY LIST DESC</description>
+		<url addpath="/administrator/components/com_products/elements">
+			<param name="catid" type="product" default="0" label="Category" description="A Category Products" />
+		</url>
+		<params>
+			<param name="show_feed_link" type="radio" default="1" label="Show a feed link" description="PARAMSHOWFEEDLINK">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</param>
+			<param name="limit" type="text" default="9" label="Limit producct" description="Limit producct per page" />
+		</params>
+	</state>
+</metadata>

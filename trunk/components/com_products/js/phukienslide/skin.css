@@ -1,0 +1,33 @@
+.jcarousel-skin-tango li { float:left; }
+.jcarousel-skin-tango * { margin:0; padding:0; }
+#mycarousel { position:relative; padding:0 10px; }
+#mycarousel ul { margin:0; padding:0; }
+#mycarousel a.carousel-control {
+	height:15px;
+	position:absolute;
+	top:55px;
+	width:8px;
+	display:block;
+	z-index:3;
+	cursor:pointer;
+}
+#mycarousel a.carousel-control.carousel-previous {
+	background:url("prev-horizontal.png") no-repeat scroll 0 0 transparent;
+	left:0;
+}
+#mycarousel a.carousel-control.carousel-previous.disabled {
+	background:url("prev-horizontal.png") no-repeat scroll -8px 0 transparent;
+	cursor:default;
+}
+#mycarousel a.carousel-control.carousel-next.disabled {
+	background:url("next-horizontal.png") no-repeat scroll 0 0 transparent;
+	cursor:default;
+}
+#mycarousel a.carousel-control.carousel-next {
+	background:url("next-horizontal.png") no-repeat scroll -8px 0 transparent;
+	right:0;
+}
+.phukien_slide { display:block; clear:both; }
+.pk_warp {
+
+}

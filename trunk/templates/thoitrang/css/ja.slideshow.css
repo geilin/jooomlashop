@@ -1,0 +1,132 @@
+/*------------------------------------------------------------------------
+# JA SlideShow
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2006 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+
+-------------------------------------------------------------------------*/
+#ja-slideshow-wrap {
+	padding: 0;
+	position: relative;
+}
+
+#ja-slideshow-case {
+	overflow: hidden;
+}
+
+#ja-slideshow-mask {
+	position: absolute;
+	top: 0;
+	left: 0px;
+	background: url(../images/sl-mask.png) no-repeat top left;
+	width: 890px;
+	height: 340px;
+	z-index: 9;
+	overflow: hidden;
+}
+
+#ja-slidebar {
+	margin-left: 4px;
+	padding: 20px 0 0 0;
+	display: block;
+	z-index: 100;
+	display: none;
+}
+
+#ja-slidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: block;
+	clear: both;
+}
+
+#ja-slidebar ul li {
+	margin: 0 0 0 22px;
+	padding: 0;
+	display: block;
+	float: left;
+	background: none;
+}
+
+#ja-slidebar ul li#jsnav0 {
+	margin-left: 0;
+}
+
+#ja-slidebar ul li.pause {
+	background: none;
+	display: none;
+}
+
+#ja-slidebar ul li a {
+	border: 1px solid #EFEFEF;
+	padding: 3px;
+	color: #FFFFFF;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 10px;
+	display: block;
+	background: none;
+	background-repeat: no-repeat;
+	background-position: 3px 3px;
+}
+
+#ja-slidebar ul li a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#ja-slidebar a.next,#ja-slidebar a.prev {
+	display: none;
+}
+
+#ja-slidebar a.active {
+	
+}
+
+.ja-slideshowdesc {
+	position: absolute;
+	bottom: 50px;
+	left: 50px;
+	z-index: 10;
+	width: 60%;
+	padding: 10px 0;
+	color: #FFFFFF;
+	font-size: 180%;
+	font-weight: bold;
+}
+
+.ja-slideshowdesc h3 {
+	padding: 0 20px 5px;
+	margin: 0;
+	color: #9A4600;
+}
+
+.ja-slideshowdesc p {
+	padding: 0;
+	margin: 0;
+	line-height: 135%;
+	text-align: left;
+}
+
+.ja-slideshowdesc span {
+	background-color: #000000;
+	padding: 0 10px;
+	font-weight: bold;
+	word-spacing: 1px;
+	text-align: left;
+}
+
+.ja-slideshowimage {
+	z-index: 1;
+}
+
+.description-hidden {
+	display: none;
+}
+
+#ja-slidebar ul li.active a {
+	border: 1px solid #999999;
+}
