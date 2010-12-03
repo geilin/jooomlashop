@@ -1,0 +1,45 @@
+ <?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Support Online</name>
+	<author>Mr. Nguyen Manh Luan</author>
+	<creationDate>September 2008</creationDate>
+	<copyright>Nguyen Manh Luan</copyright>
+	<authorEmail>nhatlang19@gmail.com</authorEmail>
+	<version>1.5.0</version>
+	<description>Support Online</description>
+	<files>
+	<filename module="mod_support">mod_support.php</filename>
+	</files>
+	<params>
+		<param name="yahooID" type="text" default="" label="yahooID" description="yahooID" size="80px"></param>		
+		<param name="nameYahoo" type="text" default="" label="Name" description="Tên người dùng" size="80px"></param>
+		<param name="telYahoo" type="text" default="" label="Tel" description="Điện thoại" size="80px"></param>
+		<param name="typeYahoo" type="text" default="2" label="typeYahoo" description="typeYahoo"></param>
+		<param name="showYahoo" type="list" default="1" label="showYahoo" description="">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="skypeID" type="text" default="" label="skypeID" description="skypeID" size="80px"></param>
+		<param name="nameSkype" type="text" default="" label="Name" description="Tên người dùng" size="80px"></param>
+		<param name="telSkype" type="text" default="" label="Tel" description="Điện thoại" size="80px"></param>
+		<param name="showSkype" type="list" default="0" label="showSkype" description="">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>	
+		<param name="showName" type="list" default="1" label="showName" description="">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="showTel" type="list" default="0" label="showTel" description="">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+	</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="book by category">
+		<message>
+			<![CDATA[book by category]]>
+		</message>
+	</layout>
+	<state>
+		<name>Book by category</name>
+		<description>Book by category</description>
+		<url addpath="/administrator/components/com_books/elements">
+			<param name="cid" type="book" default="0" label="Category" description="Category" />
+		</url>
+		<params>
+			<param name="limit" type="text" default="9" label="Giới hạn sách" description="Giới hạn số sách trên 1 trang" />
+		</params>
+	</state>
+</metadata>

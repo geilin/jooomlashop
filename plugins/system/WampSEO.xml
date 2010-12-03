@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system">
+    <name>System - WampSEO</name>
+    <author>Le Van Hen</author>
+    <creationDate>March 2009</creationDate>
+    <copyright>Copyright (C) 2009 by Wampvn.com</copyright>
+    <license>GNU/GPL</license>
+    <authorEmail></authorEmail>
+    <authorUrl>http://wampvn.com</authorUrl>
+    <version>1.0</version>
+    <description>Plugin WampSEO tự động tạo META keyword và description từ title và nội dung của site</description>
+    <files>
+        <filename plugin="WampSEO">WampSEO.php</filename>
+    </files>
+	<params>
+        <param name="length" type="text" size="5" default="200" label="số ký tự" description="Chiều dài meta description."/> 
+		<param name="titorder" type="list" default="0" label="Title Layout" description="Select how you'd like your page titles to be displayed. Default is [Page Title] | [Site Title].">
+ 			<option value="0">[Page Title] | [Site Title]</option>
+ 			<option value="1">[Site Title] | [Page Title]</option>
+			<option value="2">[Page Title]</option>
+		</param>		
+		<param name="separator" type="text" size="1" default="\|" label="Phân cách" description="Phân cách giữa site title | page title" />
+
+		<param name="@spacer" type="spacer" default="" label="Front Page Stuff" description="" />
+
+		<param name="fptitle" type="text" size="40" default="Home" label="Tiêu đề trang chủ" description="Tiệu đề trang chủ" />
+		<param name="fptitorder" type="list" default="0" label="Front Page Title Layout" description="Chọn cách show tiêu đề trang chủ">
+ 			<option value="0">[Optional FP Title] | [Site Title]</option>
+ 			<option value="1">[Site Title] | [Optional FP Title]</option>
+			<option value="2">[Optional FP Title]</option>
+			<option value="3">[Site Title]</option>
+		</param>		
+
+		<param name="@spacer" type="spacer" default="" label="Front Page Stuff" description="" />
+
+		<param name="fpdesc" type="radio" default="1" label="Meta trang chủ" description="Tạo meta cho trang chủ không ?">
+ 			<option value="0">Yes</option>
+ 			<option value="1">No</option>
+		</param>		
+
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="credittag" type="radio" default="0" label="WampSEO Credit" description="credit">
+ 			<option value="0">Leave It</option>
+ 			<option value="1">Kill It</option>
+		</param>		
+	   
+   	<param name="lengthofword" type="text" width="4" default="3" label="chiều dài keyword" description="Chiều dài ít nhất của một keyword" />
+   	<param name="count" type="text" width="4" default="20" label="số keyword" description="Số lượng keyword." />
+    <param name="blacklist" type="textarea" cols="40" rows="20" default="la, cua, nhung" />
+	  <param name="regenerateall" type="radio" default="1" label="Tạo và save keyword" description="Save keyword đươc tạo ra">
+		   <option value="0">Yes</option>
+		   <option value="1">No</option>
+	  </param>
+	  <param name="usetitleorcontent" type="list" default="0" label="Sử dụng tiêu đề hoặc hoặc nội dụng" description="Sử dụng tiêu đề, nội dụng hoặc cả 2 sinh ra keyword ....">
+		   <option value="0">Tiêu đề</option>
+		   <option value="1">Nội dung</option>
+		   <option value="2">Cả hai</option>
+	  </param>
+	  
+    </params>
+</install>

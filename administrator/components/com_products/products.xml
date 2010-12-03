@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5.0">
+	<name>Products</name>
+	<!-- The following elements are optional and free of formatting conttraints -->
+	<creationDate>13 - 8 - 2009</creationDate>
+	<author>Le Van Hen</author>
+	<authorEmail>levanhen01@yahoo.com</authorEmail>
+	<authorUrl>http://wampvn.com</authorUrl>
+	<copyright>http://wampvn.com</copyright>
+	<license>Thương mại</license>
+	<!--  The version string is recorded in the components table -->
+	<version>1.0</version>
+	<!-- The description is optional and defaults to the name -->
+	<description>Giới thiệu sản phẩm, đặt hàng ...</description>
+	<installfile>install.books.php</installfile>
+	<uninstallfile>uninstall.books.php</uninstallfile>
+	<!-- Site Main File Copy Section -->
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>books.php</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+		<filename>valid_style.css</filename>
+		<filename>livevali.js</filename>
+		
+		<filename>views/index.html</filename>
+
+		<filename>views/index/index.html</filename>
+		<filename>views/index/view.html.php</filename>
+		<filename>views/index/metadata.xml</filename>		
+		<filename>views/index/tmpl/index.html</filename>
+		<filename>views/index/tmpl/default.php</filename>
+		
+		<filename>views/category/index.html</filename>
+		<filename>views/category/view.html.php</filename>
+		<filename>views/category/metadata.xml</filename>		
+		<filename>views/category/tmpl/index.html</filename>
+		<filename>views/category/tmpl/default.php</filename>
+		
+		<filename>views/book/index.html</filename>
+		<filename>views/book/view.html.php</filename>
+		<filename>views/book/metadata.xml</filename>		
+		<filename>views/book/tmpl/index.html</filename>
+		<filename>views/book/tmpl/default.php</filename>
+		<filename>views/book/tmpl/default.xml</filename>
+
+		<filename>views/detail/index.html</filename>
+		<filename>views/detail/view.html.php</filename>
+		<filename>views/detail/metadata.xml</filename>		
+		<filename>views/detail/tmpl/index.html</filename>
+		<filename>views/detail/tmpl/default.php</filename>
+		
+		<filename>models/index.html</filename>
+		<filename>models/category.php</filename>
+		<filename>models/index.php</filename>
+		<filename>models/detail.php</filename>
+		<filename>models/book.php</filename>		
+
+		<filename>images/index.html</filename>
+		<filename>images/sp_bg.jpg</filename>
+		<filename>images/bt-dathang.gif</filename>		
+
+	</files>
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">uninstall.sql</file>
+		</sql>
+	</uninstall>	
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu>Electric Products</menu>
+		<submenu>
+			<menu link="option=com_products">Product</menu>			
+			<menu task="manufacturer">Manufacturer</menu>
+			<menu task="comment">Comments</menu>			
+			<menu task="category">Category</menu>
+			<menu task="note">Note</menu>
+			<menu task="size">Size</menu>
+			<menu task="order">Order</menu>
+		</submenu>
+		<files folder="admin">
+	<!-- Site Main File Copy Section -->
+			<filename>index.html</filename>
+			<filename>admin.books.php</filename>
+			<filename>admin.books.html.php</filename>
+			<filename>admin.books.class.php</filename>
+			<filename>toolbar.books.php</filename>
+			<filename>toolbar.books.html.php</filename>
+			<filename>controller.php</filename>
+			<filename>install.books.php</filename>
+			<filename>uninstall.books.php</filename>
+			<filename>install.sql</filename>
+			<filename>uninstall.sql</filename>
+			
+			<filename>tables/index.html</filename>
+			<filename>tables/book.php</filename>
+			<filename>tables/category.php</filename>
+			<filename>tables/comment.php</filename>		
+
+			<filename>elements/index.html</filename>
+			<filename>elements/book.php</filename>			
+
+			<filename>images/index.html</filename>
+			<filename>images/noimage.jpg</filename>		
+		</files>		
+	</administration>
+</install>

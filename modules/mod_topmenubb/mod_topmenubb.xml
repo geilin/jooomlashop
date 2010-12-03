@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.0.0">
+	<name>TopMenu For BB</name>
+	<author>WAMP</author>
+	<creationDate>July 2010</creationDate>
+	<copyright>Copyright (C) 2010 WAMP.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@wampvn.com</authorEmail>
+	<authorUrl>www.wampvn.com</authorUrl>
+	<version>1.0.0</version>
+	<description>TopMenu For BB</description>
+	<files>
+		<filename module="mod_topmenubb">mod_topmenubb.php</filename>
+	</files>
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>

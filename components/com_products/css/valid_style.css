@@ -1,0 +1,328 @@
+/********************************* LiveValidation *************************************/
+.text_area { border:1px solid #ccc; padding:2px; margin: 5px 0; }
+textarea#content { width:400px;
+			height:75px;  }
+.LV_valid {
+    color:#00c0ff;
+}
+	
+.LV_invalid {
+	color:#ff5454;
+}
+	
+.LV_validation_message{
+    font-weight:bold;
+    margin:0 0 0 5px;
+}
+    
+.LV_valid_field,
+input.LV_valid_field:hover, 
+input.LV_valid_field:active,
+textarea.LV_valid_field:hover, 
+textarea.LV_valid_field:active,
+.fieldWithErrors input.LV_valid_field,
+.fieldWithErrors textarea.LV_valid_field {
+    border: 1px solid #f1f1f1;
+}
+    
+.LV_invalid_field,
+input.LV_invalid_field:hover, 
+input.LV_invalid_field:active,
+textarea.LV_invalid_field:hover, 
+textarea.LV_invalid_field:active,
+.fieldWithErrors input.LV_invalid_field,
+.fieldWithErrors textarea.LV_invalid_field {
+    border: 1px solid #ff5454;
+}
+.bt_dathang { background:url(images/bt-dathang.gif) left center no-repeat; 
+				height: 26px;
+				line-height:26px;
+				color:#414141;
+				font-weight:bold;
+				width:100px;
+				padding-left:20px;
+				border:none;}
+#frm-dathang table { margin:0 auto; }
+div.componentheading, .componentheading {
+border-bottom:1px solid #CCCCCC;
+font-size:180%;
+margin:0 0 15px;
+padding:0 0 10px 0;
+}
+
+#trb_sanpham table { margin:0 auto;
+						width:100%;
+						border:none;
+						text-align:center;
+						padding:10px;  } 
+#trb_sanpham table tr td { background: #414141 url(images/sp_bg.jpg) repeat-x bottom left; }
+#trb_sanpham table p img { border:1px solid #ccc;
+							background:#fff;
+							padding:2px; }
+#trb_sanpham table p a { font-weight:bold; color:#00B4FF; }
+#trb_sanpham table p a:hover { color:#ff7800; text-decoration:none;  }			
+/*---------------------------chi tiet san pham---------------------------------------*/				
+#chitiet_sp table { width:100%;
+					border:none;
+					 }
+#chitiet_sp table  td#td_sp { border-right:1px solid #ccc; }
+#chitiet_sp table  td#td_chitiet { padding-left:20px; }
+#chitiet_sp table table#hinh_sp { width:100%; 
+									display:block;
+									text-align:center; }
+#chitiet_sp table table#hinh_sp td#main_img { text-align:left; }
+									
+#chitiet_sp table table#hinh_sp img.hinh_w50 { width:40px;
+												height:40px;
+												background:#fff;
+												border:1px solid #ccc; }
+#chitiet_sp table table#hinh_sp img.hinh_w180 { width:320px; 
+												height:320px; 
+												background:#fff;
+												border:1px solid #ccc; 
+												padding:2px;}
+ #chitiet_sp table #tt_gia { background: #141414 url(images/sp_bg.jpg) repeat-x bottom left;
+ 							color:#CCCCCC;
+							border:#414141;
+							padding:10px; }
+ #chitiet_sp table label { display:inline-block;
+ 							width:100px;
+							font-weight:bold; }
+#chitiet_sp table a.bt_dathang { display:block;
+									height:26px;
+									line-height:26px;
+									width:auto;
+									padding-left:30px; }
+#chitiet_sp table h3 { font-size:14px; 
+						color:#ccc;
+						border-bottom:1px solid #ccc;
+						padding:5px; }
+#nd_sp { margin:15px 0 0 0; }
+
+#loi_camon { font-size:15px; 
+			color:#c5ffe3;
+			font-weight:bold; }
+	
+/*---------------tool tip------------------------------*/	
+						
+.tootip{
+position:absolute;
+left:-2000px; 
+background-color:#ccc;
+padding:0;
+border:1px solid #fff;
+width:auto;
+}
+
+.tootip p{
+margin:0;
+padding:5px;
+color:#fff;
+
+
+}
+
+/*-----------------highslide-------------------------------------*/
+
+.highslide {
+    cursor: url(js/highslide/graphics/zoomin.cur), pointer;
+    outline: none;
+}
+.highslide-active-anchor img {
+	visibility: hidden;
+}
+.highslide img {
+	border: 2px solid white;
+}
+.highslide:hover img {
+	border: 2px solid white;
+}
+
+.highslide-wrapper {
+	background: white;
+}
+.highslide-image {
+	border: 2px solid white;
+}
+.highslide-image-blur {
+}
+.highslide-caption {
+    display: none;
+    border: 2px solid white;
+    border-top: none;
+    font-family: Verdana, Helvetica;
+    font-size: 10pt;
+    padding: 5px;
+    background-color: white;
+}
+.highslide-caption span.codepreview { border:1px solid #414141;
+									background:#CCCCCC;
+									padding: 0 10px;
+									font-size:9px;
+									font-weight:normal; }
+.highslide-loading {
+    display: block;
+	color: black;
+	font-size: 8pt;
+	font-family: sans-serif;
+	font-weight: bold;
+    text-decoration: none;
+	padding: 2px;
+	border: 1px solid black;
+    background-color: white;
+    
+    padding-left: 22px;
+    background-image: url(js/highslide/graphics/loader.white.gif);
+    background-repeat: no-repeat;
+    background-position: 3px 1px;
+}
+
+a.highslide-credits,
+a.highslide-credits i {
+    padding: 2px;
+    color: silver;
+    text-decoration: none;
+	font-size: 10px;
+}
+a.highslide-credits:hover,
+a.highslide-credits:hover i {
+    color: white;
+    background-color: gray;
+}
+a.highslide-full-expand {
+	background: url(js/highslide/graphics/fullexpand.gif) no-repeat;
+	display: block;
+	margin: 0 10px 10px 0;
+	width: 34px;
+	height: 34px;
+}
+
+/* These must always be last */
+.highslide-display-block {
+    display: block;
+}
+.highslide-display-none {
+    display: none;
+}
+/*-----------------PRODUCT VIEW ALL-----------------------*/
+/*---------------------PRODUCT CATEGORIES VIEW--------------------------*/
+
+	/*---------------------TOOL PRODUCT CATEGORIES VIEW--------------------------*/
+	#tool_pro_cat .cell { 
+	color:#5B5B5B;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size:12px;
+	height:32px;
+	}
+	#tool_pro_cat .cell b  {  color:#17A1B9 ; }
+	#tool_pro_cat .c_right a { color:#5B5B5B; font-weight:bold; text-decoration:none;  }
+	#tool_pro_cat .c_right a:hover { color:#17A1B9 ; }
+	.sep_blue { color:#17A1B9 ; }
+	/*---------------------// TOOL PRODUCT CATEGORIES VIEW--------------------------*/
+	
+	
+	/*---------------------MANUFACTURES PRODUCT CATEGORIES VIEW--------------------------*/
+	#manufacturers_pro_cat { border-top:1px solid #CCCCCC;
+		color:#17A1B9;
+		font-family:Arial,Helvetica,sans-serif;
+		font-size:12px;
+		height:32px;
+		text-align:center;
+		line-height:32px;
+	}
+	#manufacturers_pro_cat p { line-height:36px; margin:0; padding:0; }
+	#manufacturers_pro_cat a { color:#5B5B5B; font-weight:bold; text-decoration:none; }
+	#manufacturers_pro_cat a:hover { color:#5B5B5B; text-decoration:underline; }
+	#manufacturers_pro_cat a.manu_active { color:#17A1B9 ; }
+	#manufacturers_pro_cat a.manu_active:hover { color:#5B5B5B; }
+	/*---------------------// MANUFACTURES PRODUCT CATEGORIES VIEW--------------------------*/
+	
+	/*---------------------LIST PRODUCT CATEGORIES VIEW--------------------------*/
+	
+	#list_pro_cat_border { 	border-left:1px solid #ccc; 
+							border-right:1px solid #ccc; 
+							padding:0 5px 0 5px;
+							
+							}
+ 	#list_pro_cat .row_pro_cat { border-bottom:1px solid #ccc; padding-top:5px; line-height:1.4; }
+	#list_pro_cat .row_pro_cat_last { padding-top:5px; }
+	#list_pro_cat .row_pro_cat a, #list_pro_cat .row_pro_cat_last a { text-decoration:none;  }
+	#list_pro_cat .row_pro_cat a:hover, #list_pro_cat .row_pro_cat_last a:hover { text-decoration:underline;  }
+	#list_pro_cat .row_pro_cat h3, #list_pro_cat .row_pro_cat_last h3 { padding:0; margin:0 0 5px 0 ; font-size:12px;  }
+	#list_pro_cat .row_pro_cat h3 a, #list_pro_cat .row_pro_cat_last h3 a { color:#17A1B9; font-weight:bold; text-decoration:none; }
+	#list_pro_cat .row_pro_cat h3 a:hover, #list_pro_cat .row_pro_cat_last h3 a:hover {  color:#5B5B5B; text-decoration:underline; }
+	#list_pro_cat .row_pro_cat font, #list_pro_cat .row_pro_cat_last font { color:#D70B10; }
+	.row_pro_cat p, .row_pro_cat_last p { padding:0; margin:0; }
+	
+	/*---------------------THUMBNAIL PRODUCT CATEGORIES VIEW--------------------------*/
+	#list_thumb_pro_cat #list_pro_cat_border { padding:5px !important; 
+	}
+	.item_pro_cat { width:190px; 
+					text-align:center;
+					padding:5px 5px 9px 5px; }
+	.item_pro_cat_first {
+					width:190px; 
+					float:left;
+					text-align:center;
+					padding:5px 5px 3px 5px; 
+	}
+	.item_pro_cat_last { width:190px; 
+						float:left;
+						text-align:center;
+						padding:5px 5px 3px 5px !important; }
+	.item_pro_cat_first h3, .item_pro_cat h3, .item_pro_cat_last h3 {padding:0; margin:0; font-size:12px; margin-top:3px; color:#17A1B9; font-weight:normal;}
+	.item_pro_cat_first h3 a,.item_pro_cat h3 a, .item_pro_cat_last h3 a { color:#17A1B9; font-weight:normal; text-decoration:none; }
+	h3 a:hover, h3 a:active{
+		text-decoration:underline;
+	}
+	.item_pro_cat_first p,.item_pro_cat p, .item_pro_cat_last p { padding:0; margin:0; }
+	.item_pro_cat_first font, .item_pro_cat font, .item_pro_cat_last font  { color:#5b5b5b;  }
+	/* .div_left { border-right: 1px solid #ccc; } */
+	/*---------------------// THUMBNAIL PRODUCT CATEGORIES VIEW--------------------------*/
+	
+	/*---------------------SEARCH PRODUCT CATEGORIES VIEW--------------------------*/
+	#line_search h2 { 
+		padding:0; 
+		margin:0;
+		height:32px;
+		line-height:32px; 
+		font-size:12px; 
+		font-weight:100;
+        text-align: center;
+	}	
+	#line_search h2 b {  color:#17A1B9 ;
+			font-weight: bold;
+	}	
+	
+/*--------------------- PRODUCT DETAIL VIEW--------------------------*/
+
+	/*---------------------MANUFACTURES PRODUCT DETAIL VIEW--------------------------*/
+	#manufacturers_pro_detail { 	color:#5B5B5B;
+									font-family:Arial,Helvetica,sans-serif;
+									font-size:12px;
+									height:36px;
+									text-align:center; }
+	#manufacturers_pro_detail p { line-height:36px; margin:0; padding:0; }
+	#manufacturers_pro_detail a { color:#5B5B5B; font-weight:bold; text-decoration:none; }
+	#manufacturers_pro_detail a:hover { color:#17A1B9 ; }
+	#manufacturers_pro_detail a.manu_active { color:#17A1B9 ; }
+	#manufacturers_pro_detail a.manu_active:hover { color:#5B5B5B; }
+	/*---------------------// MANUFACTURES PRODUCT DETAIL VIEW--------------------------*/
+	/*---------------------// PRODUCT DETAIL VIEW--------------------------*/
+	#module_center h3 { 	font-size:12px; 
+							font-weight:bold;
+							color:#FFFFFF;
+							margin:0;
+							padding:0 0 0 10px;
+							}
+	a.size_active { color:#6699FF !important; }
+		
+
+	
+/*---------------------// PRODUCT DETAIL VIEW--------------------------*/
+
+#mod_cart { padding:0 10px; }
+#mod_cart ul { padding:0; margin:0; }
+#mod_cart ul li { padding:0; }
+
+.pro_info_list ul { margin:0; padding:0; }

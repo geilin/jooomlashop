@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system">
+	<name>System - ProductSef</name>
+	<author>Le Van Hen</author>
+	<creationDate>9 2009</creationDate>
+	<copyright>Copyright (C) WAMP vn Group. All rights reserved.</copyright>
+	<license>http://wampvn.com</license>
+	<authorEmail>levanhen@wampvn.com</authorEmail>
+	<authorUrl>http://wampvn.com</authorUrl>
+	<version>1.0</version>
+	<description>ProductSef will build a search engine friendly url, which is also human friendly.</description>
+	<files>
+		<filename plugin="productsSef">productsSef.php</filename>
+	</files>
+	<params/>
+</install>

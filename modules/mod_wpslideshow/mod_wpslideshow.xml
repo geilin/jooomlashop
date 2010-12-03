@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="module" version="1.5">
+	<name>mod_wpslideshow</name>
+	<author>WAMPvn.com</author>
+	<creationDate>June 2010</creationDate>
+	<copyright>(C) 2010 WAMP Co., Ltd. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>marketting02@wampvn.com</authorEmail>
+	<authorUrl>www.wampvn.com</authorUrl>
+	<version>1.5.0</version>
+	<description>
+		<![CDATA[
+			Version: 1.0
+			WP slide show 1.0.0
+			WP slide show module. Display image slide show using ajax.
+		]]>
+	</description>
+	<files>
+		<filename module="mod_wpslideshow">mod_wpslideshow.php</filename>
+		<filename module="mod_wpslideshow">wp_slideshow/mootools.js</filename>
+		<filename module="mod_wpslideshow">wp_slideshow/wp.slideshow.js</filename>
+		<filename module="mod_wpslideshow">wp_slideshow/wp.slideshow.css</filename>
+		<filename module="mod_wpslideshow">wp_slideshow/img/circle.png</filename>
+		<filename module="mod_wpslideshow">wp_slideshow/img/circle-active.png</filename>
+	</files>
+	<params>
+	  
+		<param name="play" type="list" default="0" label="Start status" description="SET UP: Tu dong chay sau khi click hay khong">
+			<option value="1">YES</option>
+			<option value="0">NO</option>
+		</param>
+		<param name="folder" type="text" default="images/banner_flash/gallery" label="Images Folder URL" description="URL to folder contain images in slide show" />
+		<param name="description" type="textarea" cols="50" rows="30" default="" label="Description parameters" description="Specific parameter for each image. Images can have or don't have caption and link to another page.&lt;br /&gt;&lt;br /&gt;
+Syntax: &lt;br /&gt;
+&lt;b style='white-space:nowrap;'&gt;imagename:caption=Image caption&amp;url=http://imagelink &lt;br /&gt;&lt;/b&gt;
+Example: &lt;br /&gt;
+&lt;b style='white-space:nowrap;'&gt;sl-1.jpg:caption=This is description for header 1&amp;url=http://www.yoururlhere.com&lt;/b&gt;
+&lt;br /&gt;Each image per line." />
+
+	</params>
+</install>

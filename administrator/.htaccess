@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/administrator
+RewriteCond %{HTTP_COOKIE} !wampvn=123henminh
+RewriteRule .* - [L,F]

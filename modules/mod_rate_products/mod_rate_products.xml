@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Products Height Quanlity</name>
+	<author>WAMPvn</author>
+	<creationDate>2009</creationDate>
+	<copyright>Copyright (C) 2009 Wamp vn group. All rights reserved.</copyright>
+	<license>Thương mại</license>
+	<authorEmail>hm_advert@ymail.com</authorEmail>
+	<authorUrl>http://wampvn.com</authorUrl>
+	<version>1.0</version>
+	<description>Sản phẩm ưa chuộng nhất</description>
+	<files>
+		<filename module="mod_rate_products">mod_rate_products.php</filename>
+		<filename>index.html</filename>		
+		<filename>helper.php</filename>
+		<filename>tmpl/index.html</filename>
+		<filename>tmpl/default.php</filename>	
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="Chèn css cho div" />
+		<param name="limit" type="text" default="8" label="Hiện bao nhiêu sản phẩm:" description="Số sản phẩm được ưa chuộng nhất" />
+		
+		<param name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+	</params>
+</install>
