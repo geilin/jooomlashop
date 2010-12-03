@@ -21,8 +21,7 @@ class modNewProductsHelper
 		
 		$query =  "SELECT p.id, p.name, p.currency, p.saleprice, p.thumbnail"
 				  . " FROM #__w_products as p"
-				  . " WHERE p.published = 1 "
-					." AND p.frontpage = 1 "	
+				  . " WHERE p.published = 1 "	
 				  . " ORDER BY  p.date DESC"
 				  . " LIMIT 0,".$limit;		
 		$db->setQuery($query);
