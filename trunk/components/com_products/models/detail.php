@@ -41,7 +41,12 @@ class ModelProductDetail extends JModel
 			$this->_db->setQuery($query);			
 			$this->_product = $this->_db->loadObject();
 
-			$this->_manufacturer = $this->_product->manufacturer;
+			
+			//echo "<pre>";
+			//print_r($this->_product);
+			//echo "</pre>";
+			
+			$this->_manufacturer = $this->_product->manufacturerid;
 			$this->_catid = $this->_product->catid;
 			
 			// update hits
@@ -206,9 +211,10 @@ class ModelProductDetail extends JModel
 	
 	
 	function getProperties(){
+		$property = array();
 		$queryPro =  "SELECT * FROM #__w_property WHERE published=1 ORDER BY ordering";
 		$this->_db->setQuery($queryPro);
-		$property = $this->_db->loadObjectList();
+		//$property = $this->_db->loadObjectList();
 		
 		$i=0;
 		foreach($property as $pro){
