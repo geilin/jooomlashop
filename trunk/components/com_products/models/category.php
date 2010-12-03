@@ -50,6 +50,8 @@ class ModelProductCategory extends JModel
 				}
 				$query .= ' and p.catid IN ('.$list.')';
 			}
+			
+		
 			// search for size or manufacturer
 			if (!empty($this->_size)){
 				$query .= ' and LOWER(p.monitorsize) = '. $this->_size;				
@@ -57,7 +59,9 @@ class ModelProductCategory extends JModel
 			if (!empty($this->_mid)){
 				$query .= ' and p.manufacturerid = '. $this->_mid;				
 			}			
-			$query .= " ORDER BY p.id DESC";
+			$query .= " ORDER BY p.frontpage DESC, p.id DESC ";
+			
+			
 			$db->setQuery( $query, $limitstart, $limit);
 			$this->_product = $db->loadObjectList();
 		}
