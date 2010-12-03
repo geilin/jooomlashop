@@ -1,0 +1,86 @@
+/*----------------------------------------------+
+ | my gird system
+ | @authour: phplaw@gmail.com
+ +----------------------------------------------*/
+
+.container_96 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+    background-color: #e1e1e1;
+}
+
+.wrapper {
+    width: 960px;
+    margin: 0 auto;    
+}
+
+/*96 colums grids base*/
+.grid_20, .grid_54, .grid_75, .grid_96 {
+    display: inline;
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow-x: hidden;
+    
+}
+.grid_20 {
+    width: 200px;
+}
+.grid_54 {
+    width: 540px;
+}
+.grid_75 {
+    width: 750px;
+}
+.grid_96 {
+    width:960px;
+}
+
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after {
+	content: '\0020';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/*
+	The following zoom:1 rule is specifically for IE6 + IE7.
+	Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix {
+	zoom: 1;
+}
+
+.alpha {
+	margin-left: 0;
+}
+
+.omega {
+	margin-right: 0;
+}
