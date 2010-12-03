@@ -102,8 +102,8 @@ class ProductViewSearch extends JView
 		if (!empty($keyword)) {
 			$titleSEO = 'Kết quả tìm ' .$keyword;
 		}
-		$doc->setTitle($titleSEO);		
-		$doc->setDescription('Kết quả tìm từ khóa '. $keyword .' tại BiBishop.com - SHOP THOI TRANG');
+		//$doc->setTitle($titleSEO);		
+		//$doc->setDescription('Kết quả tìm từ khóa '. $keyword .' tại BiBishop.com - SHOP THOI TRANG');
 		
 		$text_price = $params->get('text_price', 'Sắp có hàng');
 		

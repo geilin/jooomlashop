@@ -33,8 +33,8 @@ class ProductViewWarranty extends JView
 		} else {
 			$titleSEO = 'Bảo hành';
 		}
-		$doc->setTitle($titleSEO);
-		$doc->setDescription('Bảo hành tại BiBishop.com - SHOP THOI TRANG');
+		//$doc->setTitle($titleSEO);
+		//$doc->setDescription('Bảo hành tại BiBishop.com - SHOP THOI TRANG');
 		
 		$id_article = $params->get('id_article', 74);
 		$wa_art = $model->getArticle($id_article);

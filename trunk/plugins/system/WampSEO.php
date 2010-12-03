@@ -243,7 +243,7 @@ class plgSystemWampSEO extends JPlugin
 	  arsort($keysArray);
 	
 	  $i = 1;
-	
+	  $keywords = '';
 	  foreach($keysArray as $word=>$instances){
 		  if($i > $count)
 			  break;
