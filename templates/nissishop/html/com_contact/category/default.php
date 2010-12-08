@@ -25,7 +25,6 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <script language="javascript" type="text/javascript">
 	function tableOrdering( order, dir, task ) {
 	var form = document.adminForm;
-
 	form.filter_order.value 	= order;
 	form.filter_order_Dir.value	= dir;
 	document.adminForm.submit( task );

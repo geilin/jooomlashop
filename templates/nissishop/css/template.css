@@ -1405,7 +1405,7 @@ body {
     color: #333333;
 }
 #navigation { margin-bottom: 9px; }
-#content_wrapper { padding:0; margin:0; min-height: 460px; height: 460px; height: auto!important; }
+#content_wrapper { padding:0; margin:0; }
 #content_wrapper #main_content { width: 750px;}
 #content_wrapper.hasright #main_content { width: 540px;}
 #left, #main_content{ float: left;} 
@@ -1414,9 +1414,7 @@ body {
 #main_content { width: 540px; }
 
 #left, #right, #main_content {
-    /*background-color: #ffe5e5;*/
-    display: inline;  
-    overflow-x: hidden;   
+    display: inline;
 }
 
 #mainnav {
@@ -1472,21 +1470,40 @@ body {
     margin-bottom: 10px;
 }
  .nissi_module .module_header{
-    background: transparent url('../my_images/module_header_bg.png') no-repeat left top;
+    background: transparent url('../my_images/module_header_bg.jpg') repeat-x left top;
     font-size: 12px;  
 }
- .nissi_module .module_header h3 {    
+ .nissi_module .module_header h3 {  
+    background: transparent url('../my_images/module_header_left_bg.jpg') no-repeat left top;   
     padding-left: 10px;
     color: #FFF;
     text-transform: uppercase;
+    line-height: 33px;    
+    height: 33px;
+}
+ .nissi_module .module_header h3 span {  
+     background: transparent url('../my_images/module_header_right_bg.jpg') no-repeat right top;   
+    display: block;
+    width: 100%;
     line-height: 33px;
 }
+.nissi_module  .module_footer {
+    background: #FFF url('../my_images/module_bottom_left_bg.jpg') no-repeat left bottom;   
+    height: 10px;
+    width:100%;
+}
+.nissi_module  .module_footer span {
+    display: block;
+    background: transparent url('../my_images/module_bottom_right_bg.jpg') no-repeat right bottom;   
+    height: 10px;
+    width:100%;
+}
+
  .nissi_module .module_content {   
     height: 33px;
     min-height: 33px;
     height: auto!important;
     background: #FFF url('../my_images/module_content_bottom_bg.png') no-repeat left bottom;
-    padding-bottom: 10px;
 }
  .nissi_module ul.menu {    
     list-style: none!important;
