@@ -20,15 +20,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 </div>
 <!-- /component_header -->
 <!-- component_content -->
-<div id="component_content" class="clearfix">    
+<div id="component_content" class="clearfix">   
 
-<div id="tool_pro_cat">
+
     <p class="category_meta">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm</p>
 	
-	<?php if (!$this->listProduct) { ?>
-		<div class="border_bot" style="height:2px;"></div>
-	<?php }?>
-</div>
+
 
     <style type="text/css">
     .block-main-content-item {
