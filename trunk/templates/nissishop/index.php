@@ -3,6 +3,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 include_once (dirname(__FILE__).DS.'/ja_vars.php');
 $hasRight = $this->countModules('right');
 $columClass = ($hasRight > 0) ? 'hasright ': '';
+$siteName = $tmpTools->sitename();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>">
@@ -52,10 +53,9 @@ $columClass = ($hasRight > 0) ? 'hasright ': '';
                     <?php if($tmpTools->isFrontPage()) : ?>	
                     <div id="selloff">
                         <!-- product selloff -->
-                        <image src="<?php echo $tmpTools->templateurl(); ?>/my_images/selloff.jpg" alt="đang khuyến mãi"/>
+                        <image src="<?php echo $tmpTools->templateurl(); ?>/my_images/selloff.jpg" alt="đang khuyến mãi" style="margin-bottom:10px;" />						
                         <!-- /product selloff -->
-                        <?php if ($this->countModules('selloff')) : ?>
-                        
+                        <?php if ($this->countModules('selloff')) : ?>                        
                         <jdoc:include type="modules" name="selloff"  style="missishop"  />
                         <?php endif; ?>
                     </div>
