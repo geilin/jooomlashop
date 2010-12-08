@@ -1,0 +1,1 @@
+"D:/softwares/xampp/php/php.exe" -q "D:/www/test/socket/example.php"
