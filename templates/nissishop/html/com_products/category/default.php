@@ -35,6 +35,11 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
     .product_detail_wrapper {
         padding:10px;
     }
+    .product_thumb {
+         width: 110px;
+    padding:5px; border: 1px solid #acacac;
+    }
+    .pro_price { margin: 10px 0; color: red; font-weight: bold; border-top: 1px dashed #acacac}
     </style>  
     
     
@@ -55,10 +60,10 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 					$image = JURI::base().'components/com_products/images/noimage.jpg';
 				}
 				?>
-            	<img src="<?php echo $image?>" alt="<?php echo $list->name?>" width="119" height="181"/>            	
+            	<img src="<?php echo $image?>" alt="<?php echo $list->name?>" class="product_thumb" />            	
             </a>
             <p><a class="link-image" href="<?php echo $list->link; ?>"><span><?php echo $list->name;?></span></a></p>
-            <p>Giá: <span><?php echo number_format($list->saleprice);?> <?php echo $list->currency?></span></p>
+            <p class="pro_price">Giá bán: <span><?php echo number_format($list->saleprice);?> <?php echo $list->currency?></span></p>
             </div>
         </div>		
 	<?php } ?>
