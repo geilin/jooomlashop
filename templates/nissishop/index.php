@@ -60,7 +60,7 @@ $siteName = $tmpTools->sitename();
                         <?php endif; ?>
                     </div>
                     <?php endif ; ?>
-                      <div id="joomla_component">
+                      <div id="component">
                         <jdoc:include type="component" />
                       </div>                   
             </div>

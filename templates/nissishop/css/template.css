@@ -1537,40 +1537,37 @@ h1.logo a {
 h1.logo a span { display:none;}
 
 /* COMPONENT */
-
+#component { margin-bottom: 10px; }
 #component_header {
-    background: transparent url('../my_images/component_header_bg.jpg') no-repeat left top;
+    background: transparent url('../my_images/module_header_bg.jpg') repeat-x left top;
     line-height: 33px;
     height: 33px;
+    width:100%;
 }
+.component_title {
+    background: transparent url('../my_images/module_header_left_bg.jpg') no-repeat left top;
+}
+.component_title h2{
+    color: #FFF;
+    padding-left: 10px;
+    background: transparent url('../my_images/module_header_right_bg.jpg') no-repeat right top;
+}
+
 #component_content {
     background-color: #FFF;
 }
 
-#joomla_component {
-    margin: 10px 0;
-    background: transparent url('../my_images/component_heading.png') no-repeat left top;
+#component_footer {
+    background: #FFF url('../my_images/module_bottom_left_bg.jpg') no-repeat left bottom;   
+    height: 10px;
+    width:100%;
 }
-/*
-#joomla_component .componentheading {
-    line-height: 24px;
-    color: #FFF;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 0 10px;
-    background: transparent url('../images/bg.jpg');    
+#component_footer span {
+    display: block;
+    background: transparent url('../my_images/module_bottom_right_bg.jpg') no-repeat right bottom;   
+    height: 10px;
+    width:100%;
 }
-#joomla_component table, #joomla_component .article-content {
-    background: #FFF url('../my_images/component_close_bg.png') no-repeat left bottom;
-}
-#joomla_component table, #joomla_component .article-tools,   #joomla_component .article-content{
-    margin: 0;
-    background-color: #FFF;
-}
-#joomla_component table .contentpaneopen, #joomla_component .article-content{
-   padding: 10px;
-}*/
 
 /* FOOTER */
 #footer {
