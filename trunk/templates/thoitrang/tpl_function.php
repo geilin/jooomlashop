@@ -49,12 +49,13 @@ function getImgTag($row) {
 	 
 
 	$images = (count($matches)) ? $matches : array();
+	$image = '';
 	if ( count($images) ) {
 		if( strpos($images[1],"http://") === false )
 		$imgthr =	JURI::Base();
 		else
 		$imgthr =	'' ;
-		$image =  $imgthr . $images[1] . $imgthr2;
+		$image =  $imgthr . $images[1];
 	}
 	 
 	return $image;
