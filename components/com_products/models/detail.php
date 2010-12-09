@@ -68,6 +68,10 @@ class ModelProductDetail extends JModel
 					 . " WHERE p.published =1 AND p.stock=1 AND p.id <> '".$this->_product->id."' AND  p.catid = '" .$this->_product->catid ."' ORDER BY date DESC LIMIT 0,6 ";				
 			$this->_db->setQuery($query);			
 			$relative = $this->_db->loadObjectList();
+			for ($i =0; $i <count($relative); $i++){
+				$relative[$i]->filename = $this->getImageDefaultRelative($relative[$i]->id);
+			}
+			
 		}
 		return $relative;
 	}
@@ -92,7 +96,15 @@ class ModelProductDetail extends JModel
 		}
 		return $this->_imagesDefault;
 	}
-	
+	function getImageDefaultRelative($id){
+		$imagesDefault = '';
+
+			$query = "SELECT filename FROM #__w_images WHERE proid=" .(int)$id . " AND published =1 AND isdefault =1";
+			$this->_db->setQuery($query);			
+			$imagesDefault = $this->_db->loadObject();
+
+		return $imagesDefault->filename;
+	}
 	
 	
 	
