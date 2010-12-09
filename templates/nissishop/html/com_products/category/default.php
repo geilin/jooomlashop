@@ -4,7 +4,7 @@ $catid = JRequest::getInt('catid',0);
 ?>
 <!-- component_header -->
 <div id="component_header">
-    <div class="component_title">       
+    <div class="component_title">    
     
     <h2>
     <?php
@@ -20,18 +20,13 @@ $catid = JRequest::getInt('catid',0);
     }
     ?>
     </h2>
-        </div>
+    </div>
 </div>
 <!-- /component_header -->
 <!-- component_content -->
-<div id="component_content" class="clearfix">   
-
-
-    <p class="category_meta">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm</p>
-	
-
-
-    <style type="text/css">
+<div id="component_content" class="clearfix">
+<p class="category_meta">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm</p>
+	<style type="text/css">
     .block-main-content-item {
         float: left; height: 250px; width: 180px;
         
@@ -71,7 +66,7 @@ $catid = JRequest::getInt('catid',0);
             </div>
         </div>		
 	<?php } ?>
-	<p style="margin:0; padding:0; clear:both;"></p>
+	<p class="clear"></p>
 		
 
 <!-- END: BORDER WARPER -->
@@ -79,10 +74,5 @@ $catid = JRequest::getInt('catid',0);
 <?php	echo $this->pagination->getPagesLinks();  ?>
 
 <?php } ?>
-
-    
-    
-
-</div>
-<!-- /component_content -->
+</div><!-- /component_content -->
 <div id="component_footer"><span></span></div>
