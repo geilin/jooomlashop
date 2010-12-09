@@ -34,9 +34,10 @@ class ModelProductDetail extends JModel
 	{
 		if(!$this->_product)
 		{
-			$query = "SELECT p.*, c.name as category "
+			$query = "SELECT p.*, c.name as category, f.name AS manufacture "
 					 . " FROM #__w_products as p 
-								INNER JOIN #__w_categories as c ON p.catid = c.id "
+								LEFT JOIN #__w_manufacturers AS f ON p.manufacturerid = f.id "
+							  . "INNER JOIN #__w_categories as c ON p.catid = c.id "
 					 . " WHERE  p.id = '" . $this->_id ."'";				
 			$this->_db->setQuery($query);			
 			$this->_product = $this->_db->loadObject();
