@@ -1,5 +1,6 @@
 <?php
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
+$catid = JRequest::getInt('catid',0);
 ?>
 <!-- component_header -->
 <div id="component_header">
@@ -7,9 +8,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
     
     <h2>
     <?php
-    if (empty($this->manufacturerName))
-    {
-        echo $this->catName;
+    if (empty($this->manufacturerName)){
+		if(!$catid || (int)$catid<1){
+			echo JText::_('Sản phẩm');
+		}else{
+			echo $this->catName;
+		}
     } else {
         echo '<a href="'.JRoute::_('index.php?option=' . $option . '&view=category&catid=' . $this->catid).'">'. $this->catName .'</a>';
     if (!empty($this->manufacturerName)) echo ' > '. $this->manufacturerName;
