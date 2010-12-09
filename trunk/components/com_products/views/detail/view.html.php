@@ -73,11 +73,14 @@ class ProductViewDetail extends JView
 		$images = $model->getImages();
 		$imgDefault = $model->getImageDefault();
 		
+		$relative = $model->getRelative();
+		
 		//echo "<pre>";
-		//print_r($images);
+		//print_r($relative);
 		//echo "</pre>";
 		
 		// Assign REF
+		$this->assignRef('relative', $relative);
 		$this->assignRef('imgDefault', $imgDefault);
 		$this->assignRef('images', $images);
 		$this->assignRef('properties', $properties);

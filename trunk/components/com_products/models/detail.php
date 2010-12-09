@@ -60,6 +60,19 @@ class ModelProductDetail extends JModel
 	}
 	
 	
+	function getRelative(){
+		$relative = array();
+		if($this->_product){
+			$query = "SELECT p.name,p.id,p.catid,p.saleprice,p.currency "
+					 . " FROM #__w_products as p  "
+					 . " WHERE p.published =1 AND p.stock=1 AND  p.catid = '" .$this->_product->catid ."' ORDER BY date DESC LIMIT 0,6 ";				
+			$this->_db->setQuery($query);			
+			$relative = $this->_db->loadObjectList();
+		}
+		return $relative;
+	}
+	
+	
 	
 	function getImages(){
 		if(!$this->_images){
