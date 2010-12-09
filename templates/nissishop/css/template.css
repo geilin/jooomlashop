@@ -1579,6 +1579,7 @@ h1.logo a span { display:none;}
     background: transparent url('../my_images/footer_right_bg.png') no-repeat right top;
     margin: 0;
     padding-left: 12px;
+	padding-bottom:10px;
     font-weight: bold;
 
 }
