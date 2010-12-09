@@ -33,7 +33,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
         
     }
     .product_detail_wrapper {
-        padding:10px;
+        text-align: center;
     }
     .product_thumb {
          width: 110px;
