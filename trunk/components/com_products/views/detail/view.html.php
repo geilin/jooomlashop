@@ -79,6 +79,17 @@ class ProductViewDetail extends JView
 		//print_r($relative);
 		//echo "</pre>";
 		
+		
+		$app =& JFactory::getApplication();
+
+
+		$pathway = $app->getPathway();
+    
+		$pathway->addItem($product->name);
+
+		
+		
+		
 		// Assign REF
 		$this->assignRef('relative', $relative);
 		$this->assignRef('imgDefault', $imgDefault);
