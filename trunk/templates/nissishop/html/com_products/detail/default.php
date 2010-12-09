@@ -11,8 +11,8 @@
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 $tmpl_path = JURI::base().'templates/bbsaigon/';
 ?>
-<link type="text/css" media="screen" rel="stylesheet" href="<?php echo $tmpl_path; ?>js/zoombox/zoombox.css" />
-<script src="<?php echo $tmpl_path; ?>js/jquery.zoombox-min.js" type="text/javascript"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="<?php echo JURI::root();?>/templates/nissishop/css/colorbox.css" />
+<script src="<?php echo JURI::root();?>/templates/nissishop/js/jquery.colorbox.js" type="text/javascript"></script>
 <script type="text/javascript">
 			jQuery(document).ready(function(){
 				jQuery("a[rel='product']").colorbox();
