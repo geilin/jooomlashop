@@ -37,13 +37,13 @@ class ProductViewDetail extends JView
 		}		
 		
 		
-		$phukien  = $model->getPhukien();
-		$dealer   = $model->getDealer();
-		$download = array();
-		$download = $this->loadAppDownload($model,$product->groupid,6);
+		//$phukien  = $model->getPhukien();
+		//$dealer   = $model->getDealer();
+		//$download = array();
+		//$download = $this->loadAppDownload($model,$product->groupid,6);
 	
 		// article
-		$articles = $model->getArticles();
+		//$articles = $model->getArticles();
 		// SEO title
 		$doc =& JFactory::getDocument();
 		$titleSEO = '';		
@@ -61,11 +61,11 @@ class ProductViewDetail extends JView
 		//$doc->setTitle($titleSEO);		
 		//$doc->setDescription('Sản phẩm '. $product->name .' tại BiBishop.com - SHOP THOI TRANG');
 		
-		$rating = $model->getRating($product->id);	
-		$proimages = $this->addTabA($product->mediumimage);
+		//$rating = $model->getRating($product->id);	
+		//$proimages = $this->addTabA($product->mediumimage);
 		
-		$params     =& $mainframe->getPageParameters('com_products');
-		$text_price = $params->get('text_price', 'Sắp có hàng');
+		//$params     =& $mainframe->getPageParameters('com_products');
+		//$text_price = $params->get('text_price', 'Sắp có hàng');
 		
 		
 		
@@ -84,17 +84,17 @@ class ProductViewDetail extends JView
 		$this->assignRef('imgDefault', $imgDefault);
 		$this->assignRef('images', $images);
 		$this->assignRef('properties', $properties);
-		$this->assignRef('rating', $rating);
+		//$this->assignRef('rating', $rating);
 		$this->assignRef('profeature', $profeature);
 		$this->assignRef('product', $product);
-		$this->assignRef('phukien', $phukien);
-		$this->assignRef('text_price', $text_price);
-		$this->assignRef('dealer', $dealer);
-		$this->assignRef('download', $download);
+		//$this->assignRef('phukien', $phukien);
+		//$this->assignRef('text_price', $text_price);
+		//$this->assignRef('dealer', $dealer);
+		//$this->assignRef('download', $download);
 		//$this->assignRef('images', $proimages);
 		$this->assignRef('titleCatName', $titleCatName);
-		$this->assignRef('articles', $articles);
-		$this->assignRef('comments', $comments);
+		//$this->assignRef('articles', $articles);
+		//$this->assignRef('comments', $comments);
 		$this->assignRef('token', $this->creatToken());
 		parent::display($tpl);
 	}
