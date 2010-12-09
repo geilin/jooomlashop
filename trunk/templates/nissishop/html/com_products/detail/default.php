@@ -66,24 +66,46 @@ $tmpl_path = JURI::base().'templates/bbsaigon/';
 	});
 
 </script>
+<!-- component_header -->
+<div id="component_header">
+    <div class="component_title">       
+<h2 class="product_title"><?php echo $this->product->name; ?></h2>
+    </div>
+</div>
+<!-- /component_header -->
+
+<!-- component_content -->
+<div id="component_content" class="clearfix"> 
+    <!-- product image -->
+    <?php if ($this->imgDefault->filename && file_exists('images/products/thumbs/'.$this->imgDefault->filename)) { ?>
+        <a href="<?php echo JURI::base(); ?>images/products/<?php echo $this->imgDefault->filename; ?>" rel="product" class="zoom_pro_i" >
+            <img src='<?php echo JURI::base(); ?>images/products/thumbs/<?php echo $this->imgDefault->filename; ?>' alt="<?php echo $this->product->name; ?>" align="left" />
+        </a>
+    <?php }else{ ?>
+        <img src='<?php echo JURI::base(); ?>components/com_products/images/noimage.jpg' alt="<?php echo $this->product->name; ?>"   align="left" />
+    <?php } ?>
+    <!-- /product image -->
+    Tên sản phẩm: <?php echo $this->product->name; ?>
+    <br />
+    Giá bán: <?php echo number_format($this->product->saleprice).' '.$this->product->currency;  ?>
+    <br />
+    Tổng quan: <?php echo $this->product->intro; ?>
+    <br />
+    Lượt xem:
+    <?php echo $this->product->hits; ?> lần <span class="small_text">(kể từ ngày <?php $date = new DateTime($this->product->date); echo $date->format('d/m/Y'); ?>)</span>
 
 <div id="pro_detail">
 	<!-- thong tin san pham -->
-	<div id="intro_pro_detail">
-        <div id="wp_pathway">
-            <h2 class="product_title"><?php echo $this->product->name; ?></h2>
-        </div>
+	<div id="intro_pro_detail">        
 		<div class="pro_img">
-			<div class="pro_img_wrap" align="center">
-			
+			<div class="pro_img_wrap" align="center">			
 				
 				<div id="gallery-slider">
 					<?php $ii =0;?>
                     <?php if(!empty($this->images)){?>
                         <?php foreach($this->images as $image) : ?>
                         <?php if(file_exists('images/products/thumbs/'.$image->filename)){?>
-                            <img src="<?php echo JURI::base(); ?>images/products/thumbs/<?php echo $image->filename?>"	alt=""	title="" width="120" height="180" />
-                           
+                            <img src="<?php echo JURI::base(); ?>images/products/thumbs/<?php echo $image->filename?>"	alt=""	title="" width="120" height="180" />                           
                         <?php }?> 
                         <?php if($ii==2) break;?>
                         <?php $ii++;?>
@@ -92,17 +114,7 @@ $tmpl_path = JURI::base().'templates/bbsaigon/';
                     <img src="<?php echo JURI::base(); ?>components/com_products/images/noimage.jpg" alt="" width="150" height="190"/>
                     <?php } ?>
 				</div>
-			
-				<!--
-				<?php if ($this->imgDefault->filename && file_exists('images/products/thumbs/'.$this->imgDefault->filename)) { ?>
-					<a href="<?php echo JURI::base(); ?>images/products/<?php echo $this->imgDefault->filename; ?>" rel="product" class="zoom_pro_i" >
-						<img src='<?php echo JURI::base(); ?>images/products/thumbs/<?php echo $this->imgDefault->filename; ?>' alt="<?php echo $this->product->name; ?>"  width="150" height="180"/>
-					</a>
-				<?php }else{ ?>
-					<img src='<?php echo JURI::base(); ?>components/com_products/images/noimage.jpg' alt="<?php echo $this->product->name; ?>"  width="150" height="180" />
-				<?php } ?>
-				-->
-			</div>
+            </div>
 			<?php if (!empty($this->product->saleprice)) {?>
 			<p class="prices"><?php echo number_format($this->product->saleprice).' '.$this->product->currency;  ?></p>
 			<?php } ?>
@@ -118,23 +130,7 @@ $tmpl_path = JURI::base().'templates/bbsaigon/';
             <?php	$jj++;	?>
             <?php endforeach ?>
 		</div>
-		<div class="pro_desc">
-            <table>
-                <?php if (!empty($this->product->intro)) {?>
-                <tr>
-                    <td class="fea_title">Mô tả sản phẩm:</td>
-                    <td class="fea-detail"><?php echo $this->product->intro; ?></td>
-                </tr>
-                <?php } ?>
-               
-          
-                <tr>
-                    <td class="fea_title">Số lượt xem:</td>
-                    <td  class="fea-detail"><?php echo $this->product->hits; ?> lần <span class="small_text">(kể từ ngày <?php $date = new DateTime($this->product->date); echo $date->format('d/m/Y'); ?>)</span></td>
-                </tr>
-
-            </table>
-		</div>
+		
 		<?php if(count($this->images)>1){?>
         <div id="nav-gallery">
             <ul></ul>
@@ -242,3 +238,7 @@ $tmpl_path = JURI::base().'templates/bbsaigon/';
     </div>
 <!-- ket thuc cac thong tin trong tabs -->
 </div>
+        
+
+</div> 
+<!-- /component_content --> 
