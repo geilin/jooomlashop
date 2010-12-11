@@ -47,13 +47,13 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		<div class="compare_add_form_warp">
 <?php 	
 	$count = count($this->listNews);
-	foreach ($this->listNews as $i => $list) {
+	foreach ($this->listNews as $i => $product) {
 	
 ?>
 	<div class="search_news <?php if (($i+1)==$count) { echo 'r_last '; } if ($i==0) { echo ' r_first'; } ?>">
-		<strong><a class="blue" href="<?php echo $list->link; ?>"><?php echo $list->title; ?></a></strong>
+		<strong><a class="blue" href="<?php echo $product->link; ?>"><?php echo $product->title; ?></a></strong>
 		<p>
-			<?php echo $list->introtext; ?>
+			<?php echo $product->introtext; ?>
 		</p>
 	</div>
 <?php } } ?>
