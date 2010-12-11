@@ -1557,6 +1557,10 @@ h1.logo a span { display:none;}
     background-color: #FFF;
 }
 
+#component_content_wrapper {
+	padding:10px;
+}
+
 #component_footer {
     background: #FFF url('../my_images/module_bottom_left_bg.jpg') no-repeat left bottom;   
     height: 10px;

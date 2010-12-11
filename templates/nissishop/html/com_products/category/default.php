@@ -4,7 +4,7 @@ $catid = JRequest::getInt('catid',0);
 ?>
 <!-- component_header -->
 <div id="component_header">
-    <div class="component_title">    
+    <div class="component_title">   
     
     <h2>
     <?php
@@ -25,22 +25,7 @@ $catid = JRequest::getInt('catid',0);
 <!-- /component_header -->
 <!-- component_content -->
 <div id="component_content" class="clearfix">
-<p class="category_meta">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm</p>
-	<style type="text/css">
-    .block-main-content-item {
-        float: left; height: 250px; width: 180px;
-        
-    }
-    .product_detail_wrapper {
-        text-align: center;
-    }
-    .product_thumb {
-         width: 110px;
-    padding:5px; border: 1px solid #acacac;
-    }
-    .pro_price { margin: 10px 0; color: red; font-weight: bold; border-top: 1px dashed #acacac}
-    </style>  
-    
+<p class="category_meta">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm</p>    
     
 <?php if ($this->listProduct) { ?>
 
@@ -48,23 +33,29 @@ $catid = JRequest::getInt('catid',0);
 	$count_total = count($this->listProduct);
 	$count_row = ceil(count($this->listProduct)/3);
 	$j = 0;	
-	foreach ($this->listProduct as $i => $list) { ?>	
-		<div class="block-main-content-item">
-            <div class="product_detail_wrapper">
-            <a class="link-image" href="<?php echo $list->link; ?>">            
-            	<?php $filename = ProductViewCategory::checkImage($list->id);?>
-				<?php if($filename && file_exists('images/products/thumbs/'.$filename)){
-					$image = JURI::base().'images/products/thumbs/'. $filename;
-				}else{
-					$image = JURI::base().'components/com_products/images/noimage.jpg';
-				}
-				?>
-            	<img src="<?php echo $image?>" alt="<?php echo $list->name?>" class="product_thumb" />            	
-            </a>
-            <p><a class="link-image" href="<?php echo $list->link; ?>"><span><?php echo $list->name;?></span></a></p>
-            <p class="pro_price">Giá bán: <span><?php echo number_format($list->saleprice);?> <?php echo $list->currency?></span></p>
-            </div>
-        </div>		
+	foreach ($this->listProduct as $i => $product) { ?>	
+        <div class="product_item">
+			<div class="product_thumb">
+				<div class="product_thumb_wrapper">
+				<a href="<?php echo $product->link; ?>" class="link_image"><span>&nbsp;</span>					
+						<?php
+                            $filename = ProductViewCategory::checkImage($product->id);
+                            //$filename = modNewProductsHelper::getImageDefault($list->id);
+							$thumb_path = 'images/products/thumbs/'. $filename ;
+							$thumb_path = ($filename && file_exists($thumb_path))?
+								$thumb_path :
+								'components/com_products/images/noimage.jpg';
+							?>
+							<?php echo JHTML::_('image', $thumb_path, $product->name); ?>					
+				</a>
+				</div>
+			</div>
+			<div class="product_item_info">
+				<a href="<?php echo $product->link; ?>"><?php echo $product->name; ?></a>
+				<span class="pro_price">Giá bán: <?php echo number_format($product->saleprice, 0, '.', '.'); ?> <?php echo $product->currency; ?></span>
+			</div>   
+        </div> 
+		
 	<?php } ?>
 	<p class="clear"></p>
 		

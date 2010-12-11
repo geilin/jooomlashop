@@ -10,40 +10,25 @@
 defined('_JEXEC') or die('Restricted access');
 global $option;
 ?>
-<style type="text/css">
-.pro_item {
-    float: left;
-    width: 180px;
-    height: 250px;
-    text-align: center;
-    
-}
-.pro_item p {
-    padding: 10px;
-}
-.pro_item p img {
-    width: 110px;
-    padding:5px; border: 1px solid #acacac;
-}
-.pro_price { color: red; font-weight: bold; border-top: 1px dashed #acacac}
-</style>
-<?php foreach ($catpro as $i => $pro) { ?>
-        <div class="pro_item">
-            <p class="link_img"><a href="<?php echo $pro->link; ?>" >
-                <?php $filename = modNewProductsHelper::getImageDefault($pro->id);?>
-                    <?php if($filename && file_exists('images/products/thumbs/'.$filename)){
-                        $image = JURI::base().'images/products/thumbs/'. $filename;
-                    }else{
-                        $image = JURI::base().'components/com_products/images/noimage.jpg';
-                    }
-                    ?>
-
-                    <img src="<?php echo $image?>" />
-
-
-            </a></p>
-            <p class="link_title"><a href="<?php echo $pro->link; ?>"><?php echo $pro->name; ?></a></p>
-            <p class="pro_price">Giá bán: <?php echo number_format($pro->saleprice, 0, '.', '.'); ?> <?php echo $pro->currency; ?></p>
+<?php foreach ($catpro as $i => $product) { ?>
+        <div class="product_item">
+			<div class="product_thumb">
+				<div class="product_thumb_wrapper">
+				<a href="<?php echo $product->link; ?>" class="link_image"><span>&nbsp;</span>					
+						<?php 
+							$filename 	= modNewProductsHelper::getImageDefault($product->id);
+							$thumb_path = 'images/products/thumbs/'. $filename ;
+							$thumb_path = ($filename && file_exists($thumb_path))?
+							$thumb_path : 'components/com_products/images/noimage.jpg';
+							echo JHTML::_('image', $thumb_path, $product->name); 
+						?>					
+				</a>
+				</div>
+			</div>
+			<div class="product_item_info">
+				<a href="<?php echo $product->link; ?>"><?php echo $product->name; ?></a>
+				<span class="pro_price">Giá bán: <?php echo number_format($product->saleprice, 0, '.', '.'); ?> <?php echo $product->currency; ?></span>
+			</div>   
         </div> 
 <?php } ?>
 <div class="clear"></div>

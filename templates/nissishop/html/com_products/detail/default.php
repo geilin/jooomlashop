@@ -36,8 +36,9 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 }
 
 #product_images #product_images_wrapper img { padding:5px; border:1px solid #acacac; margin:0 5px; }
-.product_meta_data { line-height: 35px; float: left; width:500px; }
+.product_meta_data { line-height: 35px; float: left; width:470px; }
 .product_meta_data li { border-bottom: 1px dashed #acacac; }
+.product_meta_data li span.product_meta_lable { font-weight:bold; display:inline-block; width:150px}
 </style>
 <!-- component_header -->
 <div id="component_header">
@@ -60,9 +61,9 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
     <?php endif; ?>
 	</div><!-- /product_main_image -->
 	<ul class="product_meta_data">
-		<li><span class="product_meta_lable">Sản phẩm:</span> <?php echo $this->product->name; ?></li>
+		<li><span class="product_meta_lable">Tên sản phẩm:</span> <?php echo $this->product->name; ?></li>
 		<li><span class="product_meta_lable">Sản xuất bởi:</span> <?php echo $this->product->manufacture; ?></li>
-		<li><span class="product_meta_lable">Giá bán:</span> <?php echo number_format($this->product->saleprice).' '.$this->product->currency; ?></li>
+		<li><span class="product_meta_lable">Giá bán lẻ:</span> <?php echo number_format($this->product->saleprice).' '.$this->product->currency; ?></li>
 		<li><span class="product_meta_lable">Giá khuyến mãi:</span> <?php echo number_format($this->product->saleprice).' '.$this->product->currency; ?></li>
 		<li><span class="product_meta_lable">Lượt xem:</span> <?php echo $this->product->hits; ?> lần <span class="small_text">(kể từ ngày <?php $date = new DateTime($this->product->date); echo $date->format('d/m/Y'); ?>)</span></li>
 	</ul>
@@ -91,7 +92,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	<!-- relative_products -->	
 	<?php echo $this->loadTemplate('relative'); ?>
 	<!-- /relative_products -->
-	
+	<div class="clear"></div>
 	
 </div><!-- /component_content -->
 
