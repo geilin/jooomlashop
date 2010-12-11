@@ -17,9 +17,14 @@ class ProductViewCategory extends JView
 		global $option, $mainframe;
 		
 		// config 
-		$params =& $mainframe->getPageParameters('com_products');
-		
-		$limit = 12;
+		//$params =& $mainframe->getPageParameters('com_products');
+		$params = &JComponentHelper::getParams( 'com_products' );
+
+		if((int)$params->get('limitPage','')){
+			$limit = (int)$params->get('limitPage','');
+		}else{
+			$limit = 15;
+		}
 
 		$layout = JRequest::getVar('layout', 'default');	
 		if ($layout == 'default'){
