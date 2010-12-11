@@ -26,8 +26,15 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <th width="20">
 	<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->manufacturers ); ?>);" />
 </th>
-<th class='title'><?php echo JText::_('Name'); ?></th>
-<th width="7%"><?php echo JText::_('Ordering'); ?><a href="javascript:saveorder(1, 'saveOrder')" title="Save Order manufacturer"><img src="images/filesave.png" alt="Save Order"  /></a></th>
+<th class='title'>
+	<?php echo JHTML::_('grid.sort', JText::_('Name'), 'name', $this->lists['order_Dir'], $this->lists['order'] ); ?>
+</th>
+<th width="7%">
+<?php echo JHTML::_('grid.sort', JText::_('Ordering'), 'ordering', $this->lists['order_Dir'], $this->lists['order'] ); ?>
+
+<?php echo JHTML::_('grid.order',  $this->manufacturers ); ?>
+<!--<a href="javascript:saveorder(1, 'saveOrder')" title="Save Order manufacturer"><img src="images/filesave.png" alt="Save Order"  /></a>-->
+</th>
 <th width="5%" nowrap="nowrap"><?php echo JText::_('Published'); ?></th>
 </tr>
 </thead>
@@ -70,5 +77,8 @@ $k = 1 - $k;
 <input type="hidden" name="option" value="<?php echo $option;?>" />
 <input type="hidden" name="controller" value="manufacturer" />
 <input type="hidden" name="task" value="" />
+<input type="hidden" name="filter_order" value="<?php echo $this->lists['order']; ?>" />
+
+<input type="hidden" name="filter_order_Dir" value="<?php echo $this->lists['order_Dir']; ?>" />
 <input type="hidden" name="boxchecked" value="0" />
 </form>

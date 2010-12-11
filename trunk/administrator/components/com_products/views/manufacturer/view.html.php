@@ -14,7 +14,7 @@ class ProductViewManufacturer extends JView
 {
 	function display($tpl = null)
 	{
-		global $mainframe;
+		global $mainframe,$option ;
 		$task = JRequest::getVar( 'task' );					
 		$limit = JRequest::getVar('limit',$mainframe->getCfg('list_limit'));
 		$limitstart = JRequest::getVar('limitstart', 0);
@@ -24,6 +24,11 @@ class ProductViewManufacturer extends JView
 			
 			JToolBarHelper::title( JText::_( 'QUẢN LÝ NHÀ SẢN XUẤT' ) );
 
+			$filter_order		= $mainframe->getUserStateFromRequest( $option.'filter_order',		'filter_order',		'',	'cmd' );
+			$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'filter_order_Dir',	'filter_order_Dir',	'',	'word' );
+			
+			
+			
 			JSubMenuHelper::addEntry( JText::_( 'QUẢN LÝ SẢN PHẨM' ), 'index.php?option=com_products');
 			JSubMenuHelper::addEntry( JText::_( 'QUẢN LÝ DANH MỤC' ), 'index.php?option=com_products&controller=category');
 			JSubMenuHelper::addEntry( JText::_( 'QUẢN LÝ NHÀ SẢN XUẤT' ), 'index.php?option=com_products&controller=manufacturer',true);
@@ -35,6 +40,12 @@ class ProductViewManufacturer extends JView
 			$total = $total > 0 ? $total : 0;
 			$pageNav = new JPagination($total, $limitstart, $limit);
 
+			
+			$lists['order_Dir']	= $filter_order_Dir;
+			$lists['order']		= $filter_order;
+		
+			$this->assignRef('lists', $lists);
+			
 			$this->assignRef('manufacturers', $manufacturers);
 			$this->assignRef('total', $total);
 			$this->assignRef('pageNav', $pageNav);
