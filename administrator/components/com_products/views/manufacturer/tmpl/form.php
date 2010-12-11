@@ -47,6 +47,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 			<input class="text_area" type="text" name="name" id="name" size="50" maxlength="250" value="<?php echo $this->manufacturer->name;?>" />
 		</td>
 	</tr>
+	<!--
 	<tr>
 		<td width="100" align="right" class="key">
 			Description:
@@ -68,6 +69,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 			<?php } ?>
 		</td>
 	</tr>
+	-->
 	<tr>
 		<td width="100" align="right" class="key">
 			Published:

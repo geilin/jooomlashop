@@ -1,21 +1,39 @@
 <?php
 
 	function getTree($parentid,&$array_cat,$separator=""){
+		global $mainframe,$option;
+		$order = '';
+		$filter_order		= $mainframe->getUserStateFromRequest( $option.'filter_order',		'filter_order',		'',	'cmd' );
+		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'filter_order_Dir',	'filter_order_Dir',	'',	'word' );
+		
+		// ensure we have a valid value for filter_order
+		if (!in_array($filter_order, array('ordering',  'id','parentid','name')))
+		{
+			$filter_order = 'parentid';
+
+		}
+		
+		
+		if ($filter_order == 'ordering') {
+			$order = ' ORDER BY parentid,ordering,name '. $filter_order_Dir;
+		} elseif($filter_order == 'name') {
+			$order = ' ORDER BY parentid,name ' .$filter_order_Dir ;
+		}else{
+			$order = ' ORDER BY parentid, id DESC ' ;
+		}
+		
+		
+		
 		$db =& JFactory::getDBO();
 		$query =' SELECT id, parentid, name, ordering, published FROM #__w_categories ' .
 				' WHERE parentid = '.$parentid.
-				' ORDER BY ordering';
+				' ' .$order;
 		$db->setQuery($query);
 		$cats = $db->loadObjectList();
 		if($cats==NULL) return NULL;		
 		else {
 			$i=1;
 			foreach($cats as $cat){
-			//echo "<pre>";
-			//print_r($cats);
-			//echo "</pre>";
-			//break;
-			
 			
 				$cat->name_display = $separator.$i.". ".$cat->name ;
 				$cat->parent[$i] = 		$cat->name;	

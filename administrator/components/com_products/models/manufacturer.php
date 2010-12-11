@@ -24,12 +24,27 @@ class ModelProductManufacturer extends JModel
 		parent::__construct();
 		$this->_path = JPATH_ROOT.DS.'images/manufacturer/';
 	}
-	function getManufacturers()
-	{
-		if (!$this->_manufacturers)
-		{
+	function getManufacturers()	{
+	
+		global $mainframe,$option;
+		$order = '';
+		$filter_order		= $mainframe->getUserStateFromRequest( $option.'filter_order',		'filter_order',		'',	'cmd' );
+		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $option.'filter_order_Dir',	'filter_order_Dir',	'',	'word' );
+		
+		
+		if ($filter_order == 'ordering') {
+			$order = ' ORDER BY ordering '. $filter_order_Dir;
+		} elseif($filter_order == 'name') {
+			$order = ' ORDER BY name ' .$filter_order_Dir ;
+		}else{
+			$order = ' ORDER BY id DESC' ;
+		}
+		
+	
+		if (!$this->_manufacturers)	{
 			$db =& JFactory::getDBO();				
-			$query = "SELECT * FROM #__w_manufacturers ORDER BY id DESC";
+			$query = "SELECT * FROM #__w_manufacturers $order";
+			
 			$db->setQuery( $query);
 			$this->_manufacturers = $db->loadObjectList();
 		}

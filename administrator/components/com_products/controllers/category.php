@@ -80,6 +80,49 @@ class ProductControllerCategory extends ProductController
 		$this->setRedirect('index.php?option=com_products&controller=category', 'Ordering saved');
 	}
 	
+	function orderup(){
+		$this->orderContent(-1);
+	}
+	function orderdown(){
+		$this->orderContent(1);
+	}
+	
+	function orderContent($direction)
+	{
+		global $mainframe;
+
+		// Check for request forgeries
+		JRequest::checkToken() or jexit( 'Invalid Token' );
+
+		// Initialize variables
+		$db		= & JFactory::getDBO();
+
+		$parentid=  JRequest::getInt( 'parentid', '0' );
+		
+		$cid	= JRequest::getVar( 'cid', array(), 'post', 'array' );
+
+	
+		if (isset( $cid[0] ))
+		{
+			$row = & JTable::getInstance('category','Table');
+			$row->load( (int) $cid[0] );
+			
+			//echo "<pre>";
+			//print_r($row);
+			//echo "</pre>";
+			
+			//break;
+			
+			$row->move($direction, 'parentid = ' . (int) $row->parentid );
+			$cache = & JFactory::getCache('com_products');
+			$cache->clean();
+		}
+
+	$this->setRedirect('index.php?option=com_products&controller=category');
+	}
+	
+	
+	
 
 
 
