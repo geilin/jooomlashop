@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<params>
-		<param name="publised_comment" type="radio" default="1" label="Published Comment" description="Published Comment">
-			<option value="0">No</option>
-			<option value="1">Yes</option>
-		</param>		
-		<param name="email_contact" size="40" type="text" default="contact@nhahangvietxinh.com" label="Email Contact" description="Email Contact" />
-		<param name="limit1" type="text" default="10" label="Limit layout default" description="Limit layout default" />
-		<param name="limit2" type="text" default="15" label="Limit layout search" description="Limit layout search" />
-		<param name="id_article" type="text" default="15" label="ID of warranty article" description="ID of warranty article" />
-		<param name="text_price" type="text" default="Sap co hang" label="Text - Price" description="Text Replace Price" />
+		<param name="limitPage" type="text" default="15" label="Số sản phẩm hiện trên 1 trang" description="Số sản phẩm hiện trên 1 trang ngoài trang sản phẩm" />
+		<param name="thump_width" type="text" default="90" label="Chiều rộng hình Thump" description="Chiều rộng hình Thump khi upload hình" />
+		<param name="thump_height" type="text" default="90" label="Chiều cao hình Thump" description="Chiều cao hình Thump khi upload hình" />
 	</params>
 </config>
