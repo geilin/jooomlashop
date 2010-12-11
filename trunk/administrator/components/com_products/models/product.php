@@ -215,16 +215,16 @@ class ModelProductProduct extends JModel
 				$cats[] = array('id' => $result->id, 'name' => $result->name_display);
 			}		
 		}
-		array_unshift($cats, JHTML::_('select.option', '0', '- '.JText::_('Select Category').' -', 'id', 'name'));
+		array_unshift($cats, JHTML::_('select.option', '0', '- '.JText::_('Chọn danh mục').' -', 'id', 'name'));
 		$lists['catid'] = JHTML::_('select.genericlist',  $cats, 'cid', 'class="inputbox" size="1" onchange="document.adminForm.submit( );"', 'id', 'name', $catid);
 		
 		$manufacturers = $this->getManufacturer();
-		array_unshift($manufacturers, JHTML::_('select.option', '0', '- '.JText::_('Select Manufacturer').' -', 'id', 'name'));
+		array_unshift($manufacturers, JHTML::_('select.option', '0', '- '.JText::_('Chọn nhà sản xuất').' -', 'id', 'name'));
 		$lists['manufacturerid'] = JHTML::_('select.genericlist',  $manufacturers, 'mid', 'class="inputbox" size="1" onchange="document.adminForm.submit( );"', 'id', 'name', $manufacturerid);	
 	
 		$frontpage				= JRequest::getVar( 'frontpage', '');
-		$frontpages[] = array( 'value' => '', 'text' => 'All Products');
-		$frontpages[] = array( 'value' => '1', 'text' => 'Frontpage');
+		$frontpages[] = array( 'value' => '', 'text' => 'Tất cả sản phẩm');
+		$frontpages[] = array( 'value' => '1', 'text' => 'Sản phẩm hot');
 		$lists['frontpage'] = JHTML::_('select.genericlist',  $frontpages, 'frontpage', 'class="inputbox" size="1" onchange="document.adminForm.submit( );"', 'value', 'text', $frontpage);		
 		
 		return $lists;
