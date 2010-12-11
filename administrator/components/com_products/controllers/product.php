@@ -91,7 +91,7 @@ class ProductControllerProduct extends ProductController
 		$imgName = JRequest::getVar('imgName');
 		$db =& JFactory::getDBO();			
 		if (!empty($imgId)){
-			$query = 'DELETE FROM #__w_images WHERE proid='.$post['id'] .' AND id='.$imgId;
+			$query = 'DELETE FROM #__w_images WHERE  id='.$imgId;
 			$db->setQuery($query);
 			if (!$db->query()){
 				echo $db->getErrorMsg();
@@ -101,7 +101,8 @@ class ProductControllerProduct extends ProductController
 				unlink(JPATH_SITE.DS.'images'.DS.'products'.DS.'thumbs'.DS.$imgName);
 			}
 		}
-		$this->setRedirect('index.php?option=com_products&task=edit&cid[]='.$post['id'], 'Image removed');
+		exit;
+		//$this->setRedirect('index.php?option=com_products&task=edit&cid[]='.$post['id'], 'Image removed');
 	}
 	function removeProductImage(){
 		$cid = JRequest::getVar( 'cid', array(), '', 'array');
