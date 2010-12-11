@@ -70,23 +70,23 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 			<div class="compare_add_form_warp">
 	<?php 
 	$count_total = count($this->listDownload);
-	foreach ($this->listDownload as $i => $list) { 
+	foreach ($this->listDownload as $i => $product) { 
 	?>
 	<div class="item_down<? if (($i+1) == $count_total) echo '_last';  ?>">
-		<div class="pic_download"><a href="<?php echo $list->link; ?>" >
-				<img src="<?php echo JURI::base(); ?>images/softwares/<?php echo $list->thumbnail; ?>" border="0" alt="<?php echo $list->name; ?>"  />
+		<div class="pic_download"><a href="<?php echo $product->link; ?>" >
+				<img src="<?php echo JURI::base(); ?>images/softwares/<?php echo $product->thumbnail; ?>" border="0" alt="<?php echo $product->name; ?>"  />
 		</a></div>
 		<div class="info_download">
-			<h3><a href="<?php echo $list->link; ?>" >
-				<?php echo $list->name; ?>
+			<h3><a href="<?php echo $product->link; ?>" >
+				<?php echo $product->name; ?>
 			</a></h3>
-			<?php if ($list->description) { ?>
-				<div class="desc_down"><?php echo $list->description; ?></div>
+			<?php if ($product->description) { ?>
+				<div class="desc_down"><?php echo $product->description; ?></div>
 			<?php } ?>
 	
 			<p <? if (($i+1) == $count_total) echo 'style="margin:5px 0 0 0;"';  ?>>
-				<a href="<?php echo $list->downloadlink; ?>">Tải về |</a>
-				<?php echo $list->download; ?> lượt tải về 
+				<a href="<?php echo $product->downloadlink; ?>">Tải về |</a>
+				<?php echo $product->download; ?> lượt tải về 
 			</p>
 		</div>
 		<div class="cb"></div>	

@@ -47,7 +47,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	$count_total = count($this->listAccessory);
 	$count_row = ceil(count($this->listAccessory)/3);
 	$j = 0;	
-	foreach ($this->listAccessory as $i => $list) { 
+	foreach ($this->listAccessory as $i => $product) { 
 		$a = $i +1;
 		if ( $i%3 == 0 ) { $j++; }
 		if ( $i < 3 ) {
@@ -106,13 +106,13 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		<div class="assor item_pro_cat<? if ($j == $count_row && $count_row > 3) echo '_last'; 
 								   else if ($j == $count_row && $count_row <= 3) echo '_first'; ?>
 				    <?php echo $class ?>">
-			<p <?php echo $class_p; ?>><a href="<?php echo $list->link; ?>"  >
-				<img src="<?php echo JURI::base(); ?>images/accessories/<?php echo $list->thumbnail; ?>" border="0" alt='<?php echo $list->name; ?>' />
+			<p <?php echo $class_p; ?>><a href="<?php echo $product->link; ?>"  >
+				<img src="<?php echo JURI::base(); ?>images/accessories/<?php echo $product->thumbnail; ?>" border="0" alt='<?php echo $product->name; ?>' />
 			</a></p>
-			<h3><a href="<?php echo $list->link; ?>" >
-				<?php if (!empty($list->bold_name)) { echo $list->bold_name; } else { echo $list->name;}?>
+			<h3><a href="<?php echo $product->link; ?>" >
+				<?php if (!empty($product->bold_name)) { echo $product->bold_name; } else { echo $product->name;}?>
 			</a></h3>
-			<font style="font-size:12px;"><?php echo number_format($list->price).' '; ?> VNĐ</font> 
+			<font style="font-size:12px;"><?php echo number_format($product->price).' '; ?> VNĐ</font> 
 
 		</div>
 		</div>
