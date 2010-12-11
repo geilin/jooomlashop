@@ -11,7 +11,14 @@
 		else {
 			$i=1;
 			foreach($cats as $cat){
-				$cat->name_display = $separator.$i.". ".$cat->name ;				
+			//echo "<pre>";
+			//print_r($cats);
+			//echo "</pre>";
+			//break;
+			
+			
+				$cat->name_display = $separator.$i.". ".$cat->name ;
+				$cat->parent[$i] = 		$cat->name;	
 				$array_cat[] = $cat;
 				getTree($cat->id,$array_cat,"&nbsp;&nbsp;&nbsp;&nbsp;".$separator.$i.".");
 				$i++;

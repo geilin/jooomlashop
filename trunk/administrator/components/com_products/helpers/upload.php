@@ -21,7 +21,12 @@ $thumb = new easyphpthumbnail;
 	$thumb -> Thumblocation = $thumbdir;
 	$thumb -> Thumbprefix = '';
     
-$file = $uploaddir . basename($_FILES['uploadfile']['name']);
+	$xtimex = JRequest::getVar('xtimex','');
+	
+	$newname = $xtimex.$_FILES['uploadfile']['name'];
+	
+	
+$file = $uploaddir . basename($newname);
 if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file)) { 
   	echo "success";
   	@$thumb->Createthumb($file,'file');

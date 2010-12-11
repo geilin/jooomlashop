@@ -48,8 +48,10 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	jQuery(function(){
 		var btnUpload=jQuery('#upload');
 		var status=jQuery('#status');
+		var xtimex = '<?php echo time();?>';
+		
 		new AjaxUpload(btnUpload, {
-			action: '<?php echo JURI::base()?>/components/com_products/helpers/upload.php',
+			action: '<?php echo JURI::base()?>/components/com_products/helpers/upload.php?xtimex='+xtimex,
 			name: 'uploadfile',
 			onSubmit: function(file, ext){
 				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
@@ -60,6 +62,8 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 				status.text('Uploading...');
 			},
 			onComplete: function(file, response){
+			var file = xtimex+file;
+			
 				//On completion clear the status
 				status.text('');
 				
@@ -75,6 +79,21 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		});
 		
 	});
+	
+	function delImage(id,filename){
+		var id= id;
+		var urlx = 'index.php?option=com_products&controller=product&task=delImg&imgId='+id+'&imgName='+filename;
+		jQuery.ajax({ url: urlx,
+			success: function(date){
+				jQuery('#img_'+id).css('display','none');
+			}
+		});
+		
+		return false;
+	}
+	
+	
+	
 </script>
 	<table class="admintable">
 	<tr>
@@ -91,7 +110,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	</tr>
 	 <tr>
 		<td width="100" align="right" class="key">
-			Thumbnail:
+			Hình:
 		</td>
 		<td>
 			<table>
@@ -101,12 +120,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 						{	
 							foreach ($this->product->images as $img){
 					?>
-						<tr>
+						<tr id="img_<?php echo $img->id;?>">
 							<td>
 								<img src="<?php echo JURI::root()?>/images/products/<?php echo $img->filename?>" width="200">
 							</td>
 							<td valign="middle">
-								<a href="#" onclick="document.getElementById('imgId').value=<?php echo $img->id?>;document.getElementById('imgName').value='<?php echo $img->filename?>';submitbutton('delImg')">[Xóa hình]</a>
+								<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>');">[Xóa hình]</a>
 							</td>
 						</tr>
 					<?php 

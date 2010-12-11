@@ -133,19 +133,18 @@ echo $select;
 
 
 	<form action="index.php" method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
-	<fieldset class="adminform">
-	<legend>Add and Edit Product</legend>
+
 	
 	<div id="tabs">
 	    <ul>
-	        <li><a href="#tab-1"><span>General</span></a></li>
-	        <li><a href="#tab-3"><span>Picture</span></a></li>
+	        <li><a href="#tab-1"><span>Thông tin sản phẩm</span></a></li>
+	        <li><a href="#tab-3"><span>Hình ảnh</span></a></li>
 	    </ul>
 	    <div id="tab-1">
 	<table class="admintable">
 	<tr>
 		<td width="100" align="right" class="key">
-			Name:
+			Tên sản phẩm:
 		</td>
 		<td>
 			<input class="text_area" type="text" name="name" id="name" size="50" maxlength="250" value="<?php echo $this->product->name;?>" />
@@ -153,7 +152,7 @@ echo $select;
 	</tr>
 	<tr>
 		<td width="100" align="right" class="key">
-			Category:
+			Danh mục sản phẩm:
 		</td>
 		<td>
 		<?php
@@ -162,7 +161,7 @@ echo $select;
 		</td>
 	</tr>
 	<tr>
-		<td width="100" align="right" class="key">Manufacturer:	</td>
+		<td width="100" align="right" class="key">Nhà sản xuất:	</td>
 		<td><?php echo $this->lists['manufacturer'];?></td>
 	</tr>
 	<tr>
@@ -262,7 +261,7 @@ echo $select;
 	
 				
 	<tr>
-		<td width="100" align="right" class="key">Published:</td>
+		<td width="100" align="right" class="key">Bật sản phẩm:</td>
 		<td><?php	echo $this->lists['published'];	?></td>
 	</tr>
 	</table>
@@ -278,8 +277,6 @@ echo $select;
 	</div>
 	
 	
-
-	</fieldset>
 		<input type="hidden" name="date" value="<?php echo $this->product->date; ?>" />
 		<input type="hidden" name="id" value="<?php echo $this->product->id; ?>" />
 		<input type="hidden" name="option" value="<?php echo $option;?>" />

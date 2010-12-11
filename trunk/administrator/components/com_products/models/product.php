@@ -246,6 +246,13 @@ class ModelProductProduct extends JModel
 		// get category
 		$catgories =array();
 		getTree(0,$catgories,"");
+		
+		
+				
+		//echo "<pre>";
+		//print_r($catgories);
+		//echo "</pre>";
+		
 		foreach ($catgories as $result)
 		{		
 			if ($this->_id != $result->id){
