@@ -10,24 +10,27 @@
 defined('_JEXEC') or die('Restricted access');
 global $option;
 ?>
-	<?php foreach ($catpro as $i => $pro) { ?>
-			<div class="pro_item">
-				<p class="link_img"><a href="<?php echo $pro->link; ?>" >
-					<?php $filename = modNewProductsHelper::getImageDefault($pro->id);?>
-				
-						<?php if($filename && file_exists('images/products/thumbs/'.$filename)){
-							$image = JURI::base().'images/products/thumbs/'. $filename;
-						}else{
-							$image = JURI::base().'components/com_products/images/noimage.jpg';
-						}
-						?>				
-						<img src="<?php echo $image?>" />			
-					
-				</a></p>
-				<p class="link_title"><a href="<?php echo $pro->link; ?>"><?php echo $pro->name; ?></a></p>				
-				 <p class="pro_price">Giá bán: <?php echo number_format($pro->saleprice); ?> <?php echo $pro->currency; ?></p>
-			</div> 
-	<?php } ?>
+<?php foreach ($catpro as $i => $product) { ?>
+        <div class="product_item">
+			<div class="product_thumb">
+				<div class="product_thumb_wrapper">
+				<a href="<?php echo $product->link; ?>" class="link_image"><span>&nbsp;</span>					
+						<?php $filename = modNewProductsHelper::getImageDefault($product->id);?>
+							<?php
+							$thumb_path = 'images/products/thumbs/'. $filename ;
+							$thumb_path = ($filename && file_exists($thumb_path))?
+								$thumb_path :
+								'components/com_products/images/noimage.jpg';
+							?>
+							<?php echo JHTML::_('image', $thumb_path, $product->name); ?>					
+				</a>
+				</div>
+			</div>
+			<div class="product_item_info">
+				<a href="<?php echo $product->link; ?>"><?php echo $product->name; ?></a>
+				<span class="pro_price">Giá bán: <?php echo number_format($product->saleprice, 0, '.', '.'); ?> <?php echo $product->currency; ?></span>
+			</div>   
+        </div> 
+<?php } ?>
 <div class="clear"></div>
-
 

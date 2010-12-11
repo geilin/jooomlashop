@@ -13,8 +13,9 @@ $siteName = $tmpTools->sitename();
 <head>
     <jdoc:include type="head" />
     <?php JHTML::_('behavior.mootools'); ?>  
-    <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/template.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/template.css" type="text/css" />	
     <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/gridsystem.css" type="text/css" />
+	<link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/product.css" type="text/css" />
      
 </head>
 

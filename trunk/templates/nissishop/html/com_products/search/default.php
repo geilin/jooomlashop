@@ -25,23 +25,23 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	$count_total = count($this->listProduct);
 	$count_row = ceil(count($this->listProduct)/3);
 	$j = 0;	
-	foreach ($this->listProduct as $i => $list) { ?>
+	foreach ($this->listProduct as $i => $product) { ?>
 	
 	
 		<div class="block-main-content-item">
-            <a class="link-image" href="<?php echo $list->link; ?>">
+            <a class="link-image" href="<?php echo $product->link; ?>">
             
-            	<?php $filename = ProductViewSearch::checkImage($list->id);?>
+            	<?php $filename = ProductViewSearch::checkImage($product->id);?>
 				<?php if($filename && file_exists('images/products/thumbs/'.$filename)){
 					$image = JURI::base().'images/products/thumbs/'. $filename;
 				}else{
 					$image = JURI::base().'components/com_products/images/noimage.jpg';
 				}
 				?>
-            	<img src="<?php echo $image?>" alt="<?php echo $list->name?>" width="119" height="181"/>
+            	<img src="<?php echo $image?>" alt="<?php echo $product->name?>" width="119" height="181"/>
             	
             </a>
-            <p><?php echo $list->name;?><span><?php echo number_format($list->saleprice);?> <?php echo $list->currency?></span></p>
+            <p><?php echo $product->name;?><span><?php echo number_format($product->saleprice);?> <?php echo $product->currency?></span></p>
         </div>
 	
 		
