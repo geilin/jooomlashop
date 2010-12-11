@@ -15,7 +15,8 @@ $uploaddir = JPATH_BASE.'images/products/';
 $thumbdir = JPATH_BASE.'images/products/thumbs/';
 
 $thumb = new easyphpthumbnail;
-	$thumb -> Thumbheight = 190;
+	$thumb ->Thumbheight =90;
+	$thumb ->Thumbwidth = 90;
 	// Create the thumbnail and output to file
 	$thumb -> Thumblocation = $thumbdir;
 	$thumb -> Thumbprefix = '';
