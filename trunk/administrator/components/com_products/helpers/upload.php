@@ -14,9 +14,11 @@ $mainframe =& JFactory::getApplication('site');
 $uploaddir = JPATH_BASE.'images/products/'; 
 $thumbdir = JPATH_BASE.'images/products/thumbs/';
 
+$params = &JComponentHelper::getParams( 'com_products' );
+
 $thumb = new easyphpthumbnail;
-	$thumb ->Thumbheight =90;
-	$thumb ->Thumbwidth = 90;
+	$thumb ->Thumbheight =$params->get('thump_height','90');
+	$thumb ->Thumbwidth = $params->get('thump_width','90');
 	// Create the thumbnail and output to file
 	$thumb -> Thumblocation = $thumbdir;
 	$thumb -> Thumbprefix = '';

@@ -13,10 +13,11 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		//JToolBarHelper::title( JText::_('Phones'), 'generic.php');
 		JToolBarHelper::publishList();
 		JToolBarHelper::unpublishList();
-		//JToolBarHelper::preferences( 'com_products', '450' );
+		
 		JToolBarHelper::editList();
 		JToolBarHelper::deleteList('Are you sure you want to remove product ?','remove');
 		JToolBarHelper::addNew();
+		JToolBarHelper::preferences( 'com_products', '250' );
 ?>
 <form action="index.php" method="post" name="adminForm">
 <table>
