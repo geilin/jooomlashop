@@ -57,7 +57,7 @@ class ProductViewADetail extends JView
 			$comment->date = date_format($datetime, 'd/m/Y');
 		}
 		$doc->setTitle($titleSEO);		
-		$doc->setDescription('Sản phẩm '. $accessory->name .' tại BBSAIGON.com - SHOP BAN BLACKBERRY');
+		$doc->setDescription('Sản phẩm '. $accessory->name .' tại nissiaduio.com');
 	
 		// Assign REF
 		$this->assignRef('accessory', $accessory);

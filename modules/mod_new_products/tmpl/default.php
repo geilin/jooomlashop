@@ -11,10 +11,10 @@ defined('_JEXEC') or die('Restricted access');
 global $option;
 ?>
 <div class="pro_new">
-	<?php foreach ($catpro as $i => $pro) { ?>
+	<?php foreach ($catpro as $i => $product) { ?>
 			<div class="pro_item">
-				<p class="link_img"><a href="<?php echo $pro->link; ?>" >
-					<?php $filename = modNewProductsHelper::getImageDefault($pro->id);?>
+				<p class="link_img"><a href="<?php echo $product->link; ?>" >
+					<?php $filename = modNewProductsHelper::getImageDefault($product->id);?>
 						<?php if($filename && file_exists('images/products/thumbs/'.$filename)){
 							$image = JURI::base().'images/products/thumbs/'. $filename;
 						}else{
@@ -26,7 +26,7 @@ global $option;
 					
 					
 				</a></p>
-				<p class="link_title"><a href="<?php echo $pro->link; ?>"><?php echo $pro->name; ?></a></p>
+				<p class="link_title"><a href="<?php echo $product->link; ?>"><?php echo $product->name; ?></a></p>
 				
 			</div> 
 	<?php } ?>

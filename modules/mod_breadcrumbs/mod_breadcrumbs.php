@@ -18,8 +18,8 @@ defined('_JEXEC') or die('Restricted access');
 require_once (dirname(__FILE__).DS.'helper.php');
 
 // Get the breadcrumbs
-$list	= modBreadCrumbsHelper::getList($params);
-$count	= count($list);
+$product	= modBreadCrumbsHelper::getList($params);
+$count	= count($product);
 
 // Set the default separator
 $separator = modBreadCrumbsHelper::setSeparator( $params->get( 'separator' ));

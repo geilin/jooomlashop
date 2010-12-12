@@ -2,7 +2,7 @@
 defined('_JEXEC') or die('Restricted access'); 
 ?>
 <h3 class="block-right-title">Tin tức</h3>
-<?php foreach ($list as $i => $item) 	{ ?>
+<?php foreach ($product as $i => $item) 	{ ?>
 		
         <p>
             <a href="<?php echo $item->link; ?>">

@@ -66,7 +66,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
    <table cellspacing="0" cellpadding="0" width="100%">
 	<tr>
 		<td valign="middle" align="left" style=" padding:8px 0;">
-			www.bbsaigon.com
+			www.nissiaudio.com
 		</td>
 		<td style=" padding-top:5px;" valign="middle" align="right">
 			<input type="hidden" name="option" id="option" value="com_products" />

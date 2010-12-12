@@ -2,9 +2,9 @@
 defined('_JEXEC') or die('Restricted access'); ?>
 <ul class="latestnews<?php echo $params->get('moduleclass_sfx'); ?>">
 <?php 
-	$count_list = count($list);
+	$count_list = count($product);
 	$i = 0 ;
-	foreach ($list as $item) :  
+	foreach ($product as $item) :  
 	$i++; 
 ?>
 	<li class="latestnews<?php echo $params->get('moduleclass_sfx'); ?> <? if ($i== $count_list) echo 'li_last'?>">

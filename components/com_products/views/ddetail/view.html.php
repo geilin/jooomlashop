@@ -41,7 +41,7 @@ class ProductViewDDetail extends JView
 		$groupdownload = $model->getGroup($download->id);
 		$groupdownload = $this->buildHTMLGroupPhones($groupdownload);
 		$doc->setTitle($titleSEO);		
-		$doc->setDescription('Download '. $download ->name .' tại BBSAIGON.com - SHOP BAN BLACKBERRY');
+		$doc->setDescription('Download '. $download ->name .' tại nissiaudio');
 	
 		// Assign REF
 		$this->assignRef('list', $list);

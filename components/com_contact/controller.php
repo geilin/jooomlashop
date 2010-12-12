@@ -121,7 +121,7 @@ class ContactController extends JController
 		$db			= & JFactory::getDBO();
 		$SiteName	= $mainframe->getCfg('sitename');
 
-		$default	= JText::sprintf( 'MAILENQUIRY', 'BBSaigon.com - Xin chào');
+		$default	= JText::sprintf( 'MAILENQUIRY', 'nissiaduio.com - Xin chào');
 		$contactId	= JRequest::getInt( 'id',			0,			'post' );
 		$name		= JRequest::getVar( 'name',			'',			'post' );
 		$email		= JRequest::getVar( 'email',		'',			'post' );

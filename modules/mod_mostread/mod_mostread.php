@@ -17,5 +17,5 @@ defined('_JEXEC') or die('Restricted access');
 // Include the syndicate functions only once
 require_once (dirname(__FILE__).DS.'helper.php');
 
-$list = modMostReadHelper::getList($params);
+$product = modMostReadHelper::getList($params);
 require(JModuleHelper::getLayoutPath('mod_mostread'));

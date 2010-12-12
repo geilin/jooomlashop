@@ -3,8 +3,8 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="wpmod_warp">
 <?php
-$count = count($list); 
-foreach ($list as $i => $item) { ?>
+$count = count($product); 
+foreach ($product as $i => $item) { ?>
 	<div class="wp_mod_right_ct_item">
 		<?php if ($item->img) { ?>
 		<div class="pic_a">
