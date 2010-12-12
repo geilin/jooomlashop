@@ -1,20 +1,15 @@
-<?php // no direct access/** @version		1.0* @package		Component Product* @copyright	Wampvn Group* @license		GNU/GPL* @website          http://wampvn.com* @description    template show order from*/
+<?php 
 defined('_JEXEC') or die('Restricted access'); 
-?>
 
-<?php if ($this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
+if ($this->user->authorize('com_content', 'edit', 'content', 'all') || $this->user->authorize('com_content', 'edit', 'content', 'own')) : ?>
 	<div class="contentpaneopen_edit<?php echo $this->item->params->get( 'pageclass_sfx' ); ?>" style="float: left;">
 		<?php echo JHTML::_('icon.edit', $this->item, $this->item->params, $this->access); ?>
 	</div>
-<?php endif;
-/// ADMIN TOOL
- ?>
+<?php endif;?>
 
 <div class="contentpaneopen<?php echo $this->item->params->get( 'pageclass_sfx' ); ?>">
 
 <?php  if (!$this->item->params->get('show_intro')) :	echo $this->item->event->afterDisplayTitle;endif; ?>
-
-
 
 <?php echo $this->item->event->beforeDisplayContent; ?>
 <!-- ITEM CONTENT WARP -->
@@ -34,27 +29,23 @@ if (
 	<?php if ($this->item->params->get('show_section') && $this->item->sectionid && isset($this->item->section)) : ?>
 	<span class="article-section">
 		<?php if ($this->item->params->get('link_section')) : ?>
-			<?php echo '<a href="'.JRoute::_(ContentHelperRoute::getSectionRoute($this->item->sectionid)).'">'; ?>
+			<a href="<?php echo JRoute::_(ContentHelperRoute::getSectionRoute($this->item->sectionid)); ?>">
 		<?php endif; ?>
 		<?php echo $this->item->section; ?>
-		<?php if ($this->item->params->get('link_section')) : ?>
-			<?php echo '</a>'; ?>
-		<?php endif; ?>
-			<?php if ($this->item->params->get('show_category')) : ?>
-			<?php echo ' - '; ?>
-		<?php endif; ?>
+		<?php if ($this->item->params->get('link_section')) : ?></a><?php endif; ?>
+			<?php if ($this->item->params->get('show_category')) : ?> - <?php endif; ?>
 	</span>
 	<?php endif; ?>
 	<?php if ($this->item->params->get('show_category') && $this->item->catid) : ?>
-	<span class="article-category">
-		<?php if ($this->item->params->get('link_category')) : ?>
-			<?php echo '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug, $this->item->sectionid)).'">'; ?>
-		<?php endif; ?>
-		<?php echo $this->item->category; ?>
-		<?php if ($this->item->params->get('link_section')) : ?>
-			<?php echo '</a>'; ?>
-		<?php endif; ?>
-	</span>
+		<span class="article-category">
+			<?php if ($this->item->params->get('link_category')) : ?>
+				<?php echo '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug, $this->item->sectionid)).'">'; ?>
+			<?php endif; ?>
+			<?php echo $this->item->category; ?>
+			<?php if ($this->item->params->get('link_section')) : ?>
+				<?php echo '</a>'; ?>
+			<?php endif; ?>
+		</span>
 	<?php endif; ?>
 <?php endif; ?>
 </div>
@@ -89,24 +80,20 @@ if (
 <?php endif; ?>
 </div>
 </div>
-<?php endif; 
-// END SHOW ICON?>
+<?php endif;?>
 
-<?php	$image = getImgTag($this->item);	$intro_text = clearTag($this->item, 57);	?>	
-	<div class="art_pic">		
-		<a href="<?php echo $this->item->readmore_link; ?>" class="contentpagetitle<?php echo $this->item->params->get( 'pageclass_sfx' ); ?>">			
-<?php //echo $image;?>		
-<?php if($image){?>
-			<img src="<? echo $image; ?>"   alt="<?php echo $this->item->title; ?>" title="<?php echo $this->item->title; ?>" />
-		<?php }else{?>
-			<img src="images/noimage.jpg"   alt="<?php echo $this->item->title; ?>" title="<?php echo $this->item->title; ?>" />
-		<?php } ?>
-		</a>	
-				
-	</div>	
+<?php
+$image_atributes = array('class' => 'article_image', 'align' => 'left');	
+$image = getImgTag($this->item);
+$article_image = ($image)?
+	JHTML::_('image', $image, $this->item->title, $image_atributes):
+	JHTML::_('image', 'images/noimage.jpg', $this->item->title, $image_atributes); 
+$intro_text = clearTag($this->item, 57);
+?>	
+
 	<div class="art_text">
 			<?php if ($this->item->params->get('show_title')) : ?>		
-				<h2 class="article_title<?php echo $this->item->params->get( 'pageclass_sfx' ); ?>">			
+				<h3 class="article_title<?php echo $this->item->params->get( 'pageclass_sfx' ); ?>">			
 						<?php if ($this->item->params->get('link_titles') && $this->item->readmore_link != '') : ?>			
 							<a href="<?php echo $this->item->readmore_link; ?>" class="contentpagetitle<?php echo $this->item->params->get( 'pageclass_sfx' ); ?>">				
 								<?php echo $this->item->title; ?>			
@@ -116,7 +103,7 @@ if (
 								<?php echo $this->item->title; ?>			
 							</a>			
 						<?php endif; ?>		
-				</h2>		
+				</h3>		
 			<?php endif; ?>				
 			<div class="art_meta">	
 				<?php if ( intval($this->item->modified) != 0 && $this->item->params->get('show_modify_date')) : ?>	
@@ -138,16 +125,15 @@ if (
 			<div class="article-content">			
 				<?php if (isset ($this->item->toc)) : ?>				
 					<?php echo $this->item->toc; ?>			
-				<?php endif; ?>						
-				<?php echo $intro_text; ?>		
+				<?php endif; ?>
+				<!-- article image -->
+				<a href="<?php echo $this->item->readmore_link; ?>" class="contentpagetitle<?php echo $this->item->params->get( 'pageclass_sfx' ); ?>">		
+					<?php echo $article_image; ?>
+				</a><!-- /article image -->		
+		<?php echo $intro_text; ?>		
 			</div>			
-	</div>	
-	
-<!-- /////////-------------------------------------///////// -->	
-	
-	<!-- ///////READMORE/////////// -->	
-		<?php 
-			
+	</div>
+	<?php
 		if ($this->item->params->get('show_readmore') && $this->item->readmore) { ?>	
 			<p class="readmore_warp">	
 				<a href="<?php echo $this->item->readmore_link; ?>" title="<?php echo $this->item->title; ?>" class="readon<?php echo $this->item->params->get('pageclass_sfx'); ?>">			
@@ -166,7 +152,7 @@ if (
 	<span class="article_separator">&nbsp;</span>
 	</div><!-- END ITEM WARP -->
 </div>
-<div class="clearfix"></div>	
+<div class="clear"></div>	
 
 <!-- END: ITEM CONTENT WARP -->
 <?php echo $this->item->event->afterDisplayContent; ?>

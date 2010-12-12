@@ -17,9 +17,9 @@ defined('_JEXEC') or die('Restricted access');
 // Include the syndicate functions only once
 require_once (dirname(__FILE__).DS.'helper.php');
 
-$list = modRelatedItemsHelper::getList($params);
+$product = modRelatedItemsHelper::getList($params);
 
-if (!count($list)) {
+if (!count($product)) {
 	return;
 }
 

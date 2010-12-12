@@ -75,7 +75,7 @@ class ProductViewDownload extends JView
 			$titleSEO = 'Download Game Ứng Dụng';
 		}
 		$doc->setTitle($titleSEO);
-		$doc->setDescription('Các Sản phẩm '. $catName .' tại BBSAIGON.com - SHOP BAN BLACKBERRY');
+		$doc->setDescription('Các Sản phẩm '. $catName .' tại Nissi Audio');
 		
 		$this->assignRef('listDownload', $listDownload);
 		$this->assignRef('list', $list);

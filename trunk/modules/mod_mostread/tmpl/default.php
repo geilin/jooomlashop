@@ -3,8 +3,8 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="wpmod_warp padding_top_3">
 <?php
-$count = count($list); 
-foreach ($list as $i => $item) { 
+$count = count($product); 
+foreach ($product as $i => $item) { 
 	$class_last = "";
 	if (!($i < ($count-1))) {
 		$class_last = "no_border_last";

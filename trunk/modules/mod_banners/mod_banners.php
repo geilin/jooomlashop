@@ -20,5 +20,5 @@ require_once (dirname(__FILE__).DS.'helper.php');
 $headerText	= trim( $params->get( 'header_text' ) );
 $footerText	= trim( $params->get( 'footer_text' ) );
 
-$list = modBannersHelper::getList($params);
+$product = modBannersHelper::getList($params);
 require(JModuleHelper::getLayoutPath('mod_banners'));

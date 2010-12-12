@@ -5,14 +5,14 @@ defined('_JEXEC') or die('Restricted access'); ?>
 
 	// If not the last item in the breadcrumbs add the separator
 	if ($i < $count -1) {
-		if(!empty($list[$i]->link)) {
-			echo '<a href="'.$list[$i]->link.'" class="pathway">'.$list[$i]->name.'</a>';
+		if(!empty($product[$i]->link)) {
+			echo '<a href="'.$product[$i]->link.'" class="pathway">'.$product[$i]->name.'</a>';
 		} else {
-			echo $list[$i]->name;
+			echo $product[$i]->name;
 		}
 		echo ' '.$separator.' ';
 	}  else if ($params->get('showLast', 1)) { // when $i == $count -1 and 'showLast' is true
-	    echo $list[$i]->name;
+	    echo $product[$i]->name;
 	}
 endfor; ?>
 </span>

@@ -6,7 +6,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 	<div class="bannerheader"><?php echo $headerText ?></div>
 <?php endif;
 
-foreach($list as $item) :
+foreach($product as $item) :
 
 	?><div class="banneritem<?php echo $params->get( 'moduleclass_sfx' ) ?>"><?php
 	echo modBannersHelper::renderBanner($params, $item);

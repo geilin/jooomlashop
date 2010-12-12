@@ -113,9 +113,9 @@ function resetClick(){jQuery('#warranty_reset').css('cursor','pointer');jQuery('
 	<div id="list_pro_cat_border">
 		<!-- WARRANTY CT HERE-->
 		<div class="warranty_form" id="warranty_focus">
-			<img class="warranty_pic" src="<?php echo JURI::base(); ?>images/warranty_icon.jpg" alt="bảo hàng blackberry - bbsaigon.com"/>
+			<img class="warranty_pic" src="<?php echo JURI::base(); ?>images/warranty_icon.jpg" alt="bảo hàng sản phẩm - nissiaudio.com"/>
 			<div class="warranty_faq">
-				Hãy nhập số IMEI và số PIN trên điện thoại của bạn vào ô bên dưới để kiểm tra thời hạn bảo hành (Chỉ áp dụng cho điện thoại mua tại  BlackBerry Sài Gòn).
+				Hãy nhập số IMEI và số PIN trên điện thoại của bạn vào ô bên dưới để kiểm tra thời hạn bảo hành (Chỉ áp dụng cho điện thoại mua tại  Nissi Aduio).
 				<div class="form_warranty" >
 							<div class="form_warranty_warp">
 							<table width="100%" cellspacing="0" cellpadding="0"> 

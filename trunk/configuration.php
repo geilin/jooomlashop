@@ -6,7 +6,7 @@ class JConfig {
 	var $helpurl = 'http://help.joomla.org';
 	var $debug = '0';
 	var $debug_lang = '0';
-	var $sef = '1';
+	var $sef = '0';
 	var $sef_rewrite = '1';
 	var $sef_suffix = '1';
 	var $feed_limit = '10';
@@ -33,7 +33,7 @@ class JConfig {
 	var $dbtype = 'mysql';
 	var $host = 'localhost';
 	var $user = 'root';
-	var $db = 'wp_ttshop';
+	var $db = 'joomlashop';
 	var $dbprefix = 'hdt_';
 	var $mailer = 'mail';
 	var $mailfrom = 'knigherrant@yahoo.com';
@@ -42,17 +42,17 @@ class JConfig {
 	var $smtpauth = '1';
 	var $smtpsecure = 'none';
 	var $smtpport = '25';
-	var $smtpuser = 'smtp+thoi.vn';
+	var $smtpuser = 'smtp.missiaudio.com';
 	var $smtppass = '';
-	var $smtphost = 'mail.ttshop.vn';
+	var $smtphost = 'mail.missiaudio.com';
 	var $MetaAuthor = '1';
 	var $MetaTitle = '1';
 	var $lifetime = '3600';
 	var $session_handler = 'database';
 	var $password = '';
-	var $sitename = 'ttshop.vn';
+	var $sitename = 'Nissi Audio';
 	var $MetaDesc = 'Website chuyên mua bán trực tuyến các mặt hàng điện tử như:  tivi LCD, tivi Plasma, đầu DVD, máy ảnh, máy quay phim, máy nghe nhạc… xuất xứ từ các hãng nổi tiếng như Sony, Toshiba, Panasonic, JVC, Samsung, Hitachi, Canon, Nikon, Fuji, Olympus';
 	var $MetaKeys = 'hang dien tu, đồ điện tử, do dien tu, tivi crt, tv crt, lcd, plasma, tivi plasma';
-	var $offline_message = 'website đang duy trì, vùi lòng truy cập lần sau.';
+	var $offline_message = 'website đang bảo trì, vùi lòng truy cập lại sau.';
 }
 ?>

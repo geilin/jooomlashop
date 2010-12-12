@@ -85,7 +85,7 @@ class ProductViewAccessory extends JView
 			}
 		}
 		$doc->setTitle($titleSEO);
-		$doc->setDescription('Các Sản phẩm '. $catName .' tại BBSAIGON.com - SHOP BAN BLACKBERRY');
+		$doc->setDescription('Các Sản phẩm '. $catName .' tại nissiaudio.com');
 		
 		if ($model->getParentNameCat($cid)) {
 			$parent_cat  = $model->getParentNameCat($cid);

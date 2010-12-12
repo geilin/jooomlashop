@@ -29,10 +29,10 @@ $access->canEdit	= 0;
 $access->canEditOwn = 0;
 $access->canPublish = 0;
 
-$list = modNewsFlashHelper::getList($params, $access);
+$product = modNewsFlashHelper::getList($params, $access);
 
 // check if any results returned
-$items = count($list);
+$items = count($product);
 if (!$items) {
 	return;
 }

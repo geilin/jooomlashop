@@ -1602,6 +1602,8 @@ h1.logo a span { display:none;}
     border-right-width:0;     
 }
 #footer_wrapper .copyright { clear: both; width: 960px; }
+/* com_content */
+.article_image { width:80px; padding:0 10px; }
 
 
 
