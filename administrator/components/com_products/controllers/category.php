@@ -73,8 +73,8 @@ class ProductControllerCategory extends ProductController
 		$this->setRedirect( 'index.php?option=com_products&controller=category', 'Publish changed' );
 	}
 
-	function saveOrder()
-	{		
+	function saveOrder(){		
+	
 		$model	=& $this->getModel( 'category', 'ModelProduct' );
 		$model->saveOrder();
 		$this->setRedirect('index.php?option=com_products&controller=category', 'Ordering saved');

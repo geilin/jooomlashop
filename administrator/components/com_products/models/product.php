@@ -479,6 +479,28 @@ class ModelProductProduct extends JModel
 					@unlink($this->_path .'thumbnail/thumb_'.$row->{largeimage.$i});
 				}
 			}
+			
+			
+			$query1 = "SELECT *	FROM #__w_images WHERE proid = $cid";
+			$db->setQuery($query1);
+			$rows = $db->loadObjectList();
+			
+			
+			
+			if(count($rows) >0){
+				foreach ($rows as $item){
+					if (!empty($item->filename) and file_exists($this->_path .$item->filename)){
+						@unlink($this->_path .$item->filename);
+						@unlink($this->_path .'thumbs/'.$item->filename);
+					}
+				}
+				$del = "DELETE FROM #__w_images WHERE proid = ".(int)$cid ;
+				$db->setQuery($del);
+				$db->query();
+			}
+			
+			
+			
 		}
 	}
 	
