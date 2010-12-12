@@ -247,20 +247,40 @@ class ModelProductProduct extends JModel
 		$catgories =array();
 		getTree(0,$catgories,"");
 		
-		
-				
 		//echo "<pre>";
 		//print_r($catgories);
 		//echo "</pre>";
 		
+	
+		$cats = array();
+		//getTree(0,$catgories,"");
+		
+		//array_unshift($cats, JHTML::_('select.option', '0', '- '.JText::_('Chọn danh mục').' -', 'value', 'text'));
+		
+		foreach($catgories as $item){
+			if($this->hasChild($item->id)){
+				$optgroup = JHTML::_('select.optgroup',$item->name_display,'value','text');
+				array_push($cats,$optgroup);
+				$childs = $this->getChild($item->id);
+				foreach ($childs as $child) {
+					array_push($cats,$child);
+				}
+			}
+		}
+		
+		
+		
+				
+		
+		/*
 		foreach ($catgories as $result)
 		{		
 			if ($this->_id != $result->id){
 				$category[] = array('value' => $result->id, 'text' => $result->name_display);
 			}		
-		}	
-		$lists['category'] = JHTML::_('select.genericlist',
-			$category, 'catid', 'class="inputbox" '. '',	'value', 'text', $this->_catid );
+		}
+*/		
+		$lists['category'] = JHTML::_('select.genericlist',$cats, 'catid', 'class="inputbox" '. '',	'value', 'text', $this->_catid );
 			
 		$manufacturers = $this->getManufacturer();
 		$lists['manufacturer'] = JHTML::_('select.genericlist', $manufacturers, 'manufacturerid', 'class="inputbox" '. '',	'id', 'name', $this->_manufacturerid );
@@ -272,6 +292,35 @@ class ModelProductProduct extends JModel
 		
 		return $lists;
 	}
+	
+	
+	
+	
+	function hasChild($catid){
+		$cid = (int)$catid;
+		$db =& JFactory::getDBO();
+		$selects = "SELECT count(*) as total FROM #__w_categories WHERE  parentid = ".$cid."  AND published=1 "; 
+		$db->setQuery( $selects);
+		$row = $db->loadObject();
+		if((int)$row->total > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	function getChild($catid){
+		$db =& JFactory::getDBO();
+		$selects = "SELECT id AS value,name as text FROM #__w_categories WHERE  parentid = ".(int)$catid . " AND published=1  ORDER BY ordering ASC "; 
+		$db->setQuery( $selects);
+		$rows = $db->loadObjectList();
+		return $rows;
+	}
+	
+	
+	
+	
+	
 	
   function setDefault($proid){
 	  	$db = JFactory::getDBO();
