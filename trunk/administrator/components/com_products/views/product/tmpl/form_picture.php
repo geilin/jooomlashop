@@ -125,7 +125,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 								<img src="<?php echo JURI::root()?>/images/products/<?php echo $img->filename?>" width="200">
 							</td>
 							<td valign="middle">
-								<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>','<?php echo $img->proid;?>');">[Xóa hình]</a>
+								<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>','<?php echo $img->proid;?>'); return false;">[Xóa hình]</a>
 							</td>
 						</tr>
 					<?php 
