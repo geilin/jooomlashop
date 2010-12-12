@@ -42,10 +42,13 @@ class ModelProductDetail extends JModel
 			$this->_db->setQuery($query);			
 			$this->_product = $this->_db->loadObject();
 
-			
-			//echo "<pre>";
-			//print_r($this->_product);
-			//echo "</pre>";
+			if(!$this->_product){
+				$msg = 'Không tìm thấy sản phẩm';
+				$controller = new JController;
+				$controller->setRedirect('index.php',$msg);
+				$controller->redirect();
+			}
+
 			
 			$this->_manufacturer = $this->_product->manufacturerid;
 			$this->_catid = $this->_product->catid;
@@ -57,6 +60,7 @@ class ModelProductDetail extends JModel
 
 
 		}
+		
 		return $this->_product;
 	}
 	
