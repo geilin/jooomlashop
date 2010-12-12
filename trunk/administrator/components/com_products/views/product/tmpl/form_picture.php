@@ -80,9 +80,9 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		
 	});
 	
-	function delImage(id,filename){
+	function delImage(id,filename,proid){
 		var id= id;
-		var urlx = 'index.php?option=com_products&controller=product&task=delImg&imgId='+id+'&imgName='+filename;
+		var urlx = 'index.php?option=com_products&controller=product&task=delImg&imgId='+id+'&imgName='+filename+'&proid='+proid;
 		jQuery.ajax({ url: urlx,
 			success: function(date){
 				jQuery('#img_'+id).css('display','none');
@@ -125,7 +125,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 								<img src="<?php echo JURI::root()?>/images/products/<?php echo $img->filename?>" width="200">
 							</td>
 							<td valign="middle">
-								<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>');">[Xóa hình]</a>
+								<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>','<?php echo $img->proid;?>');">[Xóa hình]</a>
 							</td>
 						</tr>
 					<?php 

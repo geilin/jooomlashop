@@ -114,7 +114,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	<div id="border-bottom"><div><div></div></div></div>
 	<div id="footer">
 		<p class="copyright">
-			Phát triển website - <a href="http://wampvn.com" target="_blank">WAMP GROUP</a>
+			Phát triển website - <a href="http://ketnoivn.com" target="_blank">Conan</a>
 		</p>
 	</div>
 </body>

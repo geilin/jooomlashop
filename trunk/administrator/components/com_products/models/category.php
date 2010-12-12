@@ -86,7 +86,10 @@ class ModelProductCategory extends JModel
 
 	function save(){		
 		$row = JTable::getInstance('category', 'Table');
-		if (!$row->bind(JRequest::get('post'))){
+		$post = JRequest::get('post');
+		$post['ordering'] = 1;
+		
+		if (!$row->bind($post)){
 			JError::raiseError( 500, $row->getErrorMsg() );
 			return false;
 		}
@@ -146,7 +149,7 @@ class ModelProductCategory extends JModel
 			for ($i = 0; $i < $total; $i ++)
 			{
 				$row->load( (int) $cid[$i] );
-				if ($row->ordering != $order[$i]) {
+				if ($row->ordering != $order[$i] && (int)$order[$i] >0) {
 					$row->ordering = $order[$i];
 					if (!$row->store()) {
 						JError::raiseError( 500, $db->getErrorMsg() );

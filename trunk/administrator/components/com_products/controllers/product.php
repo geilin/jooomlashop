@@ -89,6 +89,7 @@ class ProductControllerProduct extends ProductController
 		$post = JRequest::get('post');
 		$imgId = JRequest::getint('imgId');
 		$imgName = JRequest::getVar('imgName');
+		$proid = JRequest::getint('proid');
 		$db =& JFactory::getDBO();			
 		if (!empty($imgId)){
 			$query = 'DELETE FROM #__w_images WHERE  id='.$imgId;
@@ -99,6 +100,17 @@ class ProductControllerProduct extends ProductController
 			}else{
 				unlink(JPATH_SITE.DS.'images'.DS.'products'.DS.$imgName);
 				unlink(JPATH_SITE.DS.'images'.DS.'products'.DS.'thumbs'.DS.$imgName);
+				
+				$sql = 'SELECT id FROM #__w_images WHERE proid='.(int)$proid . ' ORDER BY id ASC LIMIT 0,1 ';
+				$db->setQuery($sql);
+				$img = $db->loadObject();
+				if((int)$img->id > 0){
+					$setDefault = 'UPDATE #__w_images SET isdefault=1 WHERE id='.(int)$img->id;
+					$db->setQuery($setDefault);
+					$db->query();
+				}
+				
+				
 			}
 		}
 		exit;
