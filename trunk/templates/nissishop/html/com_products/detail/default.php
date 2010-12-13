@@ -62,7 +62,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	</div><!-- /product_main_image -->
 	<ul class="product_meta_data">
 		<li><span class="product_meta_lable">Tên sản phẩm:</span> <?php echo $this->product->name; ?></li>
-		<li><span class="product_meta_lable">Sản xuất bởi:</span> <?php echo $this->product->manufacture; ?></li>
+		<li><span class="product_meta_lable">Sản xuất bởi:</span> <a href="<?php echo JRoute::_('index.php?option=com_products&view=manufacturer&mid='.$this->product->manufacturerid);?>"><?php echo $this->product->manufacture; ?></a></li>
 		<li><span class="product_meta_lable">Giá bán lẻ:</span> <?php echo number_format($this->product->saleprice).' '.$this->product->currency; ?></li>
 		<li><span class="product_meta_lable">Giá khuyến mãi:</span> <?php echo number_format($this->product->saleprice).' '.$this->product->currency; ?></li>
 		<li><span class="product_meta_lable">Lượt xem:</span> <?php echo $this->product->hits; ?> lần <span class="small_text">(kể từ ngày <?php $date = new DateTime($this->product->date); echo $date->format('d/m/Y'); ?>)</span></li>
