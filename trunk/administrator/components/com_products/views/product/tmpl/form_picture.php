@@ -51,7 +51,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		var xtimex = '<?php echo time();?>';
 		
 		new AjaxUpload(btnUpload, {
-			action: '<?php echo JURI::base()?>/components/com_products/helpers/upload.php?xtimex='+xtimex,
+			action: '<?php echo JURI::base()?>/components/com_products/helpers/demo.php?xtimex='+xtimex,
 			name: 'uploadfile',
 			onSubmit: function(file, ext){
 				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
