@@ -675,7 +675,7 @@ table.contentpaneopen, table.contentpane, table.blog {
 ul.pagination {
 	margin: 15px auto;
 	padding: 10px 0;
-	background: url(../images/hdot.gif) repeat-x top;
+    text-align: center;
 }
 
 ul.pagination li {
@@ -749,12 +749,12 @@ div.syndicate div {
 --------------------------------------------------------- */
 .article-tools {
 	border-top: 1px solid #DDDDDD;
+    background: #ECECEC;
 	width: 100%;
 	float: left;
 	clear: both;
-	margin-bottom: 15px;
 	display: block;
-	background: #ECECEC;
+    height: 1px;
 }
 
 .article-meta {
@@ -1558,6 +1558,9 @@ h1.logo a span { display:none;}
 }
 
 #component_content_wrapper {
+	padding:10px;
+}
+.component_content_wrapper {
 	padding:10px;
 }
 

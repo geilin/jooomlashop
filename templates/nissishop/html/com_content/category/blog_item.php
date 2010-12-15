@@ -24,61 +24,60 @@ if (
 || ($this->item->params->get('show_url') && $this->item->urls)
 ) :
 ?>
-<div class="article-toolswrap"><div class="article-tools clearfix"><div class="article-meta">
-<?php if (($this->item->params->get('show_section') && $this->item->sectionid) || ($this->item->params->get('show_category') && $this->item->catid)) : ?>
-	<?php if ($this->item->params->get('show_section') && $this->item->sectionid && isset($this->item->section)) : ?>
-	<span class="article-section">
-		<?php if ($this->item->params->get('link_section')) : ?>
-			<a href="<?php echo JRoute::_(ContentHelperRoute::getSectionRoute($this->item->sectionid)); ?>">
+<div class="article-toolswrap">
+	<div class="article-tools clearfix">
+		<div class="article-meta">
+		<?php if (($this->item->params->get('show_section') && $this->item->sectionid) || ($this->item->params->get('show_category') && $this->item->catid)) : ?>
+			<?php if ($this->item->params->get('show_section') && $this->item->sectionid && isset($this->item->section)) : ?>
+			<span class="article-section">
+				<?php if ($this->item->params->get('link_section')) : ?>
+					<a href="<?php echo JRoute::_(ContentHelperRoute::getSectionRoute($this->item->sectionid)); ?>">
+				<?php endif; ?>
+				<?php echo $this->item->section; ?>
+				<?php if ($this->item->params->get('link_section')) : ?></a><?php endif; ?>
+					<?php if ($this->item->params->get('show_category')) : ?> - <?php endif; ?>
+			</span>
+			<?php endif; ?>
+			<?php if ($this->item->params->get('show_category') && $this->item->catid) : ?>
+				<span class="article-category">
+					<?php if ($this->item->params->get('link_category')) : ?>
+						<?php echo '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug, $this->item->sectionid)).'">'; ?>
+					<?php endif; ?>
+					<?php echo $this->item->category; ?>
+					<?php if ($this->item->params->get('link_section')) : ?></a><?php endif; ?>
+				</span>
+			<?php endif; ?>
 		<?php endif; ?>
-		<?php echo $this->item->section; ?>
-		<?php if ($this->item->params->get('link_section')) : ?></a><?php endif; ?>
-			<?php if ($this->item->params->get('show_category')) : ?> - <?php endif; ?>
-	</span>
-	<?php endif; ?>
-	<?php if ($this->item->params->get('show_category') && $this->item->catid) : ?>
-		<span class="article-category">
-			<?php if ($this->item->params->get('link_category')) : ?>
-				<?php echo '<a href="'.JRoute::_(ContentHelperRoute::getCategoryRoute($this->item->catslug, $this->item->sectionid)).'">'; ?>
+		</div>
+
+		<?php if ($this->item->params->get('show_pdf_icon') || $this->item->params->get('show_print_icon') || $this->item->params->get('show_email_icon')) : ?>
+		<div class="buttonheading">
+			<?php if ($this->item->params->get('show_email_icon')) : ?>
+			<span>
+			<?php echo JHTML::_('icon.email', $this->item, $this->item->params, $this->access); ?>
+			</span>
 			<?php endif; ?>
-			<?php echo $this->item->category; ?>
-			<?php if ($this->item->params->get('link_section')) : ?>
-				<?php echo '</a>'; ?>
+
+			<?php if ( $this->item->params->get( 'show_print_icon' )) : ?>
+			<span>
+			<?php echo JHTML::_('icon.print_popup', $this->item, $this->item->params, $this->access); ?>
+			</span>
 			<?php endif; ?>
-		</span>
-	<?php endif; ?>
-<?php endif; ?>
-</div>
 
-<?php if ($this->item->params->get('show_pdf_icon') || $this->item->params->get('show_print_icon') || $this->item->params->get('show_email_icon')) : ?>
-<div class="buttonheading">
-	<?php if ($this->item->params->get('show_email_icon')) : ?>
-	<span>
-	<?php echo JHTML::_('icon.email', $this->item, $this->item->params, $this->access); ?>
-	</span>
-	<?php endif; ?>
-
-	<?php if ( $this->item->params->get( 'show_print_icon' )) : ?>
-	<span>
-	<?php echo JHTML::_('icon.print_popup', $this->item, $this->item->params, $this->access); ?>
-	</span>
-	<?php endif; ?>
-
-	<?php if ($this->item->params->get('show_pdf_icon')) : ?>
-	<span>
-	<?php echo JHTML::_('icon.pdf', $this->item, $this->item->params, $this->access); ?>
-	</span>
-	<?php endif; ?>
-</div>
-<?php endif; ?>
-
-<?php if ($this->item->params->get('show_url') && $this->item->urls) : ?>
-	<span class="article-url">
-		<a href="http://<?php echo $this->item->urls ; ?>" target="_blank">
-			<?php echo $this->item->urls; ?></a>
-	</span>
-<?php endif; ?>
-</div>
+			<?php if ($this->item->params->get('show_pdf_icon')) : ?>
+			<span>
+			<?php echo JHTML::_('icon.pdf', $this->item, $this->item->params, $this->access); ?>
+			</span>
+			<?php endif; ?>
+		</div>
+		<?php endif; ?>
+		<?php if ($this->item->params->get('show_url') && $this->item->urls) : ?>
+			<span class="article-url">
+				<a href="http://<?php echo $this->item->urls ; ?>" target="_blank">
+					<?php echo $this->item->urls; ?></a>
+			</span>
+		<?php endif; ?>
+	</div>
 </div>
 <?php endif;?>
 

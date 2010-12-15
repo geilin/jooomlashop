@@ -114,7 +114,7 @@ if (
 
 <?php echo $this->article->event->beforeDisplayContent; ?>
 
-<div class="article-content">
+<div class="component_content_wrapper article-content">
 	<?php if (isset ($this->article->toc)) echo $this->article->toc; ?>
 	<?php echo $this->article->text; ?>
 </div>
