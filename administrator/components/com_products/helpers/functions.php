@@ -114,6 +114,29 @@
 		}
 		return false;
 	}
+    /**
+     * resize image
+     * @author phplaw@gmail.com
+     * @param array $opt array of config
+     * @return mixed thumb_name or false when resize fail 
+     */
+    function generate_thumb($opt=array()) {
+        $config['image_library'] 	= 'gd2';
+        $config['source_image'] 	= $opt['file_to_resize'];
+        $config['thumb_marker'] 	= '';
+        $config['new_image'] 		= $opt['thumb_dir'];
+        $config['create_thumb'] 	= TRUE;
+        $config['master_dim'] 		= 'width';
+        $config['width'] 			= $opt['width'];
+        $config['height'] 			= $opt['height'];
+        $CI_Image_lib = new CI_Image_lib($config);		
+        if ( $CI_Image_lib->resize() )
+        {
+            return $CI_Image_lib->dest_image;
+        }
+        return false;
+    }
+
 	
 	function checkExists($filenameTmp, $ext)
 	{

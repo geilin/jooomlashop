@@ -7,7 +7,7 @@
  */
  
  
- define( '_JEXEC', 1 );
+define( '_JEXEC', 1 );
 define('JPATH_BASE', '../../../../' );
 define('JPATH_HERE', '' );
 
@@ -31,6 +31,7 @@ function generate_thumb($opt=array()) {
 	$config['new_image'] 		= $opt['thumb_dir'];
 	//$config['dest_folder']		= $opt['dest_folder'];
 	$config['create_thumb'] 	= TRUE;
+	$config['master_dim'] 		= 'width';
 	$config['width'] 			= $opt['width'];
 	$config['height'] 			= $opt['height'];
 

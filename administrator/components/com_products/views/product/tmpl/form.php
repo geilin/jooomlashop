@@ -114,24 +114,6 @@ echo $select;
 */
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<form action="index.php" method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
 
 	
