@@ -84,6 +84,56 @@ class ProductControllerProduct extends ProductController
 		$model->remove($cid);	
 		$this->setRedirect('index.php?option=com_products', 'Product removed');
 	}
+    
+    function upload() {
+         //http://docs.joomla.org/How_to_use_the_filesystem_package
+		jimport('joomla.filesystem.file');
+        $params = &JComponentHelper::getParams( 'com_products' );
+        require_once JPATH_COMPONENT . DS .'helpers' . DS .'image_lib.php';      
+        require_once JPATH_COMPONENT . DS .'helpers' . DS .'functions.php';
+        
+		$file 		= JRequest::getVar( 'uploadfile', '', 'files', 'array' );        
+        $upload_dir = JPATH_ROOT . DS .'images'.DS .'products'; 
+        $thumb_dir  = $upload_dir .DS .'thumbs';        
+        
+        $upload_dest = $upload_dir . DS . $file['name'];
+        //file exists rename
+        if (JFile::exists($upload_dest)) {            
+           $upload_dest = $upload_dir . DS . time() . '_' . $file['name'];
+        }
+        //now move uploaded file to new location
+        if (!JFile::upload($file['tmp_name'],  $upload_dest)) {            
+            echo json_encode(array('error' => true, 'message' => JText::_('Upload file failed')));
+            exit;
+        }
+        
+        $thumb_width = $params->get('thump_width', 90);
+        $thumb_height = $params->get('thump_height', 90);
+        
+        $thumb_width = ($thumb_width>0) ? $thumb_width : 90;
+        $thumb_height = ($thumb_height>0) ? $thumb_height : 90;
+        
+        $configs = array(
+            'width' => $thumb_width,
+            'height' => $thumb_height,
+            'file_to_resize' => $upload_dest,
+            'thumb_dir' =>  $thumb_dir
+		);        
+                
+        $image_thumb = generate_thumb($configs);
+        
+        if ($image_thumb) {            
+            echo json_encode(array('error' => false, 'file' => $image_thumb, 'message' => 'upload and resize image successfully'));
+        }
+        else 
+        {
+             echo json_encode(array('error' => true, 'message' => 'error when try to resize image'));
+        }        
+    }
+    
+    /**
+     * remove image
+     */
 	function delImg(){
 		$cid = JRequest::getVar( 'cid', array(), '', 'array');
 		$post = JRequest::get('post');

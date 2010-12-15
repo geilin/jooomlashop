@@ -1,5 +1,10 @@
+<?php
+	defined( '_JEXEC' ) or die( 'Restricted access' ); 
+	$editor =& JFactory::getEditor();
+	JHTML::_('behavior.calendar');
+	global $option;		
+?>
 <script type="text/javascript" src="<?php echo JURI::root()?>components/com_products/js/ajaxupload.3.5.js"></script>
-
 <style>
 <!--
 #upload{
@@ -27,31 +32,12 @@ ul#files li img{ max-width:180px; max-height:150px; }
 .error{ background:#f0c6c3; border:1px solid #cc6622; }
 -->
 </style>
-
-<?php
-/**
-* @version		1.0  - 	Joomla 1.5.x
-* @package		Component Administrator Com Products
-* @copyright	Wampvn Group
-* @license		GNU/GPL
-* @website          http://wampvn.com
-* @description    view picture.
-*/
-
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
-		$editor =& JFactory::getEditor();
-		JHTML::_('behavior.calendar');
-		global $option;		
-?>
-
 <script type="text/javascript" >
 	jQuery(function(){
-		var btnUpload=jQuery('#upload');
-		var status=jQuery('#status');
-		var xtimex = '<?php echo time();?>';
-		
-		new AjaxUpload(btnUpload, {
-			action: '<?php echo JURI::base()?>/components/com_products/helpers/demo.php?xtimex='+xtimex,
+		var btnUpload 	= jQuery('#upload');
+		var status 		= jQuery('#status');
+		new AjaxUpload(btnUpload, {			
+            action: '<?php echo JURI::base()?>index.php?option=com_products&task=upload&format=raw',
 			name: 'uploadfile',
 			onSubmit: function(file, ext){
 				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
@@ -61,19 +47,15 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 				}
 				status.text('Uploading...');
 			},
+			responseType: 'json',
 			onComplete: function(file, response){
-			var file = xtimex+file;
-			
-				//On completion clear the status
-				status.text('');
-				
-				//Add uploaded file to list
-				if(response==="success"){
-					
-					jQuery('<li></li>').appendTo('#files').html('<img src="<?php echo JURI::root()?>images/products/'+file+'" alt="" />'+file).addClass('success');
-					jQuery('<input type="hidden" name="filename[]" value="'+file+'" />').appendTo('#files');
+				status.text(''); //clear the status				
+				if( response.error === false ){					
+					jQuery('<li></li>').appendTo('#files').html('<img src="<?php echo JURI::root()?>images/products/thumbs/'+response.file+'" alt="" />'+response.file).addClass('success');
+					jQuery('<input type="hidden" name="filename[]" value="'+response.file+'" />').appendTo('#files');
 				} else{
-					jQuery('<li></li>').appendTo('#files').text(file).addClass('error');
+					alert(response.message);
+					jQuery('<li></li>').appendTo('#files').text(response.file).addClass('error');
 				}
 			}
 		});
@@ -82,17 +64,14 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	
 	function delImage(id,filename,proid){
 		var id= id;
-		var urlx = 'index.php?option=com_products&controller=product&task=delImg&imgId='+id+'&imgName='+filename+'&proid='+proid;
+		var urlx = '<?php echo JURI::base()?>index.php?option=com_products&controller=product&task=delImg&imgId='+id+'&imgName='+filename+'&proid='+proid;
 		jQuery.ajax({ url: urlx,
 			success: function(date){
 				jQuery('#img_'+id).css('display','none');
 			}
-		});
-		
+		});		
 		return false;
-	}
-	
-	
+	}	
 	
 </script>
 	<table class="admintable">
@@ -102,7 +81,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		</td>
 		<td>
 			<div id="upload" ><span>Chọn file</span></div><span id="status" ></span>
-			<ul id="files" ></ul>
+			<ul id="files"></ul>
 		</td>
 				<!-- Upload Button, use any id you wish-->
 		
