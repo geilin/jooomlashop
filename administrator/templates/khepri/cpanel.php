@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
@@ -99,8 +99,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	</div>
 	<div id="border-bottom"><div><div></div></div></div>
 	<div id="footer">
-		<p class="copyright">
-			Phát triển website - <a href="http://wampvn.com" target="_blank">WAMP GROUP</a>
+		<p class="copyright"><a href="http://nissiaudio.com" target="_blank">© 2010 NISSI AUDIO CO.,LTD</a>
 		</p>
 	</div>
 </body>
