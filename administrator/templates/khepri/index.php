@@ -113,9 +113,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 </div>
 	<div id="border-bottom"><div><div></div></div></div>
 	<div id="footer">
-		<p class="copyright">
-			Phát triển website - <a href="http://ketnoivn.com" target="_blank">Conan</a>
-		</p>
+		<p class="copyright">Copyright © 2010 by NISSI AUDIO CO.,LTD</p>
 	</div>
 </body>
 </html>
