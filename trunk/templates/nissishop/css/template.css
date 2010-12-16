@@ -1503,7 +1503,7 @@ body {
     height: 33px;
     min-height: 33px;
     height: auto!important;
-    background: #FFF url('../my_images/module_content_bottom_bg.png') no-repeat left bottom;
+    background-color: #FFF;
 }
  .nissi_module ul.menu {    
     list-style: none!important;
