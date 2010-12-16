@@ -28,7 +28,7 @@ function modChrome_missishop($module, &$params, &$attribs)
             <h3 class="module_title"><span><?php echo $module->title; ?></span></h3>
             <?php endif; ?>
         </div>
-        <div class="module_content">
+        <div class="module_content clearfix">
             <?php echo $module->content; ?>
         </div>
         <div class="module_footer"><span></span></div>
