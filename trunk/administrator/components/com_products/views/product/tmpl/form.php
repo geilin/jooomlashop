@@ -23,8 +23,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
   <script src="<?php echo JURI::root();?>components/com_products/js/jquery.min.js"></script>
   <script src="<?php echo JURI::root();?>components/com_products/js/jquery-ui.min.js"></script>
   
-  <script>
-
+  <script type="text/javascript">
 	function showPrice(id){
 		if(id.value =='0'){
 			document.getElementById('sp_price').style.display = 'none';
@@ -32,8 +31,6 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 			document.getElementById('sp_price').style.display = '';
 		}
 	}
-
-
   
   jQuery.noConflict();  
   jQuery(document).ready(function() {
@@ -157,7 +154,7 @@ echo $select;
 		<td width="100" align="right" class="key">Khuyến mãi:</td>
 		<td><?php echo $this->lists['lowprice'];?></td>
 	</tr>
-	<?php if($this->product->lowprice){
+	<?php if($this->product->discount){
 		$style = '';
 	}else{
 		$style = 'none';
@@ -166,7 +163,7 @@ echo $select;
 	<tr id="sp_price" style="display:<?php echo $style ?>" >
 		<td width="100" align="right" class="key">Giá ghuyến mãi:</td>
 		<td>
-			<input class="text_area" type="text" name="spprice" id="spprice" size="50" maxlength="250" value="<?php echo $this->product->spprice;?>" />			
+			<input class="text_area" type="text" name="discount_price" id="discount_price" size="50" maxlength="250" value="<?php echo $this->product->discount_price;?>" />			
 		</td>
 	</tr>
 	<tr>

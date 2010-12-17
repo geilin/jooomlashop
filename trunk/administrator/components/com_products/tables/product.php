@@ -1,13 +1,4 @@
 <?php
-/**
-* @version		1.0  - 	Joomla 1.5.x
-* @package		Component Administrator Com Products
-* @copyright	Wampvn Group
-* @license		GNU/GPL
-* @website          http://wampvn.com
-* @description    table product.
-*/
-
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 class TableProduct extends JTable{
@@ -27,7 +18,7 @@ class TableProduct extends JTable{
 	var $description 	= null;
 	var $thumbnail 		= null;
 	var $mediumimage	= null;
-	var $stock 			= null;
+	var $stock 			= 1;
 	var $date 			= null;
 	var $weight 		= null;
 	var $ordering 		= null;
@@ -51,8 +42,8 @@ class TableProduct extends JTable{
 	var $driver = null;
 	var $isolation = null;
 	var $cable = null;
-	var $spprice = null;
-	var $lowprice = null;
+	var $discount_price = null;
+	var $discount = 0;
 	
 	var $largeimage10 = null;
 	var $largeimage11 = null;

@@ -24,7 +24,7 @@ class ModelProductProduct extends JModel
 	var $_promotion = null;	
 	var $_frontpage = null;
 	var $_stock = null;
-	var $_lowprice = null;
+	var $discount = null;
 	var $_id = null;
 	var $_dealerid = null;
 	
@@ -68,7 +68,7 @@ class ModelProductProduct extends JModel
 		
 		$limitstart = JRequest::getVar('limitstart', 0);
 		
-		$query = "SELECT p.lowprice,p.spprice,p.stock,p.name,p.thumbnail, p.frontpage, p.id, p.code, p.saleprice, p.intro, p.ordering, p.published, c.name as category FROM #__w_products as p
+		$query = "SELECT p.discount, p.discount_price,p.stock,p.name,p.thumbnail, p.frontpage, p.id, p.code, p.saleprice, p.intro, p.ordering, p.published, c.name as category FROM #__w_products as p
 				INNER JOIN #__w_categories as c			
 				ON p.catid = c.id ". $where
 				. $orderby;		
@@ -191,7 +191,7 @@ class ModelProductProduct extends JModel
 		$this->_frontid = $row->frontid;
 		$this->_frontpage = $row->frontpage;
 		$this->_stock = $row->stock;
-		$this->_lowprice = $row->lowprice;
+		$this->discount = $row->discount;
 		$row->images = $this->getProductImage($row->id);
 		return $row;
 	}
@@ -240,7 +240,7 @@ class ModelProductProduct extends JModel
 		$lists['promotion'] = $this->getPromotion($this->_promotion);		
 		$lists['frontpage'] = JHTML::_('select.booleanlist', 'frontpage', 'class="inputbox"', $this->_frontpage);
 		
-		$lists['lowprice'] = JHTML::_('select.booleanlist', 'lowprice', 'class="inputbox" onclick="showPrice(this)"', $this->_lowprice);
+		$lists['lowprice'] = JHTML::_('select.booleanlist', 'discount', 'class="inputbox" onclick="showPrice(this)"', $this->discount);
 		$lists['stock'] = JHTML::_('select.booleanlist', 'stock', 'class="inputbox"', $this->_stock);
 		
 		// get category
@@ -599,12 +599,12 @@ class ModelProductProduct extends JModel
 		return 'Đã thay đổi trạng thái sản phẩm hot';		
 	}
 	
-	function lowprice($cid, $frontpage)
+	function discount($cid, $frontpage)
 	{		
 		$db =& JFactory::getDBO();	
 		if (!empty($cid)){
 			foreach ($cid as $id) {
-			$query = "UPDATE #__w_products SET lowprice = $frontpage WHERE id = $id ";
+			$query = "UPDATE #__w_products SET discount = $frontpage WHERE id = $id ";
 				$db->setQuery($query);
 				if (!$db->query()){
 					echo $db->getErrorMsg();		

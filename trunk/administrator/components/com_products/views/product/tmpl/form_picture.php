@@ -101,7 +101,9 @@ ul#files li img{ max-width:180px; max-height:150px; }
 					?>
 						<tr id="img_<?php echo $img->id;?>">
 							<td>
-								<img src="<?php echo JURI::root()?>/images/products/<?php echo $img->filename?>" width="200">
+								<a href="<?php echo JURI::root()?>/images/products/<?php echo $img->filename?>" class="modal">
+								<img src="<?php echo JURI::root()?>/images/products/thumbs/<?php echo $img->filename?>">
+								</a>
 							</td>
 							<td valign="middle">
 								<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>','<?php echo $img->proid;?>'); return false;">[Xóa hình]</a>

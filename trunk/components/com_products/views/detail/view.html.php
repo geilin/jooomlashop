@@ -15,7 +15,7 @@ class ProductViewDetail extends JView
 {
 	function display($tpl = null)
 	{
-		global $option, $mainframe;
+		global $option, $mainframe, $layout;
 		
 		// get model
 		$model = &$this->getModel();
@@ -24,21 +24,23 @@ class ProductViewDetail extends JView
 		
 		$titleCatName = JFilterOutput::stringURLSafe($product->category);
 		$titleCatName = str_replace(' ', '-', strtolower(trim($titleCatName)));
-		$comments = $model->getComment();
-		$product->linkOrder = JRoute::_('index.php?option=' . $option .
-			'&task=addCart&id=' . $product->id);
+		
+		$product->link = JRoute::_('index.php?option=' . $option .
+			'&view=detail&id=' . $product->id);	
+		
+			
 		if (!empty($product->description)) {
 			$product->description = $model->removeBorder($product->description);
 			$product->description = $model->insertNotes($product->description);
-		}		
-		
-		$document =& JFactory::getDocument();
-        $document->addScript('components/com_products/js/jquery-1.3.2.js');
-        $document->addScript('components/com_products/js/colorbox/jquery.colorbox.js');
-        $document->addStyleSheet('components/com_products/js/colorbox/colorbox.css');
-        $document->addScriptDeclaration('jQuery.noConflict(); jQuery(document).ready(function(){
-				jQuery("a[rel=\'product_image\']").colorbox(); });');
+		}
         
+		$document =& JFactory::getDocument();     
+
+		$document->addScript('components/com_products/js/jquery-1.3.2.js');
+		$document->addScript('components/com_products/js/colorbox/jquery.colorbox.js');
+		$document->addStyleSheet('components/com_products/js/colorbox/colorbox.css');        
+		$document->addScriptDeclaration('if($===jQuery){jQuery.noConflict();} jQuery(document).ready(function(){ jQuery("a[rel=\'product_image\']").colorbox(); });');
+
 		$titleSEO = '';		
 		if (!empty($product->name)) {
 			$titleSEO = $product->name;
@@ -47,21 +49,14 @@ class ProductViewDetail extends JView
 			}
 		}
         
-         $document->setTitle($titleSEO . ' | '. $mainframe->getCfg('sitename'));
-
-        
-		for($i = 0; $i < count($comments); $i++) {	
-			$comment =& $comments[$i];
-			$datetime = date_create($comment->date);
-			$comment->date = date_format($datetime, 'd/m/Y');
-		}
+        $document->setTitle($titleSEO . ' | '. $mainframe->getCfg('sitename'));  
 				
 		
 		$properties = $model->getProperties();
-		$images = $model->getImages();
+		$images 	= $model->getImages();
 		$imgDefault = $model->getImageDefault();
 		
-		$relative = $model->getRelative();
+		$relative 	= $model->getRelative();
 		
 			
 		$app =& JFactory::getApplication();

@@ -41,11 +41,9 @@ class modNewProductsHelper
 
 	
 	function getImageDefault($proid){
-		$db			=& JFactory::getDBO();	
-		$query = "SELECT filename FROM #__w_images WHERE proid=" .(int)$proid . " AND published =1 AND isdefault =1";
-		$db->setQuery($query);			
-		$imgDefault = $db->loadObject();
-		return $imgDefault->filename;
+		$db     =& JFactory::getDBO();	
+		$query  = "SELECT filename FROM #__w_images WHERE proid=" .(int)$proid . " AND published =1 AND isdefault =1 LIMIT 1";
+        return $db->GetOne($query);
 	}
 	
 	

@@ -96,8 +96,7 @@ class ProductViewCategory extends JView
 	
 	function checkImage($proid){
 		$model = &$this->getModel();
-		$imgDefault = $model->getImageDefault($proid);
-		return $imgDefault->filename;
+		return $model->getImageDefault($proid);		
 	}
 	
 }
