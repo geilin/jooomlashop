@@ -8,8 +8,7 @@ $siteName = $tmpTools->sitename();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>">
 <head>
-    <jdoc:include type="head" />
-    <?php JHTML::_('behavior.mootools'); ?>  
+    <jdoc:include type="head" /> 
     <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/template.css" type="text/css" />	
     <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/gridsystem.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/product.css" type="text/css" />

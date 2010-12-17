@@ -48,27 +48,25 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 <th class='title'>
 	<?php echo JHTML::_('grid.sort',  'Tên sản phẩm', 'p.name', $this->lists['order_Dir'], $this->lists['order'] ); ?>
 </th>
-<th width="5%" nowrap="nowrap">
-	<?php echo JHTML::_('grid.sort',  'Model', 'p.code', $this->lists['order_Dir'], $this->lists['order'] ); ?>
-</th>
-<th width="10%" nowrap="nowrap">
-	<?php echo JHTML::_('grid.sort',  'Giá', 'p.saleprice', $this->lists['order_Dir'], $this->lists['order'] ); ?>
-</th>
-<th width="10%" nowrap="nowrap">
-	<?php echo JHTML::_('grid.sort',  'Giá KM', 'p.spprice', $this->lists['order_Dir'], $this->lists['order'] ); ?>
-</th>
-<th width="5%" nowrap="nowrap">
-	<?php echo JHTML::_('grid.sort',  'Khuyến mãi', 'p.lowprice', $this->lists['order_Dir'], $this->lists['order'] ); ?>
-</th>
-<th width="6%" nowrap="nowrap">
-	<?php echo JHTML::_('grid.sort',  'Trạng thái SP', 'p.stock', $this->lists['order_Dir'], $this->lists['order'] ); ?>
-</th>
-<th width="15%" nowrap="nowrap">
+<th width="25%" nowrap="nowrap">
 	<?php echo JHTML::_('grid.sort',  'Danh mục sản phẩm', 'p.catid', $this->lists['order_Dir'], $this->lists['order'] ); ?>
 </th>
+<th width="10%" nowrap="nowrap">
+	<?php echo JHTML::_('grid.sort',  'Giá bán lẻ', 'p.saleprice', $this->lists['order_Dir'], $this->lists['order'] ); ?>
+</th>
+<th width="10%" nowrap="nowrap">
+	<?php echo JHTML::_('grid.sort',  'Giá khuyến mãi', 'p.discount_price', $this->lists['order_Dir'], $this->lists['order'] ); ?>
+</th>
+<th width="5%" nowrap="nowrap">
+	<?php echo JHTML::_('grid.sort',  'Khuyến mãi', 'p.discount', $this->lists['order_Dir'], $this->lists['order'] ); ?>
+</th>
+<th width="6%" nowrap="nowrap">
+	<?php echo JHTML::_('grid.sort',  'Còn hàng', 'p.stock', $this->lists['order_Dir'], $this->lists['order'] ); ?>
+</th>
+
 
 <th width="5%" nowrap="nowrap">
-	<?php echo JHTML::_('grid.sort', JText::_('SP hot'), 'p.frontpage', $this->lists['order_Dir'], $this->lists['order'] ); ?>
+	<?php echo JHTML::_('grid.sort', JText::_('Sản phẩm hot'), 'p.frontpage', $this->lists['order_Dir'], $this->lists['order'] ); ?>
 </th>
 <th width="5%" nowrap="nowrap">
 	<?php echo JHTML::_('grid.sort', JText::_('Published'), 'p.published', $this->lists['order_Dir'], $this->lists['order'] ); ?>
@@ -100,28 +98,28 @@ for ($i=0, $n=count( $this->products ); $i < $n; $i++)
 	<?php echo $row->name; ?></a> 
 <a href="<?php echo $linkCopy; ?>"> [Copy] </a>
 </td>
+
 <td>
-	<?php echo $row->code; ?>
+	<?php echo $row->category; ?>
 </td>
+
 <td>
 	<?php echo number_format($row->saleprice); ?>
 </td>
 <td>
-	<?php echo number_format($row->spprice); ?>
+	<?php echo number_format($row->discount_price); ?>
 </td>
-<?php if($row->lowprice){ ?>
-	<td width="5%" align="center" ><a href="#nolowprice" onclick="return listItemTask('cb<?php echo $i;?>','nolowprice')"><img border="0" alt="Khuyến mãi" src="images/tick.png"/></a></td>
+<?php if($row->discount){ ?>
+	<td width="5%" align="center" ><a href="#undiscount" onclick="return listItemTask('cb<?php echo $i;?>','undiscount')"><img border="0" alt="Khuyến mãi" src="images/tick.png"/></a></td>
 <?php }else{ ?>
-	<td width="5%" align="center" ><a href="#lowprice" onclick="return listItemTask('cb<?php echo $i;?>','lowprice')"><img border="0" alt="Không khuyến mãi" src="images/publish_x.png"/></a></td>
+	<td width="5%" align="center" ><a href="#discount" onclick="return listItemTask('cb<?php echo $i;?>','discount')"><img border="0" alt="Không khuyến mãi" src="images/publish_x.png"/></a></td>
 <?php } ?>
 <?php if($row->stock){ ?>
 	<td width="5%" align="center" ><a href="#noproducts" onclick="return listItemTask('cb<?php echo $i;?>','noproducts')"><img border="0" alt="Còn hàng" src="images/tick.png"/></a></td>
 <?php }else{ ?>
 	<td width="5%" align="center" ><a href="#hasproducts" onclick="return listItemTask('cb<?php echo $i;?>','hasproducts')"><img border="0" alt="Hết hàng" src="images/publish_x.png"/></a></td>
 <?php } ?>
-<td>
-	<?php echo $row->category; ?>
-</td>
+
 
 <?php if($row->frontpage){ ?>
 <td width="5%" align="center" ><a href="#nofrontpage" onclick="return listItemTask('cb<?php echo $i;?>','nofrontpage')"><img border="0" alt="Published Product" src="images/tick.png"/></a></td>
@@ -144,7 +142,7 @@ $k = 1 - $k;
 ?>
 <tfoot>
 	<tr>
-		<td colspan="9"><?php echo $this->pageNav->getListFooter(); ?></td>
+		<td colspan="10"><?php echo $this->pageNav->getListFooter(); ?></td>
 	</tr>
 </tfoot>
 </table>

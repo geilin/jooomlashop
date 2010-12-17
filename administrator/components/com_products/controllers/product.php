@@ -22,7 +22,7 @@ class ProductControllerProduct extends ProductController
 		$this->registerTask( 'add', 	'edit'  );
 		$this->registerTask( 'unpublish'  , 	'publish'  );
 		$this->registerTask( 'nofrontpage'  , 	'frontpage'  );
-		$this->registerTask( 'nolowprice'  , 	'lowprice'  );
+		$this->registerTask( 'undiscount'  , 	'discount'  );
 		$this->registerTask( 'noproducts'  , 	'hasproducts'  );
 	}
 	
@@ -191,18 +191,18 @@ class ProductControllerProduct extends ProductController
 	
 	
 	
-	function lowprice()
+	function discount()
 	{
 		$cid = JRequest::getVar( 'cid', array(), '', 'array' );
 		$model	=& $this->getModel( 'product', 'ModelProduct' );	
 		
-		if( $this->_task == 'lowprice')
+		if( $this->_task == 'discount')
 		{		
-			$msg = $model->lowprice($cid, 1);
+			$msg = $model->discount($cid, 1);
 		}
 		else
 		{
-			$msg = $model->lowprice($cid, 0);
+			$msg = $model->discount($cid, 0);
 		}	
 		$this->setRedirect( 'index.php?option=com_products', $msg);
 	}

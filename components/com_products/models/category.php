@@ -100,14 +100,11 @@ class ModelProductCategory extends JModel
 	}
 	
 	function getImageDefault($proid){
-		$this->_imagesDefault = '';
-		if(!$this->_imagesDefault){
-			$query = "SELECT filename FROM #__w_images WHERE proid=" .(int)$proid . " AND published =1 AND isdefault =1";
-	
-			$this->_db->setQuery($query);			
-			$this->_imagesDefault = $this->_db->loadObject();
-		}
-		return $this->_imagesDefault;
+            $this->_imagesDefault = null;		
+			$query = "SELECT filename FROM #__w_images WHERE proid=" .(int)$proid . " AND published =1 AND isdefault =1 LIMIT 1";	
+			$this->_db->setQuery($query);          
+			$this->_imagesDefault->filename = $this->_db->GetOne($query);
+            return $this->_imagesDefault->filename;		
 	}
 	
 	
@@ -142,24 +139,7 @@ class ModelProductCategory extends JModel
 			return $db->loadResult();		
 	}
 
-	/*function getManufacturers()
-	{
-			$db =& JFactory::getDBO();	
-			$where = null;
-			if ($this->_cid > 0){
-				$where = ' and p.catid = '. $this->_cid;
-			}
-			$query = "SELECT m.id, m.name , count(p.manufacturerid) as amount 
-			FROM #__w_products as p 
-			INNER JOIN #__w_manufacturers as m
-			ON p.manufacturerid = m.id			
-			WHERE p.published = 1  $where 
-			GROUP BY p.manufacturerid ";
-			$db->setQuery($query);
-			$this->_manufacturers = $db->loadObjectList();
-			return $this->_manufacturers;
-	}*/
-	
+		
 	function getTotal()
 	{
 		$db =& JFactory::getDBO();

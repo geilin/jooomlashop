@@ -40,7 +40,6 @@ $catid = JRequest::getInt('catid',0);
             <div class="product_image_container">
                 <a href="<?php echo $product->link;?>"><?php
                             $filename = ProductViewCategory::checkImage($product->id);
-                            //$filename = modNewProductsHelper::getImageDefault($list->id);
 							$thumb_path = 'images/products/thumbs/'. $filename ;
 							$thumb_path = ($filename && file_exists($thumb_path))?
 								$thumb_path :

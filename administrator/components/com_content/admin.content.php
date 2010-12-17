@@ -16,8 +16,8 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-require_once( JPATH_COMPONENT.DS.'controller.php' );
-require_once( JPATH_COMPONENT.DS.'helper.php' );
+require_once(JPATH_COMPONENT.DS.'controller.php' );
+require_once(JPATH_COMPONENT.DS.'helper.php' );
 require_once (JApplicationHelper::getPath('admin_html'));
 
 // Set the helper directory
