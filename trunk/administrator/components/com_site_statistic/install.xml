@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5" method="upgrade">
+	<name>Site_Statistic</name>
+	<creationDate>2009-12-05</creationDate>
+	<author>PHPLAW</author>
+	<authorEmail>phplaw@gmail.com</authorEmail>
+	<authorUrl>http://ketnoivn.org</authorUrl>
+	<copyright>Copyright (C) 2007 - 2009 VINAORA. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<version>2.0</version>
+	<description>DESC_SITE_STATISTIC</description>
+	
+	<installfile>install/install.php</installfile>
+	<uninstallfile>install/uninstall.php</uninstallfile>
+	
+	<!-- VINAORA: Install Database -->
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+			<file driver="mysql">sql/install.mysql.sql</file>
+		</sql>
+	</install>
+	
+	<!-- VINAORA: Uninstall Database -->
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+			<file driver="mysql">sql/uninstall.mysql.sql</file>
+		</sql>
+	</uninstall>
+	
+	<!-- VINAORA: Front-end Folders and Files -->
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>controller.php</filename>
+		<filename>site_statistic.php</filename>
+		<folder>helpers</folder>
+	</files>
+	
+	<!-- VINAORA: Front-end Language Files -->
+	<languages folder="language/site">
+		<language tag="en-GB">en-GB.com_site_statistic.ini</language>
+   	</languages>
+
+	<!-- VINAORA: Front-end Media Files -->
+	<media folder="site" destination="com_site_statistic" />
+ 
+	<!-- VINAORA: Back-end -->
+	<administration>
+		<menu>Site Statistic</menu>
+		
+		<!-- VINAORA: Back-end Folders and Files -->
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>site_statistic.php</filename>
+			<folder>helpers</folder>
+			<folder>images</folder>
+			<folder>install</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>views</folder>
+		</files>
+		
+		<!-- VINAORA: Back-end Language Files -->
+		<languages folder="language/admin">
+			<language tag="en-GB">en-GB.com_site_statistic.ini</language>
+			<language tag="en-GB">en-GB.com_site_statistic.menu.ini</language>
+    	</languages>
+	</administration>
+	
+	<params />
+	
+	<!-- VINAORA: Install Modules -->
+	<modules>
+			
+		<module module="mod_site_statistic" title="Site Statistic" position="left" order="10" client="site">
+			<files folder="mod_site_statistic">				
+				<folder>tmpl</folder>
+				
+				<file>index.html</file>
+				<file>helper.php</file>
+				<file>mod_site_statistic.php</file>
+				<file>mod_site_statistic.xml</file>
+			</files>
+
+			<languages folder="mod_site_statistic/language">
+				<language tag="en-GB">en-GB.mod_site_statistic.ini</language>
+			</languages>
+		</module>
+		
+	</modules>
+	
+	<!-- VINAORA: Check and enabled modules/plugins -->
+	<check>
+		<directory>/modules</directory>
+		<extension name="mod_site_statistic" type="modules" field="published" value="1">module='mod_site_statistic'</extension>
+		<extension name="mod_site_statistic" type="modules" field="showtitle" value="1">module='mod_site_statistic'</extension>
+	</check>
+</install>
