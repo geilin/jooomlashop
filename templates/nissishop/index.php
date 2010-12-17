@@ -7,16 +7,13 @@ $siteName = $tmpTools->sitename();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>">
-
-<script type="text/javascript"	src="<?php echo $tmpTools->templateurl(); ?>/js/jquery-1.4.2.min.js"></script>
-
 <head>
     <jdoc:include type="head" />
     <?php JHTML::_('behavior.mootools'); ?>  
     <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/template.css" type="text/css" />	
     <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/gridsystem.css" type="text/css" />
 	<link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/product.css" type="text/css" />
-    <!--[if IE]>
+    <!--[if lte IE 7]>
     <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/iefix.css" type="text/css" />    
     <![endif]-->     
 </head>
