@@ -10,10 +10,6 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport('joomla.application.component.view');
 jimport('joomla.html.pagination');
-// add css for tab
-$document =& JFactory::getDocument();
-$document->addStyleSheet( 'components/com_products/css/tab.css' );
-$document->addStyleSheet( 'components/com_products/css/tips.css' );
 
 class ProductViewDetail extends JView
 {
@@ -36,16 +32,13 @@ class ProductViewDetail extends JView
 			$product->description = $model->insertNotes($product->description);
 		}		
 		
-		
-		//$phukien  = $model->getPhukien();
-		//$dealer   = $model->getDealer();
-		//$download = array();
-		//$download = $this->loadAppDownload($model,$product->groupid,6);
-	
-		// article
-		//$articles = $model->getArticles();
-		// SEO title
-		$doc =& JFactory::getDocument();
+		$document =& JFactory::getDocument();
+        $document->addScript('components/com_products/js/jquery-1.3.2.js');
+        $document->addScript('components/com_products/js/colorbox/jquery.colorbox.js');
+        $document->addStyleSheet('components/com_products/js/colorbox/colorbox.css');
+        $document->addScriptDeclaration('jQuery.noConflict(); jQuery(document).ready(function(){
+				jQuery("a[rel=\'product_image\']").colorbox(); });');
+        
 		$titleSEO = '';		
 		if (!empty($product->name)) {
 			$titleSEO = $product->name;
@@ -53,21 +46,16 @@ class ProductViewDetail extends JView
 			$titleSEO = $product->name . ' | '.$product->category;
 			}
 		}
+        
+         $document->setTitle($titleSEO . ' | '. $mainframe->getCfg('sitename'));
+
+        
 		for($i = 0; $i < count($comments); $i++) {	
 			$comment =& $comments[$i];
 			$datetime = date_create($comment->date);
 			$comment->date = date_format($datetime, 'd/m/Y');
 		}
-		//$doc->setTitle($titleSEO);		
-		//$doc->setDescription('Sản phẩm '. $product->name .' tại BiBishop.com - SHOP THOI TRANG');
-		
-		//$rating = $model->getRating($product->id);	
-		//$proimages = $this->addTabA($product->mediumimage);
-		
-		//$params     =& $mainframe->getPageParameters('com_products');
-		//$text_price = $params->get('text_price', 'Sắp có hàng');
-		
-		
+				
 		
 		$properties = $model->getProperties();
 		$images = $model->getImages();
@@ -75,37 +63,22 @@ class ProductViewDetail extends JView
 		
 		$relative = $model->getRelative();
 		
-		//echo "<pre>";
-		//print_r($relative);
-		//echo "</pre>";
-		
-		
+			
 		$app =& JFactory::getApplication();
-
-
-		$pathway = $app->getPathway();
-    
-		$pathway->addItem($product->name);
-
-		
-		
+		$pathway = $app->getPathway();    
+		$pathway->addItem($product->name);		
 		
 		// Assign REF
 		$this->assignRef('relative', $relative);
 		$this->assignRef('imgDefault', $imgDefault);
 		$this->assignRef('images', $images);
 		$this->assignRef('properties', $properties);
-		//$this->assignRef('rating', $rating);
+		
 		$this->assignRef('profeature', $profeature);
 		$this->assignRef('product', $product);
-		//$this->assignRef('phukien', $phukien);
-		//$this->assignRef('text_price', $text_price);
-		//$this->assignRef('dealer', $dealer);
-		//$this->assignRef('download', $download);
-		//$this->assignRef('images', $proimages);
+		
 		$this->assignRef('titleCatName', $titleCatName);
-		//$this->assignRef('articles', $articles);
-		//$this->assignRef('comments', $comments);
+		
 		$this->assignRef('token', $this->creatToken());
 		parent::display($tpl);
 	}
