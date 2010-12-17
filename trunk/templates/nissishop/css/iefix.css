@@ -1,0 +1,12 @@
+.product_image_container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+	.product_image_thumb
+	{
+		position: relative;
+		top: -50%;
+		left: -50%;
+		
+	}	
