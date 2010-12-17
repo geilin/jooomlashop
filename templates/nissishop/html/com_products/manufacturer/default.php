@@ -30,7 +30,7 @@ $catid = JRequest::getInt('catid',0);
 <!-- /component_header -->
 <!-- component_content -->
 <div id="component_content" class="clearfix">
-<p class="component_content_wrapper">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm</p>    
+<p id="category_message_count">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm</p>    
     
 <?php if ($this->listProduct) { ?>
 
