@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/module-install.dtd">
+<install type="module" version="1.5" client="site">
+	<name>mod_site_statistic</name>
+	<creationDate>2009-12-05</creationDate>
+	<author>mod_site_statistic</author>
+	<authorEmail>mod_site_statistic@vinaora.com</authorEmail>
+	<authorUrl>http://vinaora.com</authorUrl>
+	<copyright>Copyright (C) 2007 - 2009 VINAORA. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<version>2.0</version>
+	<description>mod_site_statistic</description>
+	<files>
+		<filename module="mod_site_statistic">mod_site_statistic.php</filename>
+		<filename module="mod_site_statistic">helper.php</filename>
+		<filename module="mod_site_statistic">index.html</filename>
+		<folder module="mod_site_statistic">tmpl</folder>
+	</files>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB.mod_site_statistic.ini</language>
+	</languages>
+	
+	<params>
+		<param name="more_visitor" type="text"  default="0" label="Add more visitors" description="Add more visitors to total visitors" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="more_user_online" type="text" default="0"  label="Add more user online" description="Add more users to total users online" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />		
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+	</params>
+</install>
