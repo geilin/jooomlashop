@@ -177,21 +177,7 @@ $tmpl_path = JURI::base().'templates/bbsaigon/';
 		</div>
         </div>
 		<?php } ?>
-		<?php 
-			if (!empty($this->accessory->video)) {
-		?>
-		<!--  Tab video -->
-        <div id="six" align="center" class="tab_div">
-			<div class="tab_div_r">
-				<div class="border_tab_div">
-					<?php if (!empty($this->accessory->video)) { 
-						echo $this->accessory->video;
-					}
-					?>
-				</div>	
-			</div>
-        </div>
-        <?php } ?>
+		
     </div>
 	<!-- ket thuc cac thong tin trong tabs -->
 	<?php } ?>
