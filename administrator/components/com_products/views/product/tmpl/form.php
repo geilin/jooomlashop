@@ -19,24 +19,22 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		
 
 ?>
-  <link href="<?php echo JURI::root();?>components/com_products/css/jquery-ui-1.8.1.custom.css" rel="stylesheet" type="text/css"/>
   <script src="<?php echo JURI::root();?>components/com_products/js/jquery.min.js"></script>
-  <script src="<?php echo JURI::root();?>components/com_products/js/jquery-ui.min.js"></script>
+  <script src="<?php echo JURI::root();?>components/com_products/js/jquery.niceprice.js"></script>
   
-  <script type="text/javascript">
-	function showPrice(id){
+  <script type="text/javascript"> 
+  function showPrice(id){
 		if(id.value =='0'){
 			document.getElementById('sp_price').style.display = 'none';
 		}else if(id.value =='1'){
 			document.getElementById('sp_price').style.display = '';
 		}
-	}
-  
+	}  
   jQuery.noConflict();  
   jQuery(document).ready(function() {
-	  jQuery("#tabs").tabs();
+	  //jQuery("#tabs").tabs();
+	  jQuery('#saleprice').niceprice({'display': 'saleprice_format'});
   });
-
 	function submitbutton(pressbutton) {
 		var form = document.adminForm;
 		if (pressbutton == 'product') {
@@ -57,10 +55,15 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 				submitform( pressbutton );
 			}	
 		}
-	}
+	}	
+	
+	
+	
   </script>
 
-
+<style type="text/css">
+#saleprice_format { font-weight:bold; color:red; }
+</style>
 <?php 
 /*
 // Define arrays filled with test data; would normally come from your database
@@ -112,14 +115,10 @@ echo $select;
 ?>
 
 	<form action="index.php" method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
+	<div class="col width-70">
+	<fieldset class="adminform">
+	<legend>Thông tin sản phẩm</legend>
 
-	
-	<div id="tabs">
-	    <ul>
-	        <li><a href="#tab-1"><span>Thông tin sản phẩm</span></a></li>
-	        <li><a href="#tab-3"><span>Hình ảnh</span></a></li>
-	    </ul>
-	    <div id="tab-1">
 	<table class="admintable">
 	<tr>
 		<td width="100" align="right" class="key">
@@ -146,7 +145,8 @@ echo $select;
 	<tr>
 		<td width="100" align="right" class="key">Giá :</td>
 		<td>
-			<input class="text_area" type="text" name="saleprice" id="saleprice" size="50" maxlength="250" value="<?php echo $this->product->saleprice;?>" />			
+			<input class="text_area" type="text" name="saleprice" id="saleprice" size="50" maxlength="250" value="<?php echo $this->product->saleprice;?>" />
+			<span id="saleprice_format"></span> <span class="currentcy">VNĐ</span>		
 		</td>
 	</tr>
 	
@@ -163,7 +163,8 @@ echo $select;
 	<tr id="sp_price" style="display:<?php echo $style ?>" >
 		<td width="100" align="right" class="key">Giá ghuyến mãi:</td>
 		<td>
-			<input class="text_area" type="text" name="discount_price" id="discount_price" size="50" maxlength="250" value="<?php echo $this->product->discount_price;?>" />			
+			<input class="text_area" type="text" name="discount_price" id="discount_price" size="50" maxlength="250" value="<?php echo $this->product->discount_price;?>" />
+			<span id="discount_price_format"></span>
 		</td>
 	</tr>
 	<tr>
@@ -174,58 +175,7 @@ echo $select;
 		<td width="100" align="right" class="key">Sản phẩm hot:</td>
 		<td><?php echo $this->lists['frontpage'];?></td>
 	</tr>
-	<!--
-	<tr>
-		<td width="100" align="right" class="key">Weight (g):	</td>
-		<td>
-			<input class="text_area" type="text" name="weight" id="weight" size="50" maxlength="250" value="<?php echo $this->product->weight;?>" />			
-		</td>
-	</tr>
-	<tr>
-		<td width="100" align="right" class="key">Enclosure Material:	</td>
-		<td>
-			<input class="text_area" type="text" name="material" id="material" size="50" maxlength="250" value="<?php echo $this->product->material;?>" />			
-		</td>
-	</tr>
-	<tr>
-		<td width="100" align="right" class="key">Impedance (ohms):	</td>
-		<td>
-			<input class="text_area" type="text" name="impedance" id="impedance" size="50" maxlength="250" value="<?php echo $this->product->impedance;?>" />			
-		</td>
-	</tr>
-	<tr>
-		<td width="100" align="right" class="key">Frequency Respones (Hz):	</td>
-		<td>
-			<input class="text_area" type="text" name="frequency" id="frequency" size="50" maxlength="250" value="<?php echo $this->product->frequency;?>" />			
-		</td>
-	</tr>
-	<tr>
-		<td width="100" align="right" class="key">Connector:	</td>
-		<td>
-			<input class="text_area" type="text" name="connector" id="connector" size="50" maxlength="250" value="<?php echo $this->product->connector;?>" />			
-		</td>
-	</tr>
-	<tr>
-		<td width="100" align="right" class="key">Driver Type:	</td>
-		<td>
-			<input class="text_area" type="text" name="driver" id="driver" size="50" maxlength="250" value="<?php echo $this->product->driver;?>" />			
-		</td>
-	</tr>
-	<tr>
-		<td width="100" align="right" class="key">Isolation (dB):	</td>
-		<td>
-			<input class="text_area" type="text" name="isolation" id="isolation" size="50" maxlength="250" value="<?php echo $this->product->isolation;?>" />			
-		</td>
-	</tr>
-
-<tr>
-		<td width="100" align="right" class="key">Cable Length (cm):	</td>
-		<td>
-			<input class="text_area" type="text" name="cable" id="cable" size="50" maxlength="250" value="<?php echo $this->product->cable;?>" />			
-		</td>
-	</tr>
 	
-	-->
 	<tr>
 		<td width="100" align="right" class="key">
 			Mô tả sản phẩm:
@@ -243,23 +193,26 @@ echo $select;
 		<td width="100" align="right" class="key">Bật sản phẩm:</td>
 		<td><?php	echo $this->lists['published'];	?></td>
 	</tr>
-	</table>
-	    </div>
-	    <!-- ket thuc tab 1 -->
-
-	    <div id="tab-3">
-	    	    <?php 
-	    	    	echo $this->loadTemplate('picture');
-	    	    ?>
-	    </div>
+	</table> 
 	
+
+	</fieldset>
+	</div>
+	<div class="col width-30">
+		<fieldset><legend>Hình ảnh</legend>		
+			<?php 
+	    	    echo $this->loadTemplate('picture');
+	    	?>
+		
+		</fieldset>
 	</div>
 	
-	
 		<input type="hidden" name="date" value="<?php echo $this->product->date; ?>" />
-		<input type="hidden" name="id" value="<?php echo $this->product->id; ?>" />
+		<input type="hidden" name="id" id="product_id" value="<?php echo $this->product->id; ?>" />
 		<input type="hidden" name="option" value="<?php echo $option;?>" />
-		<input type="hidden" id="imgId" name="imgId" value="" />
+		<input type="hidden" id="image" name="image" value="<?php echo $this->product->image; ?>" />
 		<input type="hidden" id="imgName" name="imgName" value="" />
 		<input type="hidden" name="task" value="" />
+		<div class="clr"></div>
 	</form>
+	<div class="clr"></div>

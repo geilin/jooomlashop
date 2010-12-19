@@ -340,9 +340,7 @@ class ModelProductProduct extends JModel
 		if (!$row->bind(JRequest::get('post'))){
 			echo $row->getError();
 			exit();
-		}
-		
-		
+		}		
 		
 		$row->name = trim($row->name);
 		$row->description = JRequest::getVar( 'description', '', 'post', 'string', JREQUEST_ALLOWRAW );
@@ -350,7 +348,7 @@ class ModelProductProduct extends JModel
 		$row->mediumimage = trim(JRequest::getVar( 'mediumimage', '', 'post', 'string', JREQUEST_ALLOWRAW ));
 
 		$row->intro = trim(JRequest::getVar( 'intro', '', 'post', 'string', JREQUEST_ALLOWRAW ));
-		$row->video = trim(JRequest::getVar( 'video', '', 'post', 'string', JREQUEST_ALLOWRAW ));		
+		//$row->video = trim(JRequest::getVar( 'video', '', 'post', 'string', JREQUEST_ALLOWRAW ));		
 		if (empty($row->date)) {
 			$row->date  	= date('Y-m-d');
 		}
