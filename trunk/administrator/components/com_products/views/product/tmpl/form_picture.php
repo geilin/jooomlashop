@@ -5,33 +5,9 @@
 	global $option;		
 ?>
 <script type="text/javascript" src="<?php echo JURI::root()?>components/com_products/js/ajaxupload.3.5.js"></script>
-<style>
-<!--
-#upload{
-	margin:30px 200px; padding:15px;
-	font-weight:bold; font-size:1.3em;
-	font-family:Arial, Helvetica, sans-serif;
-	text-align:center;
-	background:#f2f2f2;
-	color:#3366cc;
-	border:1px solid #ccc;
-	width:150px;
-	cursor:pointer !important;
-	-moz-border-radius:5px; -webkit-border-radius:5px;
-}
-.darkbg{
-	background:#ddd !important;
-}
-#status{
-	font-family:Arial; padding:5px;
-}
-ul#files{ list-style:none; padding:0; margin:0; }
-ul#files li{ padding:10px; margin-bottom:2px; width:200px; float:left; margin-right:10px;}
-ul#files li img{ max-width:180px; max-height:150px; }
-.success{ background:#99f099; border:1px solid #339933; }
-.error{ background:#f0c6c3; border:1px solid #cc6622; }
--->
-</style>
+<link rel="stylesheet" href="<?php echo JURI::root()?>components/com_products/css/admin_product_form.css" type="text/css" />	
+
+
 <script type="text/javascript" >
 	jQuery(function(){
 		var btnUpload 	= jQuery('#upload');
@@ -51,14 +27,17 @@ ul#files li img{ max-width:180px; max-height:150px; }
 			onComplete: function(file, response){
 				status.text(''); //clear the status				
 				if( response.error === false ){					
-					jQuery('<li></li>').appendTo('#files').html('<img src="<?php echo JURI::root()?>images/products/thumbs/'+response.file+'" alt="" />'+response.file).addClass('success');
-					jQuery('<input type="hidden" name="filename[]" value="'+response.file+'" />').appendTo('#files');
+					jQuery('<li></li>').addClass('product_image').appendTo('#image_list').html('<img src="<?php echo JURI::root()?>images/products/thumbs/'+response.file+'" alt="'+response.file+'" />');					
+					jQuery('<input type="hidden" name="filename[]" value="'+response.file+'" />').appendTo('#image_list');
 				} else{
 					alert(response.message);
-					jQuery('<li></li>').appendTo('#files').text(response.file).addClass('error');
+					jQuery('<li></li>').appendTo('#image_list').text(response.file).addClass('error');
 				}
 			}
 		});
+		//jQuery('.product_image').hover (function(e) { jQuery(this).addClass('hover'); }, function(e) { jQuery(this).removeClass('hover'); });
+		jQuery('#image_<?php echo $this->product->image; ?> span.button_default_image:first').addClass('default_image_checked');
+		
 		
 	});
 	
@@ -67,55 +46,46 @@ ul#files li img{ max-width:180px; max-height:150px; }
 		var urlx = '<?php echo JURI::base()?>index.php?option=com_products&controller=product&task=delImg&imgId='+id+'&imgName='+filename+'&proid='+proid;
 		jQuery.ajax({ url: urlx,
 			success: function(date){
-				jQuery('#img_'+id).css('display','none');
+				jQuery('#image_'+id).remove();
 			}
 		});		
 		return false;
-	}	
+	}
+	function productDefaultImage(id) {
+		jQuery('span.button_default_image').removeClass('default_image_checked');		
+		jQuery('#image').val(id);	
+		jQuery('#image_'+id+' span.button_default_image:first').addClass('default_image_checked');
+	}
 	
 </script>
-	<table class="admintable">
-	<tr>
-		<td width="100" align="right" class="key">
-			Upload hình:
-		</td>
-		<td>
-			<div id="upload" ><span>Chọn file</span></div><span id="status" ></span>
-			<ul id="files"></ul>
-		</td>
-				<!-- Upload Button, use any id you wish-->
-		
-		
-	</tr>
-	 <tr>
-		<td width="100" align="right" class="key">
-			Hình:
-		</td>
-		<td>
-			<table>
-				<tbody>
-					<?php 
-						if($this->product->images)
-						{	
-							foreach ($this->product->images as $img){
-					?>
-						<tr id="img_<?php echo $img->id;?>">
-							<td>
-								<a href="<?php echo JURI::root()?>/images/products/<?php echo $img->filename?>" class="modal">
-								<img src="<?php echo JURI::root()?>/images/products/thumbs/<?php echo $img->filename?>">
-								</a>
-							</td>
-							<td valign="middle">
-								<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>','<?php echo $img->proid;?>'); return false;">[Xóa hình]</a>
-							</td>
-						</tr>
-					<?php 
-							}	
-						}
-					?>
-				</tbody>
-			</table>
-		</td>
-	</tr>
 
-	</table>
+	<div id="upload_area">		
+		<div id="upload" ><span>Thêm hình</span></div><span id="status" ></span>
+		<ul id="files"></ul>
+	
+	
+	</div>
+
+	<div id="product_images">
+		<ul id="image_list">
+			<?php 
+			if($this->product->images)
+			{	
+				foreach ($this->product->images as $img){
+				?>
+				<li id="image_<?php echo $img->id;?>" class="product_image hover">					
+					<img src="<?php echo JURI::root()?>/images/products/thumbs/<?php echo $img->filename?>">						
+						<div class="image_controls">
+							<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>','<?php echo $img->proid;?>'); return false;" title="Xoá hình này">
+							<span class="button button_delete"> </span>
+							</a>
+							<a href="<?php echo JURI::root()?>/images/products/<?php echo $img->filename?>" class="modal"  title="Xem hình lớn"><span class="button button_zoom"> </span></a>
+							<a href="javascript:productDefaultImage(<?php echo $img->id;?>);" title="Chọn hình này làm hình chính cho sản phẩm"><span class="button button_default_image"> </span></a>
+						</div>
+				</li>
+				<?php 
+				}	
+			}
+			?>
+		</ul>
+	</div>

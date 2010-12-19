@@ -27,13 +27,13 @@ class TableProduct extends JTable{
 	var $frontpage 		= null;
 	var $frontid 		= null;
 	
-	var $product_include 	= null;
-	var $rating 			= null;	
-	var $warranty 			= null;
-	var $promotion 			= null;
-	var $video				= null;
-	var $status				= null;
-	var $status1			= null;
+	var $product_include = null;
+	var $rating 		= null;	
+	var $warranty 		= null;
+	var $promotion 		= null;
+	var $image			= null;
+	var $status			= null;
+	var $status1		= null;
 	
 	var $material = null;
 	var $impedance = null;
