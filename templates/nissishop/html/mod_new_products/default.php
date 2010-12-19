@@ -27,7 +27,7 @@ global $option;
             <!-- /centering -->
         </div>
 		<div class="product_item_info">
-          <a href="<?php echo $product->link; ?>"><?php echo $product->name; ?></a>
+          <a href="<?php echo $product->link; ?>" title="<?php echo JFilterOutput::cleanText($product->name);?>"><?php echo $product->name; ?></a>
           <span class="product_price">Giá: <?php echo number_format($product->saleprice, 0, '.', '.'); ?> <?php echo $product->currency; ?></span>          
 		</div>
 	</div>
