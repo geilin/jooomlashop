@@ -188,9 +188,7 @@ echo "</pre>";
 			if (!empty($this->properties))	
 				echo '<li><span rel="#six" class="tab hinhanh_tab">Thuộc Tính</span></li>';
 			 if (!empty($this->articles))
-				echo '<li><span rel="#third" class="tab hinhanh_tab">Bài viết</span></li>';
-			if (!empty($this->product->video)) 
-				echo '<li><span rel="#five" class="tab hinhanh_tab">Video</span></li>';
+				echo '<li><span rel="#third" class="tab hinhanh_tab">Bài viết</span></li>';			
            		
 		?>
         </ul>
