@@ -15,7 +15,8 @@ class modRateProductsHelper
 				  . ' p.saleprice, i.filename'
 				  . ' FROM #__w_products AS p'
 				  . ' LEFT JOIN #__w_images AS i ON p.image = i.id'
-				  . ' WHERE p.published = 1'	
+				  . ' WHERE p.frontpage = 1'	
+				  . ' AND p.published = 1'	
 				  . ' ORDER BY  p.hits DESC'
 				  . ' LIMIT 0,'.$limit;		
 				  
