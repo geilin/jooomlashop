@@ -331,7 +331,10 @@ class ModelProductProduct extends JModel
 	  	}
 	  	return 0;
   }		
-
+  /**
+   * save or update product
+   * @return void 
+   */
   function save(){	
 		$db = & JFactory::getDBO();	
 		$row = JTable::getInstance('product', 'Table');
@@ -348,7 +351,8 @@ class ModelProductProduct extends JModel
 		$row->mediumimage = trim(JRequest::getVar( 'mediumimage', '', 'post', 'string', JREQUEST_ALLOWRAW ));
 
 		$row->intro = trim(JRequest::getVar( 'intro', '', 'post', 'string', JREQUEST_ALLOWRAW ));
-		//$row->video = trim(JRequest::getVar( 'video', '', 'post', 'string', JREQUEST_ALLOWRAW ));		
+        $row->image = (empty($row->image) && isset($post['images'])) ? $post['images'][0] : $row->image;
+        
 		if (empty($row->date)) {
 			$row->date  	= date('Y-m-d');
 		}
@@ -362,8 +366,6 @@ class ModelProductProduct extends JModel
 			}
 			$row->thumbnail = uploadImage($thumbnail, $this->_path);	
 		}
-
-
 		for ($i = 1; $i < 1; $i++) {
 			${largeimage.$i} = JRequest::getVar('largeimage'.$i, null, 'files', 'array');
 			$row->{largeimage.$i} =  JRequest::getVar('old_largeimage'.$i);		
@@ -384,53 +386,19 @@ class ModelProductProduct extends JModel
 		}
 
 		if ($row->store())
-		{
-			/*$sqlUBP = "";
-			// build the others property
-	    	$intProperty=& JTable::getInstance( 'property', 'Table' );
-	    	$arrprop 	= $intProperty->int_property();
-	    			    
-	    	$arr_post	= JRequest::get('post');
-	      	$query 		= 'SELECT * FROM #__w_property ORDER BY ordering';
-	    	$db->setQuery( $query );
-	    	$rowsProperty = $db->loadObjectList();
-	    	if ($db->getErrorNum()) JError::raiseError(500, $db->stderr() );
-	    	
-	    	foreach($rowsProperty as $rowprp){
-	        $field_name = $arrprop["field_name"] . $rowprp->id;
-	        if(isset($post[$field_name])){
-	        	if($rowprp->datatype =='Plan Text'){
-	          		$field_value = htmlspecialchars($post[$field_name], ENT_QUOTES);
-	        	}elseif($rowprp->datatype =='HTML'){
-	        		$field_value = trim(JRequest::getVar( $field_name, '', 'post', 'string', JREQUEST_ALLOWRAW ));
-	        	}
-	          $sqlUBP .= $sqlUBP?", `$field_name`='$field_value'":"`$field_name`='$field_value'";
-	        }
-	      }
-		  
-	      if($sqlUBP){
-	        $sqlUBP = "UPDATE #__w_products SET $sqlUBP WHERE id=".$row->id;
-	        $db->setQuery( $sqlUBP );
-	    		if (!$db->query()) {
-	    			JError::raiseError( 500, $db->stderr() );
-	    		  return false;
-	    		}
-	      }*/	
+		{				
 			// save upload img	
-			if(isset($post['filename'])){
-				foreach ($post['filename'] as $filename){
+			if(isset($post['images'])){
+				foreach ($post['images'] as $fid){
 					$row_img = JTable::getInstance('images', 'Table');
-					$row_img->filename = $filename;
-					$row_img->proid = $row->id;
-					$row_img->isdefault = $this->setDefault($row->id);
+					$row_img->id = $fid;
+					$row_img->proid = $row->id;					
 					if (!$row_img->store()){
 						echo $row->getError();
 						exit();
 					}		
 				}
-
-			}
-			
+			}			
 			$this->updateCode($row->id);
 			return $row->id;		
 		}

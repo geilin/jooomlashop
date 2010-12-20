@@ -119,11 +119,25 @@ class ProductControllerProduct extends ProductController
             'file_to_resize' => $upload_dest,
             'thumb_dir' =>  $thumb_dir
 		);        
-                
-        $image_thumb = generate_thumb($configs);
         
-        if ($image_thumb) {            
-            echo json_encode(array('error' => false, 'file' => $image_thumb, 'message' => 'upload and resize image successfully'));
+     
+        $image_thumb 	= generate_thumb($configs);		
+				
+					
+        if ($image_thumb) {
+			$pid 		= JRequest::getVar('pid', 0, 'post', 'int');
+			$row_img 	= JTable::getInstance('images', 'Table');
+			$row_img->filename = $image_thumb;
+			$row_img->proid = $pid;
+			
+			if (!$row_img->store()){				
+				echo json_encode(array('error' => false, 'message' => $row->getError()));
+			}		
+            echo json_encode(array('error' => false, 'file' => $image_thumb,
+				'fid' => $row_img->id,
+				'pid' => $pid,
+			'message' => 'upload and resize image successfully')
+			);
         }
         else 
         {
@@ -135,36 +149,39 @@ class ProductControllerProduct extends ProductController
      * remove image
      */
 	function delImg(){
+		jimport('joomla.filesystem.file');
 		$cid = JRequest::getVar( 'cid', array(), '', 'array');
 		$post = JRequest::get('post');
 		$imgId = JRequest::getint('imgId');
 		$imgName = JRequest::getVar('imgName');
-		$proid = JRequest::getint('proid');
+		//$proid = JRequest::getint('proid');
 		$db =& JFactory::getDBO();			
 		if (!empty($imgId)){
-			$query = 'DELETE FROM #__w_images WHERE  id='.$imgId;
+			$query = 'DELETE FROM #__w_images WHERE  id='.$imgId . ' LIMIT 1';
 			$db->setQuery($query);
 			if (!$db->query()){
+				JFile::delete(JPATH_SITE.DS.'images'.DS.'products'.DS.$imgName);
+				JFile::delete(JPATH_SITE.DS.'images'.DS.'products'.DS. 'thumbs' .DS.$imgName);			
+					
+			}
+			else
+			{				
 				echo $db->getErrorMsg();
 				exit();			
-			}else{
-				unlink(JPATH_SITE.DS.'images'.DS.'products'.DS.$imgName);
-				unlink(JPATH_SITE.DS.'images'.DS.'products'.DS.'thumbs'.DS.$imgName);
-				
-				$sql = 'SELECT id FROM #__w_images WHERE proid='.(int)$proid . ' ORDER BY id ASC LIMIT 0,1 ';
+			
+				/*$sql = 'SELECT id FROM #__w_images WHERE proid='.(int)$proid . ' LIMIT 0,1 ';
 				$db->setQuery($sql);
 				$img = $db->loadObject();
+				
 				if((int)$img->id > 0){
 					$setDefault = 'UPDATE #__w_images SET isdefault=1 WHERE id='.(int)$img->id;
 					$db->setQuery($setDefault);
 					$db->query();
-				}
-				
+				}*/
 				
 			}
 		}
 		exit;
-		//$this->setRedirect('index.php?option=com_products&task=edit&cid[]='.$post['id'], 'Image removed');
 	}
 	function removeProductImage(){
 		$cid = JRequest::getVar( 'cid', array(), '', 'array');

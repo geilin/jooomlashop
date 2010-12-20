@@ -9,7 +9,8 @@
 
 
 <script type="text/javascript" >
-	jQuery(function(){
+	var upload_url = '<?php echo JURI::root()?>images/products/';
+	jQuery(function(){		
 		var btnUpload 	= jQuery('#upload');
 		var status 		= jQuery('#status');
 		new AjaxUpload(btnUpload, {			
@@ -23,12 +24,18 @@
 				}
 				status.text('Uploading...');
 			},
+			data: {'pid': '<?php echo $this->product->id; ?>'},
 			responseType: 'json',
 			onComplete: function(file, response){
 				status.text(''); //clear the status				
-				if( response.error === false ){					
-					jQuery('<li></li>').addClass('product_image').appendTo('#image_list').html('<img src="<?php echo JURI::root()?>images/products/thumbs/'+response.file+'" alt="'+response.file+'" />');					
-					jQuery('<input type="hidden" name="filename[]" value="'+response.file+'" />').appendTo('#image_list');
+				if( response.error === false ){
+					var html = generateHTML(response);
+					jQuery('#image_list').append(html);
+					
+					reInitModalBox();									
+					if ( response.pid == 0 ) {
+						jQuery('<input type="hidden" name="images[]" value="'+response.fid+'" />').appendTo('#product_images');
+					}
 				} else{
 					alert(response.message);
 					jQuery('<li></li>').appendTo('#image_list').text(response.file).addClass('error');
@@ -41,28 +48,68 @@
 		
 	});
 	
-	function delImage(id,filename,proid){
-		var id= id;
-		var urlx = '<?php echo JURI::base()?>index.php?option=com_products&controller=product&task=delImg&imgId='+id+'&imgName='+filename+'&proid='+proid;
+	function delImage(id,filename){
+		
+		var urlx = '<?php echo JURI::base()?>index.php?option=com_products&controller=product&task=delImg&format=raw&imgId='+id+'&imgName='+filename;
 		jQuery.ajax({ url: urlx,
 			success: function(date){
 				jQuery('#image_'+id).remove();
+				checkdefautlImage(id);
 			}
 		});		
 		return false;
 	}
+	
 	function productDefaultImage(id) {
 		jQuery('span.button_default_image').removeClass('default_image_checked');		
 		jQuery('#image').val(id);	
 		jQuery('#image_'+id+' span.button_default_image:first').addClass('default_image_checked');
 	}
 	
+	function generateHTML(data) {		
+		var img = '<img src="'+upload_url+'thumbs/'+data.file+'" alt="'+data.file+'">';		
+		var del = '<a href="javascript:void(0);" onclick="delImage('+data.fid+', \''+data.file+'\'); return false" title="Xóa hình này"><span class="button button_delete"> </span></a>';
+		var zoom = '<a href="'+upload_url+data.file+'" class="modal" title="Xem hình lớn"><span class="button button_zoom"> </span></a>';
+		var setdefault = '<a href="javascript:productDefaultImage('+data.fid+');" title="Chọn hình này làm hình chính cho sản phẩm"><span class="button button_default_image"> </span></a>';
+		
+		var div = '<div class="image_controls">'+del+zoom+setdefault+'</div>';
+		var li = '<li class="product_image hover" id="image_'+data.fid+'">'+img+div+'</li>'
+		return jQuery(li);
+	}
+	function reInitModalBox() {	
+		$$('a.modal').each(function(el) {
+			el.addEvent('click', function(e) {
+				new Event(e).stop();
+				SqueezeBox.fromElement(el);
+			});
+		});
+
+	}
+	
+	function checkdefautlImage(id) {
+		if ( id == jQuery('#image').val() ) {
+			var li = jQuery('li.product_image:first');
+			if ( li ) {
+				var newid = li.attr('id');
+				newid = parseInt(newid.replace('image_', ''));
+				jQuery('#image').val(newid);
+				var span = li.find('span.button_default_image:first');
+				span.addClass('default_image_checked');
+				//alert(newid);
+			}
+			else 
+			{
+				jQuery('#image').val(0);
+			}
+		}
+		//do nothing
+	}
+	
+	
 </script>
 
 	<div id="upload_area">		
 		<div id="upload" ><span>Thêm hình</span></div><span id="status" ></span>
-		<ul id="files"></ul>
-	
 	
 	</div>
 
@@ -76,7 +123,7 @@
 				<li id="image_<?php echo $img->id;?>" class="product_image hover">					
 					<img src="<?php echo JURI::root()?>/images/products/thumbs/<?php echo $img->filename?>">						
 						<div class="image_controls">
-							<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>','<?php echo $img->proid;?>'); return false;" title="Xoá hình này">
+							<a href="#" onclick ="delImage('<?php echo $img->id;?>','<?php echo $img->filename;?>'); return false;" title="Xoá hình này">
 							<span class="button button_delete"> </span>
 							</a>
 							<a href="<?php echo JURI::root()?>/images/products/<?php echo $img->filename?>" class="modal"  title="Xem hình lớn"><span class="button button_zoom"> </span></a>
@@ -88,4 +135,5 @@
 			}
 			?>
 		</ul>
+		
 	</div>

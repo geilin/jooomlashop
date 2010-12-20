@@ -9,30 +9,29 @@
 */
 
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
-		global $option;
-		//JToolBarHelper::title( JText::_('Phones'), 'generic.png');
-		JToolBarHelper::save();
-		JToolBarHelper::apply();
-		JToolBarHelper::cancel('product');
-		$editor =& JFactory::getEditor();
-		JHTML::_('behavior.calendar');
+	global $option;
+	//JToolBarHelper::title( JText::_('Phones'), 'generic.png');
+	JToolBarHelper::save();
+	JToolBarHelper::apply();
+	JToolBarHelper::cancel('product');
+	$editor =& JFactory::getEditor();
+	JHTML::_('behavior.calendar');
 		
 
 ?>
   <script src="<?php echo JURI::root();?>components/com_products/js/jquery.min.js"></script>
   <script src="<?php echo JURI::root();?>components/com_products/js/jquery.niceprice.js"></script>
   
-  <script type="text/javascript"> 
+  <script type="text/javascript">
+  if ($ == jQuery ) { jQuery.noConflict();  }
   function showPrice(id){
 		if(id.value =='0'){
 			document.getElementById('sp_price').style.display = 'none';
 		}else if(id.value =='1'){
 			document.getElementById('sp_price').style.display = '';
 		}
-	}  
-  jQuery.noConflict();  
-  jQuery(document).ready(function() {
-	  //jQuery("#tabs").tabs();
+	}	
+  jQuery(document).ready(function() {	  
 	  jQuery('#saleprice').niceprice({'display': 'saleprice_format'});
   });
 	function submitbutton(pressbutton) {
@@ -55,65 +54,12 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 				submitform( pressbutton );
 			}	
 		}
-	}	
-	
-	
-	
-  </script>
+	}
+</script>
 
 <style type="text/css">
 #saleprice_format { font-weight:bold; color:red; }
 </style>
-<?php 
-/*
-// Define arrays filled with test data; would normally come from your database
-$cars = array('Ferrari', 'Bugatti', 'Porsche');
-$babes = array('Megan Fox', 'Alyssa Milano', 'Doutzen Kroes');
-// Create an empty array to be filled with options
-$options = array();
-// Create the initial option
-$options[] = JHTML :: _('select.option', '', '- What do you like most -');
-// Open our 'Cars' optgroup
-$options[] = JHTML::_('select.optgroup', 'Cars');
-// Loop through the 'Cars' data
-foreach($cars as $key => $text) {
- // Create each option tag within this optgroup
- $options[] = JHTML::_('select.option', $key, $text);
-}
-// Use the hack below to close the optgroup
-$options[] = JHTML::_('select.option', '');
-// Now open our 'Babes' optgroup
-$options[] = JHTML::_('select.optgroup', 'Babes');
-// Loop through the 'Babes' data this time
-foreach($babes as $key => $text) {
- // Create each option tag within this optgroup
- $options[] = JHTML::_('select.option', $key, $text);
-}
-// Use the hack below to close this last optgroup
-$options[] = JHTML::_('select.option', '');
-// Generate the select element with our parameters
-$select = JHTML::_(
- 'select.genericlist', // Because we are creating a 'select' element
- $options,             // The options we created above
- 'select_name',        // The name your select element should have in your HTML 
- 'size="1" ',          // Extra parameters to add to your element
- 'value',              // The name of the object variable for the option value
- 'text',               // The name of the object variable for the option text
- 'selected_key',       // The key that is selected (accepts an array or a string)
- false                 // Translate the option results?
-);
- 
-
-echo "<pre>";
-			print_r($options);
-			echo "</pre>";
-
-// Display our select box
-echo $select;
-
-*/
-?>
-
 	<form action="index.php" method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
 	<div class="col width-70">
 	<fieldset class="adminform">
