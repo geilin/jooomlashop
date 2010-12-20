@@ -362,14 +362,7 @@ class ModelProductProduct extends JModel
 			}
 			$row->thumbnail = uploadImage($thumbnail, $this->_path);	
 		}
-//		$mediumimage = JRequest::getVar('mediumimage', null, 'files', 'array');
-//		$row->mediumimage =  JRequest::getVar('old_mediumimage');		
-//		if (!empty($mediumimage['tmp_name'])) {				
-//			if (!empty($row->mediumimage)){
-//				unlink($this->_path .$row->mediumimage);			
-//			}
-//			$row->mediumimage = uploadImage($mediumimage, $this->_path);	
-//		}
+
 
 		for ($i = 1; $i < 1; $i++) {
 			${largeimage.$i} = JRequest::getVar('largeimage'.$i, null, 'files', 'array');
@@ -390,24 +383,21 @@ class ModelProductProduct extends JModel
 			}
 		}
 
-		if (!$row->store()) {
-			echo $row->getError();			
-		}else{
-			$sqlUBP = "";
+		if ($row->store())
+		{
+			/*$sqlUBP = "";
 			// build the others property
-	    	$intProperty 		=& JTable::getInstance( 'property', 'Table' );
-	    	$arrprop = $intProperty->int_property();
+	    	$intProperty=& JTable::getInstance( 'property', 'Table' );
+	    	$arrprop 	= $intProperty->int_property();
 	    			    
-	    	$arr_post = JRequest::get('post');
-	      	$query = 'SELECT * FROM #__w_property ORDER BY ordering'
-	    	;
+	    	$arr_post	= JRequest::get('post');
+	      	$query 		= 'SELECT * FROM #__w_property ORDER BY ordering';
 	    	$db->setQuery( $query );
 	    	$rowsProperty = $db->loadObjectList();
 	    	if ($db->getErrorNum()) JError::raiseError(500, $db->stderr() );
 	    	
 	    	foreach($rowsProperty as $rowprp){
 	        $field_name = $arrprop["field_name"] . $rowprp->id;
-//			var_dump($field_name,isset($post[$field_name]));exit;
 	        if(isset($post[$field_name])){
 	        	if($rowprp->datatype =='Plan Text'){
 	          		$field_value = htmlspecialchars($post[$field_name], ENT_QUOTES);
@@ -417,6 +407,7 @@ class ModelProductProduct extends JModel
 	          $sqlUBP .= $sqlUBP?", `$field_name`='$field_value'":"`$field_name`='$field_value'";
 	        }
 	      }
+		  
 	      if($sqlUBP){
 	        $sqlUBP = "UPDATE #__w_products SET $sqlUBP WHERE id=".$row->id;
 	        $db->setQuery( $sqlUBP );
@@ -424,8 +415,8 @@ class ModelProductProduct extends JModel
 	    			JError::raiseError( 500, $db->stderr() );
 	    		  return false;
 	    		}
-	      }		
-	      // save upload img	
+	      }*/	
+			// save upload img	
 			if(isset($post['filename'])){
 				foreach ($post['filename'] as $filename){
 					$row_img = JTable::getInstance('images', 'Table');
@@ -439,11 +430,14 @@ class ModelProductProduct extends JModel
 				}
 
 			}
-
+			
+			$this->updateCode($row->id);
+			return $row->id;		
+		}
+		else
+		{
+			echo $row->getError();
 		}	
-//		$this->saveFeature($row->id);
-		$this->updateCode($row->id);
-		return $row->id;	
 	}
 
 	function updateCode($id)
