@@ -11,7 +11,5 @@ class TableImages extends JTable{
 	
 	function __construct(&$db){
 		parent::__construct('#__w_images', 'id', $db);
-	}
-	
+	}	
 }
-?>

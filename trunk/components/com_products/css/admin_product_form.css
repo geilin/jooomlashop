@@ -1,14 +1,13 @@
 #upload{
-	padding:15px;
+	padding:15px 10px 15px 25px;
 	font-weight:bold; font-size:1.3em;
 	font-family:Arial, Helvetica, sans-serif;
 	text-align:center;
-	background:#f2f2f2;
 	color:#3366cc;
 	border:1px solid #ccc;
-	width:150px;
-	cursor:pointer;
+	width:100px;
 	-moz-border-radius:5px; -webkit-border-radius:5px;
+	background: #f2f2f2 url(images/add_image.png) no-repeat 5px center; 
 }
 .darkbg{
 	background:#ddd !important;
@@ -35,12 +34,12 @@ ul#files li img{ max-width:180px; max-height:150px; }
 .image_controls a { display: inline-block;  }
 
 #image_list li.hover .image_controls{ display: block; }
-span.button { display: block; height:32px; width:32px; background: transparent url(images/ui-icons_cd0a0a_256x240.png) no-repeat top left;}
+span.button { display: block; height:32px; width:32px; background: transparent url(images/ui-icons_cd0a0a_256x240.png) no-repeat top left; cursor:pointer;}
 span.button_delete { background: transparent url(images/delete.gif) no-repeat center center; }
-span.button_default_image { background:  transparent url(images/tick_gray.png) no-repeat center center; }
-span.button_zoom { background:  transparent url(images/zoom.png) no-repeat center center; }
+span.button_default_image { background:  transparent url(images/tick_gray.gif) no-repeat center center; }
+span.button_zoom { background:  transparent url(images/zoom.gif) no-repeat center center; }
 .image_controls a:hover span.button_delete {background: transparent url(images/delete_on.gif) no-repeat center center;}
-.image_controls a:hover span.button_default_image {background: transparent url(images/tick.png) no-repeat center center;}
-.image_controls a:hover span.button_zoom {background: transparent url(images/zoom_on.png) no-repeat center center;}
+.image_controls a:hover span.button_default_image {background: transparent url(images/tick.gif) no-repeat center center;}
+.image_controls a:hover span.button_zoom {background: transparent url(images/zoom_on.gif) no-repeat center center;}
 
-.image_controls a span.default_image_checked {background: transparent url(images/tick.png) no-repeat center center;}
+.image_controls a span.default_image_checked {background: transparent url(images/tick.gif) no-repeat center center;}

@@ -103,8 +103,7 @@ class ModelProductDetail extends JModel
 	}
 	function getImageDefaultRelative($id){
 		$imagesDefault = '';
-
-			$query = "SELECT filename FROM #__w_images WHERE proid=" .(int)$id . " AND published =1 AND isdefault =1";
+			$query = "SELECT filename FROM #__w_images WHERE proid=" .(int)$id . " AND published =1 AND isdefault =1 LIMIT 1";
 			$this->_db->setQuery($query);			
 			$imagesDefault = $this->_db->loadObject();
 
