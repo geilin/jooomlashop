@@ -16,42 +16,28 @@ class ProductViewCategory extends JView
 	{
 		global $option, $mainframe;
 		
-		// config 
-		//$params =& $mainframe->getPageParameters('com_products');
-		$params = &JComponentHelper::getParams( 'com_products' );
+		// config
+		$params = &JComponentHelper::getParams('com_products');
+		$limit = $params->get('limitPage', 16);	
 
-		if((int)$params->get('limitPage','')){
-			$limit = (int)$params->get('limitPage','');
-		}else{
-			$limit = 15;
-		}
-
-		$layout = JRequest::getVar('layout', 'default');	
-		if ($layout == 'default'){
-			//$limit = $params->get('limit1', 2);
-		} else {
-			//$limit = $params->get('limit2', 2);
-		}
+		$layout = JRequest::getVar('layout', 'default');		
+		
 		$limitstart = JRequest::getVar('limitstart', 0);
-		$mid = JRequest::getInt('mid', 0);
-		$catid = JRequest::getVar('catid', '');
-		$getSize = JRequest::getInt('size', 0);
-		$wsize = '&size=0';
-		if (!empty($getSize)){
-						$wsize = '&size='. $getSize;
-		}
-		$wmid = '&mid=0';
-		if (!empty($mid)){
-						$wmid = '&mid='. $mid;
-		}
+		
+		$mid 		= JRequest::getInt('mid', 0);
+		$catid 		= JRequest::getVar('catid', '');
+		$getSize 	= JRequest::getInt('size', 0);
+		
 		// get model
 		$model = &$this->getModel();
 		
 		
-		$listProduct = $model->getListProduct($limit, $limitstart);
-		$info = $model->getInfo();
-		$total = $model->getTotal();
-		$catName = $model->getCatName();
+		$listProduct 	= $model->getListProduct($limit, $limitstart);
+		$info 			= $model->getInfo();
+		$total 			= $model->getTotal();
+		
+		$catName 		=  ($catid > 0) ? $model->getCatName() : JText::_('Sản phẩm');
+		
 
 		
 		$pagination = new JPagination($total, $limitstart, $limit);
@@ -64,11 +50,8 @@ class ProductViewCategory extends JView
 			$row =& $listProduct[$i];
 			$title = JFilterOutput::stringURLSafe($row->name);
 			$title = str_replace(' ', '-', strtolower($title));
-			$row->link = JRoute::_('index.php?option=' . $option .
-			'&view=detail&id=' . $row->id.':'.$title);			
-			$row->rating = $model->getRating($row->id);
-		}
-		
+			$row->link = JRoute::_('index.php?option=' . $option . '&view=detail&id=' . $row->id.':'.$title);			
+		}	
 		
 		// SEO title
 		$doc =& JFactory::getDocument();
@@ -80,7 +63,7 @@ class ProductViewCategory extends JView
 			}
 		}
 		$doc->setTitle($titleSEO);
-		$doc->setDescription('Các Sản phẩm '. $catName .' tại TTShop.com - SHOP DT');
+		$doc->setDescription('Các Sản phẩm '. $catName .' tại nissiaudio.com');
 		
 		$text_price = $params->get('text_price', 'Sắp có hàng');
 		// REF Ass
@@ -92,11 +75,6 @@ class ProductViewCategory extends JView
 		$this->assignRef('catid', $catid);
 		$this->assignRef('pagination', $pagination);
 		parent::display($tpl);
-	}
-	
-	function checkImage($proid){
-		$model = &$this->getModel();
-		return $model->getImageDefault($proid);		
 	}
 	
 }

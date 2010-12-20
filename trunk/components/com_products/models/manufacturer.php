@@ -1,23 +1,14 @@
 <?php
-/**
-* @version		1.0  - 	Joomla 1.5.x
-* @package	Component Com Products
-* @copyright	Wampvn Group
-* @license		GNU/GPL
-* @website          http://wampvn.com
-* @description    model category.
-*/
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.model' );
-JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_products'.DS.'tables');	
 
 class ModelProductManufacturer extends JModel
 {
-	var $_product_m = null;
-	var $_info = null;
-	var $_cid = null;
-	var $_total = null;
+	var $_product_m 	= null;
+	var $_info 			= null;
+	var $_cid 			= null;
+	var $_total 		= null;
 	var $_imagesDefault =null;
 	
 	function __construct()
@@ -33,13 +24,13 @@ class ModelProductManufacturer extends JModel
 		
 		if (!$this->_product_m){
 			$db =& JFactory::getDBO();				
-			$query = "SELECT p.id, p.intro, p.saleprice, p.currency, p.catid, p.name, p.thumbnail, p.hits, p.monitorsize, m.name as manufacture  
-					FROM #__w_products as p
-					LEFT JOIN #__w_manufacturers as m ON m.id=p.manufacturerid 
-					WHERE p.published = 1 ";
+			$query = 'SELECT p.id, p.saleprice, p.currency, p.catid, p.name, i.filename' 
+					.' FROM #__w_products AS p'
+					.' LEFT JOIN #__w_images AS i ON p.image = i.id'				
+					.' WHERE p.published = 1';
 		
-			if (!empty($this->_mid)){
-				$query .= ' and p.manufacturerid = '. $this->_mid;				
+			if ($this->_mid > 0){
+				$query .= ' AND p.manufacturerid = '. $this->_mid;				
 			}			
 			$query .= " ORDER BY p.frontpage DESC, p.id DESC ";
 			$db->setQuery( $query, $limitstart, $limit);
@@ -49,42 +40,28 @@ class ModelProductManufacturer extends JModel
 	}	
 	
 	
-	function getImageDefault($proid){
-		$this->_imagesDefault = '';
-		if(!$this->_imagesDefault){
-			$query = "SELECT filename FROM #__w_images WHERE proid=" .(int)$proid . " AND published =1 AND isdefault =1";
 	
-			$this->_db->setQuery($query);			
-			$this->_imagesDefault = $this->_db->loadObject();
-		}
-		return $this->_imagesDefault;
-	}
-	
-	
-	
-	
-	function getCatName()
+	function getManufactureName()
 	{
-			$db =& JFactory::getDBO();				
-			$query = "SELECT name 
-			FROM #__w_categories			
-			WHERE published = 1 ";
-			if ($this->_cid > 0){
-				$query .= ' and id = '.$this->_cid;
-			}
-			$db->setQuery( $query);
-			return $db->loadResult();		
+		$db =& JFactory::getDBO();				
+		$query = 'SELECT name  FROM #__w_manufacturers'			
+				.' WHERE published = 1';
+		if ($this->_mid > 0){
+			$query .= ' AND id = ' . $this->_mid;
+		}			
+		$query .= ' LIMIT 1';			
+		$db->setQuery( $query);
+		return $db->loadResult();		
 	}
 	
 	
 	function getTotal()
 	{
 		$db =& JFactory::getDBO();
-		$query = 'SELECT count(id) FROM #__w_products WHERE published = 1';
-			
-			if (!empty($this->_mid)){
-				$query .= ' and manufacturerid = '. $this->_mid;				
-			}	
+		$query = 'SELECT COUNT(id) FROM #__w_products WHERE published = 1';			
+		if ($this->_mid > 0){
+			$query .= ' AND manufacturerid = '. $this->_mid;				
+		}	
 		$db->setQuery( $query );
 		return $db->loadResult();
 	}
@@ -102,5 +79,4 @@ class ModelProductManufacturer extends JModel
 	}
 	
 }
-
 // end file

@@ -11,11 +11,7 @@
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 $tmpl_path = JURI::base().'templates/bbsaigon/';
 
-/*
-echo "<pre>";
-print_r($this);
-echo "</pre>";
-*/
+
 
 
 ?>
