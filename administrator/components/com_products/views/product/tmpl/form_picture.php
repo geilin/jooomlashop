@@ -29,9 +29,8 @@
 			onComplete: function(file, response){
 				status.text(''); //clear the status				
 				if( response.error === false ){
-					var html = generateHTML(response);
-					jQuery('#image_list').append(html);
-					
+					var html = generateHTML(response);					
+					jQuery('#image_list').prepend(html);					
 					reInitModalBox();									
 					if ( response.pid == 0 ) {
 						jQuery('<input type="hidden" name="images[]" value="'+response.fid+'" />').appendTo('#product_images');
