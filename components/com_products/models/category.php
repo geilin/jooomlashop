@@ -10,7 +10,6 @@
 
 defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.model' );
-JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_products'.DS.'tables');	
 
 class ModelProductCategory extends JModel
 {
@@ -29,15 +28,16 @@ class ModelProductCategory extends JModel
 		$this->_mid = JRequest::getVar('mid', '');
 		
 	}
+	
 	function getListProduct($limit, $limitstart = 0)	{
 		
 		if (!$this->_product)
 		{
 			$db =& JFactory::getDBO();				
-			$query = "SELECT p.id, p.intro, p.saleprice, p.currency, p.catid, p.name, p.thumbnail, p.hits, p.monitorsize 
-					FROM #__w_products as p
-					
-					WHERE p.published = 1 ";
+			$query = 'SELECT p.id, p.saleprice, p.currency, p.catid, p.name , i.filename' 
+					.' FROM #__w_products AS p'
+					.' LEFT JOIN #__w_images AS i ON p.image = i.id'
+					.' WHERE p.published = 1';
 			if ($this->_cid > 0){
 				$cats  = $this->getChildCat($this->_cid);
 				$list = $this->_cid;
@@ -48,27 +48,19 @@ class ModelProductCategory extends JModel
 						}
 					}
 				}
-				$query .= ' and p.catid IN ('.$list.')';
-			}
-			
+				$query .= ' AND p.catid IN ('.$list.')';
+			}	
 		
-			// search for size or manufacturer
-			if (!empty($this->_size)){
-				$query .= ' and LOWER(p.monitorsize) = '. $this->_size;				
-			}
-			if (!empty($this->_mid)){
-				$query .= ' and p.manufacturerid = '. $this->_mid;				
+			// search for manufacturer
+			if ($this->_mid > 0){
+				$query .= ' AND p.manufacturerid = '. $this->_mid;				
 			}			
-			$query .= " ORDER BY p.frontpage DESC, p.id DESC ";
+			$query .= ' ORDER BY p.frontpage DESC, p.id DESC';
 			
 			
 			$db->setQuery( $query, $limitstart, $limit);
 			$this->_product = $db->loadObjectList();
-		}
-		
-		
-		
-		
+		}	
 		return $this->_product;
 	}	
 	
@@ -89,38 +81,23 @@ class ModelProductCategory extends JModel
 			}
 
 			$db->setQuery( $query);
-			$this->_info = $db->loadObjectList();
-			
-		
-			
-			
+			$this->_info = $db->loadObjectList();			
 			
 		}
 		return $this->_info;	
 	}
 	
-	function getImageDefault($proid){
-            $this->_imagesDefault = null;		
-			$query = "SELECT filename FROM #__w_images WHERE proid=" .(int)$proid . " AND published =1 AND isdefault =1 LIMIT 1";	
-			$this->_db->setQuery($query);          
-			$this->_imagesDefault->filename = $this->_db->GetOne($query);
-            return $this->_imagesDefault->filename;		
-	}
-	
-	
-	
-	
 	function getCatName()
 	{
-			$db =& JFactory::getDBO();				
-			$query = "SELECT name 
-			FROM #__w_categories			
-			WHERE published = 1 ";
-			if ($this->_cid > 0){
-				$query .= ' and id = '.$this->_cid;
-			}
-			$db->setQuery( $query);
-			return $db->loadResult();		
+		$db =& JFactory::getDBO();				
+		$query = "SELECT name 
+		FROM #__w_categories			
+		WHERE published = 1 ";
+		if ($this->_cid > 0){
+			$query .= ' and id = '.$this->_cid;
+		}
+		$db->setQuery( $query);
+		return $db->loadResult();		
 	}
 	
 	
@@ -143,7 +120,7 @@ class ModelProductCategory extends JModel
 	function getTotal()
 	{
 		$db =& JFactory::getDBO();
-		$query = 'SELECT count(id) FROM #__w_products WHERE published = 1';
+		$query = 'SELECT COUNT(id) FROM #__w_products WHERE published = 1';
 			if (!empty($this->_cid)){
 				if ($this->_cid > 0){
 					$cats  = $this->getChildCat($this->_cid);
@@ -180,34 +157,13 @@ class ModelProductCategory extends JModel
 		}
 	}
 	
-	function getRating($productid){
-	/*
-		$db =& JFactory::getDBO();			
-		$where = ' productid = '. $productid;		
-		$query = "SELECT COUNT(rating) as count, SUM(rating) as total 
-			FROM #__w_comments	
-			WHERE published and $where	
-			GROUP BY productid ";
-		$db->setQuery($query);
-		$row = $db->loadObject();
-
-		if ($row->count){
-			return round($row->total/$row->count,1);
-		} else {
-			return 0;
-		}
-		*/
-	}
-	
 	function getChildCat($cid)
 	{
 			$db =& JFactory::getDBO();				
-			$query = "SELECT id " 
-					. " FROM #__w_categories "			
-					. " WHERE published = 1 and parentid = $cid ";
+			$query = 'SELECT id FROM #__w_categories'			
+					. ' WHERE published = 1 and parentid = ' . $cid;
 			$db->setQuery( $query);
 			return $db->loadObjectList();		
 	}
 }
-
 // end file
