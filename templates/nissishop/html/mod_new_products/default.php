@@ -1,12 +1,4 @@
 <?php
-/**
-* @version		1.0  - 	Joomla 1.5.x
-* @package		Module Cat Menu Products
-* @copyright	Wampvn Group
-* @license		GNU/GPL
-* @website          http://wampvn.com
-* @description    tpl.
-*/
 defined('_JEXEC') or die('Restricted access');
 global $option;
 ?>
@@ -16,7 +8,7 @@ global $option;
             <!-- centering -->
             <div class="product_image_container">
                 <a href="<?php echo $product->link;?>"><?php 
-                        $filename 	= modNewProductsHelper::getImageDefault($product->id);
+                        $filename 	= $product->filename;
                         $thumb_path = 'images/products/thumbs/'. $filename ;
                         $thumb_path = ($filename && file_exists($thumb_path))?
                         $thumb_path : 'components/com_products/images/noimage.jpg';

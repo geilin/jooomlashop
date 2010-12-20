@@ -1,7 +1,6 @@
 <?php
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 ?>
-
 <!-- component_header -->
 <div id="component_header">
     <div class="component_title">       
@@ -16,8 +15,8 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	
     <!-- product_main_image -->
 	<div id="product_main_image">
-    <?php if (isset($this->imgDefault->filename) && file_exists('images/products/thumbs/'.$this->imgDefault->filename)): ?>        
-            <img src="<?php echo JURI::base(); ?>images/products/thumbs/<?php echo $this->imgDefault->filename; ?>" alt="<?php echo $this->product->name; ?>"  align="left" />  
+    <?php if (isset($this->product->filename) && file_exists('images/products/thumbs/'.$this->product->filename)): ?>        
+            <img src="<?php echo JURI::base(); ?>images/products/thumbs/<?php echo $this->product->filename; ?>" alt="<?php echo $this->product->name; ?>"  align="left" />  
     <?php else: ?>
         <img src='<?php echo JURI::base(); ?>components/com_products/images/noimage.jpg' alt="<?php echo $this->product->name; ?>" align="left" />
     <?php endif; ?>

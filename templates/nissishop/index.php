@@ -40,7 +40,7 @@ $siteName = $tmpTools->sitename();
             <!-- left colum -->
             <div id="left"  class="clearfix">          
                 <?php if ($this->countModules('left')): ?>
-                    <jdoc:include type="modules" name="left" style="missishop" />               
+                    <jdoc:include type="modules" name="left" style="lr" />               
                     <?php endif; ?>
             </div>
             <!-- /left colum -->
@@ -70,7 +70,7 @@ $siteName = $tmpTools->sitename();
             <!-- right -->
             <?php if ($hasRight): ?>
             <div id="right"  class="clearfix">
-                <jdoc:include type="modules" name="right" style="missishop" />
+                <jdoc:include type="modules" name="right" style="lr" />
             </div>
             <?php endif; ?>
             <!-- /right -->

@@ -39,7 +39,7 @@ $catid = JRequest::getInt('catid',0);
             <!-- centering -->
             <div class="product_image_container">
                 <a href="<?php echo $product->link;?>"><?php
-                            $filename = ProductViewCategory::checkImage($product->id);
+                            $filename = $product->filename;
 							$thumb_path = 'images/products/thumbs/'. $filename ;
 							$thumb_path = ($filename && file_exists($thumb_path))?
 								$thumb_path :

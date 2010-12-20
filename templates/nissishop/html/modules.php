@@ -36,3 +36,21 @@ function modChrome_missishop($module, &$params, &$attribs)
 	<?php
 }
 
+function modChrome_lr($module, &$params, &$attribs)
+{ ?>		
+    <div class="nissi_module module<?php echo $params->get('moduleclass_sfx'); ?>" id="module_<?php echo $module->id; ?>">
+        <div class="module_header">
+            <?php if ($module->showtitle != 0) : ?>
+            <h3 class="module_title"><span><?php echo $module->title; ?></span></h3>
+            <?php endif; ?>
+        </div>
+        <div class="module_content clearfix">
+			<div class="module_content_wrapper">
+            <?php echo $module->content; ?>
+			</div>
+        </div>
+        <div class="module_footer"><span></span></div>
+    </div>       
+	<?php
+}
+
