@@ -1,36 +1,19 @@
 <?php
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
-$catid = JRequest::getInt('catid',0);
-
-
-//echo "<pre>";
-//print_r();
-//echo "</pre>";
-
+$mid = JRequest::getInt('mid',0);
 
 ?>
 <!-- component_header -->
 <div id="component_header">
-    <div class="component_title">   
-    
-    <h2>
-    <?php
-    if($this->listProduct[0]->manufacture){
-    	echo $this->listProduct[0]->manufacture;
-    }else if((int)$this->mid <1 || !$this->listProduct[0]->manufacture){
-    	$msg = 'Không tìm thấy sản phẩm';
-		$controller = new JController;
-		$controller->setRedirect('index.php',$msg);
-		$controller->redirect();
-    }
-    ?>
-    </h2>
-    </div>
+    <div class="component_title"><h2><?php echo $this->manufacture;?></h2></div>
 </div>
 <!-- /component_header -->
 <!-- component_content -->
 <div id="component_content" class="clearfix">
-<p id="category_message_count">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm</p>    
+<p id="category_message_count">Có tất cả <b><?php echo $this->total; ?></b> sản phẩm sản xuất bởi 
+<a href="<?php echo JRoute::_('index.php?option=com_products&view=manufacturer&mid='.$mid); ?>" title="<?php echo $this->manufacture;?>">
+	<?php echo $this->manufacture;?>
+</a></p>    
     
 <?php if ($this->listProduct) { ?>
 
@@ -52,7 +35,7 @@ $catid = JRequest::getInt('catid',0);
             <!-- centering -->
             <div class="product_image_container">
                 <a href="<?php echo $product_link;?>"><?php
-                            $filename = ProductViewManufacturer::checkImage($product->id);                            
+                            $filename = $product->filename;                            
 							$thumb_path = 'images/products/thumbs/'. $filename ;
 							$thumb_path = ($filename && file_exists($thumb_path))?
 								$thumb_path :

@@ -63,7 +63,6 @@
 
 #product_images #product_images_wrapper img { padding:5px; border:1px solid #acacac; margin:0 5px; }
 .product_meta_data { line-height: 30px; margin-left: 200px; width:470px; }
-.product_meta_data li { border-bottom: 1px dashed #acacac; }
 .product_meta_data li.last { border-bottom-width:0; }
 .product_meta_data li span.product_meta_lable { font-weight:bold; display:inline-block; width:150px}
 span.product_price { color: red; font-weight: bold;}

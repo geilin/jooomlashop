@@ -1496,17 +1496,17 @@ body {
     width:100%;
 }
 
- .nissi_module .module_content {  
-    
+ .nissi_module .module_content {
     background-color: #FFF;
 }
+.module_content_wrapper { padding:5px; }
+
  .nissi_module ul.menu {    
     list-style: none!important;
 }
  .nissi_module ul.menu li {
     line-height: 30px;
-    padding:0;
-    margin: 0 5px;
+    padding:0;margin: 0;
     border-bottom: 1px dashed #cccccc;   
     border-bottom-width: expression(this.nextSibling==null? 0:'1px');
 }
