@@ -1,12 +1,4 @@
 <?php
-/**
-* @version		1.0  - 	Joomla 1.5.x
-* @package		Component Administrator Com Products
-* @copyright	Wampvn Group
-* @license		GNU/GPL
-* @website          http://wampvn.com
-* @description    view feature.
-*/
 
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 		$editor =& JFactory::getEditor();
