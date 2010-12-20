@@ -504,6 +504,7 @@ class ModelProductProduct extends JModel
 	}
 	
 	function removeAllImage($cid){
+		jimport('joomla.filesystem.file');
 		$db =& JFactory::getDBO();			
 		if (!empty($cid)){
 			$query = "SELECT thumbnail, mediumimage, largeimage1, 
@@ -537,8 +538,10 @@ class ModelProductProduct extends JModel
 			if(count($rows) >0){
 				foreach ($rows as $item){
 					if (!empty($item->filename) and file_exists($this->_path .$item->filename)){
-						@unlink($this->_path .$item->filename);
-						@unlink($this->_path .'thumbs/'.$item->filename);
+						//@unlink($this->_path .$item->filename);
+						//@unlink($this->_path .'thumbs/'.$item->filename);
+						JFile::delete($this->_path .$item->filename);
+						JFile::delete($this->_path .'thumbs/'.$item->filename);
 					}
 				}
 				$del = "DELETE FROM #__w_images WHERE proid = ".(int)$cid ;
