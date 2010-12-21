@@ -33,7 +33,6 @@ class ProductControllerProduct extends ProductController
 		if (!JError::isError( $model )) {
 			$view->setModel( $model, true );
 		}
-				//table ordering
 		
 		$view->setLayout('default');
 		$view->display();
@@ -167,18 +166,7 @@ class ProductControllerProduct extends ProductController
 			else
 			{				
 				echo $db->getErrorMsg();
-				exit();			
-			
-				/*$sql = 'SELECT id FROM #__w_images WHERE proid='.(int)$proid . ' LIMIT 0,1 ';
-				$db->setQuery($sql);
-				$img = $db->loadObject();
-				
-				if((int)$img->id > 0){
-					$setDefault = 'UPDATE #__w_images SET isdefault=1 WHERE id='.(int)$img->id;
-					$db->setQuery($setDefault);
-					$db->query();
-				}*/
-				
+				exit();				
 			}
 		}
 		exit;

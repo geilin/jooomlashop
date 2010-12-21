@@ -39,12 +39,16 @@ class ModelProductProduct extends JModel
 		global $option, $mainframe;
 		
 		$context			= 'com_product.products';
-		$filter_order		= $mainframe->getUserStateFromRequest( $context.'filter_order',		'filter_order',		'p.name',	'cmd' );
+        
+		$filter_order		= $mainframe->getUserStateFromRequest( $context.'filter_order',		'filter_order',		'',	'cmd' );
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $context.'filter_order_Dir',	'filter_order_Dir',	'',	'word' );
+        
+        $limit		= $mainframe->getUserStateFromRequest('global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int');
+		$limitstart	= $mainframe->getUserStateFromRequest($context.'limitstart', 'limitstart', 0, 'int');
 		
 		$where = array();
-		$db =& JFactory::getDBO();		
-		$search				= JString::strtolower($search);
+		$db     =& JFactory::getDBO();		
+		$search = JString::strtolower($search);
 		if ($catid > 0) {
 			$where[] = 'p.catid = ' . (int) $catid;				
 		}
@@ -60,18 +64,18 @@ class ModelProductProduct extends JModel
 				' OR p.id = ' . (int) $search .	')';
 		}
 		// Build the where clause of the content record query
-		$where = (count($where) ? ' WHERE '.implode(' AND ', $where) : '');	
-		
+		$where      = (count($where) ? ' WHERE '.implode(' AND ', $where) : '');			
 		$orderby 	= ' ORDER BY '.$filter_order.' '. $filter_order_Dir;
+	
 		
-		$limit = JRequest::getVar('limit',$mainframe->getCfg('list_limit'));
-		
-		$limitstart = JRequest::getVar('limitstart', 0);
-		
-		$query = "SELECT p.discount, p.discount_price,p.stock,p.name,p.thumbnail, p.frontpage, p.id, p.code, p.saleprice, p.intro, p.ordering, p.published, c.name as category FROM #__w_products as p
-				INNER JOIN #__w_categories as c			
-				ON p.catid = c.id ". $where
-				. $orderby;		
+		$query = 'SELECT p.id, p.catid, p.discount, p.discount_price, p.stock'
+                .', p.name, p.hits, p.frontpage, p.code, p.saleprice, p.ordering, p.published'
+                .', c.name AS category, p.manufacturerid, f.name AS manufacturer'
+                .' FROM #__w_products AS p'
+				.' INNER JOIN #__w_categories AS c ON p.catid = c.id'
+                .' LEFT JOIN #__w_manufacturers AS f ON p.manufacturerid = f.id'
+                . $where . $orderby;
+        
 		$db->setQuery( $query, $limitstart, $limit );
 		$rows = $db->loadObjectList();
 		if ($db->getErrorNum()) {
@@ -203,12 +207,12 @@ class ModelProductProduct extends JModel
 		return $db->loadResult();		
 	}
 	
-	function getListDefault($catid = '', $manufacturerid = '')
+	function getListDefault($catid = '', $manufacturerid = '', $frontpage = '')
 	{
 		$lists = array();
 		
 		$catgories =array();
-		getTree(0,$catgories,"");
+		getTree(0, $catgories, '');
 		foreach ($catgories as $result)
 		{		
 			if ($this->_id != $result->id){
@@ -216,13 +220,12 @@ class ModelProductProduct extends JModel
 			}		
 		}
 		array_unshift($cats, JHTML::_('select.option', '0', '- '.JText::_('Chọn danh mục').' -', 'id', 'name'));
-		$lists['catid'] = JHTML::_('select.genericlist',  $cats, 'cid', 'class="inputbox" size="1" onchange="document.adminForm.submit( );"', 'id', 'name', $catid);
+		$lists['catid'] = JHTML::_('select.genericlist',  $cats, 'catid', 'class="inputbox" size="1" onchange="document.adminForm.submit( );"', 'id', 'name', $catid);
 		
 		$manufacturers = $this->getManufacturer();
-		array_unshift($manufacturers, JHTML::_('select.option', '0', '- '.JText::_('Chọn nhà sản xuất').' -', 'id', 'name'));
+		array_unshift($manufacturers, JHTML::_('select.option', '0', '- '.JText::_('Nhà sản xuất').' -', 'id', 'name'));
 		$lists['manufacturerid'] = JHTML::_('select.genericlist',  $manufacturers, 'mid', 'class="inputbox" size="1" onchange="document.adminForm.submit( );"', 'id', 'name', $manufacturerid);	
 	
-		$frontpage				= JRequest::getVar( 'frontpage', '');
 		$frontpages[] = array( 'value' => '', 'text' => 'Tất cả sản phẩm');
 		$frontpages[] = array( 'value' => '1', 'text' => 'Sản phẩm hot');
 		$lists['frontpage'] = JHTML::_('select.genericlist',  $frontpages, 'frontpage', 'class="inputbox" size="1" onchange="document.adminForm.submit( );"', 'value', 'text', $frontpage);		
@@ -245,7 +248,7 @@ class ModelProductProduct extends JModel
 		
 		// get category
 		$catgories =array();
-		getTree(0,$catgories,"");
+		getTree(0, $catgories, '');
 		
 		//echo "<pre>";
 		//print_r($catgories);

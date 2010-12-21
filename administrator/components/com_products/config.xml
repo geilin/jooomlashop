@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<params>
-		<param name="limitPage" type="text" default="15" label="Số sản phẩm hiện trên 1 trang" description="Số sản phẩm hiện trên 1 trang ngoài trang sản phẩm" />
+		<param name="limitPage" type="text" default="15" label="Số sản phẩm trên 1 trang" description="Số sản phẩm hiện trên 1 trang ngoài trang sản phẩm" />
 		<param name="thump_width" type="text" default="90" label="Chiều rộng hình Thump" description="Chiều rộng hình Thump khi upload hình" />
 		<param name="thump_height" type="text" default="90" label="Chiều cao hình Thump" description="Chiều cao hình Thump khi upload hình" />
 	</params>
