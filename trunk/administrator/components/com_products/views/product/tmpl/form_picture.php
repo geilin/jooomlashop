@@ -48,12 +48,14 @@
 	});
 	
 	function delImage(id,filename){
-		
+		var button = jQuery('#image_'+id+' span.button_delete:first').addClass('loading');
 		var urlx = '<?php echo JURI::base()?>index.php?option=com_products&controller=product&task=delImg&format=raw&imgId='+id+'&imgName='+filename;
 		jQuery.ajax({ url: urlx,
 			success: function(date){
-				jQuery('#image_'+id).remove();
-				checkdefautlImage(id);
+				setTimeout(function() {
+					jQuery('#image_'+id).remove();
+					checkdefautlImage(id);
+				}, 1000);
 			}
 		});		
 		return false;
