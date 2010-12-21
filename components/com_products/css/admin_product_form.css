@@ -7,13 +7,17 @@
 	border:1px solid #ccc;
 	width:100px;
 	-moz-border-radius:5px; -webkit-border-radius:5px;
-	background: #f2f2f2 url(images/add_image.png) no-repeat 5px center; 
-}
-.darkbg{
-	background:#ddd !important;
+	background: #f2f2f2 url(images/add_image.png) no-repeat 5px center;
+	display: inline-block;
 }
 #status{
-	font-family:Arial; padding:5px;
+	padding:15px 10px 15px 25px;
+	font-weight:bold; font-size:1.3em;	
+	display: inline-block;
+}
+
+#upload.loading {
+	background: #f2f2f2 url(images/ajax-spinner-med.gif) no-repeat 5px center; 
 }
 ul#files{ list-style:none; padding:0; margin:0; }
 ul#files li{ padding:10px; margin-bottom:2px; width:200px; float:left; margin-right:10px;}
@@ -43,3 +47,7 @@ span.button_zoom { background:  transparent url(images/zoom.gif) no-repeat cente
 .image_controls a:hover span.button_zoom {background: transparent url(images/zoom_on.gif) no-repeat center center;}
 
 .image_controls a span.default_image_checked {background: transparent url(images/tick.gif) no-repeat center center;}
+
+.image_controls a span.loading {background: transparent url(images/spinner.gif) no-repeat center center;}
+
+
