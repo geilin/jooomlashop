@@ -15,32 +15,36 @@ class ProductViewProduct extends JView
 	function display($tpl = null)
 	{
 		global $option, $mainframe;
-		$task = JRequest::getVar( 'task' );			
-		$limit = JRequest::getVar('limit', 10);
-		$limitstart = JRequest::getVar('limitstart', 0);
+		$task = JRequest::getVar( 'task' );		
 		$db = & JFactory::getDBO();
-				//table ordering
-		$context			= 'com_product.products';
-		$filter_order		= $mainframe->getUserStateFromRequest( $context.'filter_order',		'filter_order',		'p.name',	'cmd' );
-		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $context.'filter_order_Dir',	'filter_order_Dir',	'',	'word' );
+		// Initialize variables
+		$context			= 'com_products.products';
+		$filter_order		= $mainframe->getUserStateFromRequest( $context.'filter_order',		'filter_order',		'',	'cmd' );
+		$filter_order_Dir	= $mainframe->getUserStateFromRequest( $context.'filter_order_Dir',	'filter_order_Dir',	'',	'word' );		
+		
+		$limit		= $mainframe->getUserStateFromRequest('global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int');
+		$limitstart	= $mainframe->getUserStateFromRequest($context.'limitstart', 'limitstart', 0, 'int');
+		$frontpage	= $mainframe->getUserStateFromRequest( $context.'frontpage','frontpage', 0,	'int' );
+		$catid		= $mainframe->getUserStateFromRequest( $context.'catid', 'catid', 0, 'int' );
+		$manufacturerid	= $mainframe->getUserStateFromRequest( $context.'mid', 'mid', 0, 'int' );
+		$search			= $mainframe->getUserStateFromRequest( $context.'search', 'search', '', 'string' );
 
 		if ($task == '' or $task == 'product') 
-		{
-			
+		{			
 			JToolBarHelper::title( JText::_( 'QUẢN LÝ SẢN PHẨM' ) );
 
 			JSubMenuHelper::addEntry( JText::_( 'QUẢN LÝ SẢN PHẨM' ), 'index.php?option=com_products',true);
 			JSubMenuHelper::addEntry( JText::_( 'QUẢN LÝ DANH MỤC' ), 'index.php?option=com_products&controller=category');
 			JSubMenuHelper::addEntry( JText::_( 'QUẢN LÝ NHÀ SẢN XUẤT' ), 'index.php?option=com_products&controller=manufacturer');
 			
-			$catid				= JRequest::getVar( 'cid', 0);
-			$manufacturerid		= JRequest::getVar( 'mid', 0);
-			$frontpage			= JRequest::getVar( 'frontpage', 0);
-			$search				= JRequest::getVar( 'search', '');
-			$model = &$this->getModel();
-			$products = $model->getProducts($catid, $manufacturerid, $frontpage, $search);
-			$total = $model->getTotal($catid, $manufacturerid, $frontpage, $search);
-			$lists = $model->getListDefault($catid, $manufacturerid);
+			$model 		= &$this->getModel();
+            
+			$products 	= $model->getProducts($catid, $manufacturerid, $frontpage, $search);
+			
+			$total 		= $model->getTotal($catid, $manufacturerid, $frontpage, $search);
+			
+			$lists 		= $model->getListDefault($catid, $manufacturerid, $frontpage);               
+            
 			// table ordering
 			$lists['order_Dir']	= $filter_order_Dir;
 			$lists['order']		= $filter_order;

@@ -9,7 +9,7 @@
 <script type="text/javascript" >
 	var upload_url = '<?php echo JURI::root()?>images/products/';
 	jQuery(function(){
-		var productImage = jQuery('#image').val();
+		var productImage = '<?php echo $this->product->image; ?>';
 		var btnUpload 	= jQuery('#upload');
 		var status 		= jQuery('#status');
 		new AjaxUpload(btnUpload, {			
@@ -34,7 +34,8 @@
 					jQuery('#image_list').prepend(html);					
 					reInitModalBox();
 					if ( productImage == '' ) {						
-						productDefaultImage(response.fid);					
+						productDefaultImage(response.fid);
+						productImage = response.fid;
 					}
 					if ( response.pid == 0 ) {
 						jQuery('<input type="hidden" name="images[]" value="'+response.fid+'" />').appendTo('#product_images');
@@ -46,8 +47,7 @@
 		});
 		//jQuery('.product_image').hover (function(e) { jQuery(this).addClass('hover'); }, function(e) { jQuery(this).removeClass('hover'); });
 		jQuery('#image_<?php echo $this->product->image; ?> span.button_default_image:first').addClass('default_image_checked');
-		
-		
+				
 	});
 	
 	function delImage(id,filename){
@@ -99,7 +99,6 @@
 				jQuery('#image').val(newid);
 				var span = li.find('span.button_default_image:first');
 				span.addClass('default_image_checked');
-				//alert(newid);
 			}
 			else 
 			{
@@ -136,6 +135,5 @@
 				}	
 			}
 			?>
-		</ul>
-		
+		</ul>		
 	</div>
