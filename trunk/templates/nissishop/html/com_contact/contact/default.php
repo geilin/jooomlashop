@@ -54,8 +54,12 @@ $cparams = JComponentHelper::getParams ('com_media');
 		<tr>
 		<td></td>
 		<td rowspan="2" align="right" valign="top">
+		<?php echo JHTML::_('image', 'images/contact/map.jpg', JText::_( 'Địa chỉ Nissi Audio' ), array('align' => 'right')); ?>
+		
 		<?php if ( $this->contact->image && $this->contact->params->get( 'show_image' ) ) : ?>
 		<div style="float: right;">
+		
+		
 		<?php echo JHTML::_('image', 'images/stories' . '/'.$this->contact->image, JText::_( 'Contact' ), array('align' => 'middle')); ?>
 		</div>
 		<?php endif; ?>
@@ -83,6 +87,11 @@ $cparams = JComponentHelper::getParams ('com_media');
 		echo $this->loadTemplate('form');
 		?>
 		</table>
+		
+		
+		
+		
+		
     </div>    
 </div><!-- /component_content -->
 <div id="component_footer"><span></span></div>
