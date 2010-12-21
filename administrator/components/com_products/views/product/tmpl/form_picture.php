@@ -5,9 +5,7 @@
 	global $option;		
 ?>
 <script type="text/javascript" src="<?php echo JURI::root()?>components/com_products/js/ajaxupload.3.5.js"></script>
-<link rel="stylesheet" href="<?php echo JURI::root()?>components/com_products/css/admin_product_form.css" type="text/css" />	
-
-
+<link rel="stylesheet" href="<?php echo JURI::root()?>components/com_products/css/admin_product_form.css" type="text/css" />
 <script type="text/javascript" >
 	var upload_url = '<?php echo JURI::root()?>images/products/';
 	jQuery(function(){		
@@ -22,12 +20,14 @@
 					status.text('Only JPG, PNG or GIF files are allowed');
 					return false;
 				}
+				btnUpload.addClass('loading');
 				status.text('Uploading...');
 			},
 			data: {'pid': '<?php echo $this->product->id; ?>'},
 			responseType: 'json',
-			onComplete: function(file, response){
-				status.text(''); //clear the status				
+			onComplete: function(file, response){				
+				btnUpload.removeClass('loading');
+				status.text('');
 				if( response.error === false ){
 					var html = generateHTML(response);					
 					jQuery('#image_list').prepend(html);					
@@ -102,16 +102,14 @@
 			}
 		}
 		//do nothing
-	}
-	
+	}	
 	
 </script>
 
 	<div id="upload_area">		
-		<div id="upload" ><span>Thêm hình</span></div><span id="status" ></span>
-	
+		<span id="upload"><span>Thêm hình</span></span><span id="status"></span>
+		<div class="clr"></div>
 	</div>
-
 	<div id="product_images">
 		<ul id="image_list">
 			<?php 
