@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="<?php echo JURI::root()?>components/com_products/css/admin_product_form.css" type="text/css" />
 <script type="text/javascript" >
 	var upload_url = '<?php echo JURI::root()?>images/products/';
-	jQuery(function(){		
+	jQuery(function(){
+		var productImage = jQuery('#image').val();
 		var btnUpload 	= jQuery('#upload');
 		var status 		= jQuery('#status');
 		new AjaxUpload(btnUpload, {			
@@ -31,13 +32,15 @@
 				if( response.error === false ){
 					var html = generateHTML(response);					
 					jQuery('#image_list').prepend(html);					
-					reInitModalBox();									
+					reInitModalBox();
+					if ( productImage == '' ) {						
+						productDefaultImage(response.fid);					
+					}
 					if ( response.pid == 0 ) {
 						jQuery('<input type="hidden" name="images[]" value="'+response.fid+'" />').appendTo('#product_images');
 					}
 				} else{
-					alert(response.message);
-					jQuery('<li></li>').appendTo('#image_list').text(response.file).addClass('error');
+					jQuery('#status').text(response.message);
 				}
 			}
 		});
