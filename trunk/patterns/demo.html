@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Colorbox Demo</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+
+<style type="text/css" media="all">
+* { padding:0; margin:0; }
+body { height:1000px; }
+img { border:none; }
+
+</style>
+<style type="text/css" media="all">@import "colorbox.css";</style>
+
+
+<script type="text/javascript" src="colorbox.js"></script>
+
+<script type="text/javascript">
+	function initColorBox(){
+		$(".colorbox").colorbox({ maxWidth: "80%", maxHeight: "80%", current: "Ảnh {current} / {total}" });
+		$(".colorbox_iframe").colorbox({ iframe: true, width: "650px", height: "500px", overlayClose: false });
+		$(".colorbox_iframe_baokim").colorbox({ iframe: true, width: "735px", height: "500px", overlayClose: false });
+		$(".colorbox_iframe_upload").colorbox({ iframe: true, width: "800px", height: "545px" });
+	}
+	
+	jQuery(function($) {
+		initColorBox();
+	
+	});
+
+</script>
+</head>
+<body>
+
+<a rel="colorbox" target="_blank" href="http://vatgia.com/pictures_fullsize/zdv1269925176.jpg" class="colorbox tooltip_picture cboxElement">
+<img src="http://vatgia.com/pictures_medium/small_zdv1269925176.jpg" alt="Honda PCX 125 2010">
+</a>
+
+<a rel="colorbox" target="_blank" href="http://vatgia.com/pictures_fullsize/zdv1269925176.jpg" class="colorbox tooltip_picture cboxElement">
+<img src="http://vatgia.com/pictures_medium/small_zdv1269925176.jpg" alt="Honda PCX 125 2010">
+</a>
+<a rel="colorbox" target="_blank" href="http://vatgia.com/pictures_fullsize/zdv1269925176.jpg" class="colorbox tooltip_picture cboxElement">
+<img src="http://vatgia.com/pictures_medium/small_zdv1269925176.jpg" alt="Honda PCX 125 2010">
+</a>
+</body>
+</html>

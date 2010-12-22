@@ -1,0 +1,264 @@
+.zoombox img{
+	-ms-interpolation-mode:bicubic; 
+}
+.zoombox{
+	position: absolute;
+	z-index: 9999;
+	background: url(transparent.gif) 0 0 repeat;
+	top: 0;
+	left: -9000px;
+	margin-top: -20px;
+}
+.zoombox .close{
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	top:5px;
+	left: 5px;
+	background: url(close.png) 0 0 no-repeat;
+	cursor: pointer;
+	border: 0;
+}
+.zoombox .deco{
+	position: absolute;
+	display: block;
+	line-height: 0px;
+	font-size: 0px;
+}
+.zoombox .s1{
+	width: 20px;
+	height: 20px;
+	background: transparent url(s_ul.png) 0 0 no-repeat;
+	left: 0;
+	tpo:0;
+}
+.zoombox .s2{
+	height: 20px;
+	background: transparent url(s_top.png) 0 0 repeat-x;	
+	left: 20px;
+	top: 0;
+	right: 20px;	
+}
+* html .zoombox .s2{
+	right: auto;
+	width:expression(this.parentNode.clientWidth-40);	
+}
+.zoombox .s3{
+	width: 20px;
+	height: 20px;
+	top: 0;
+	right: 0;	
+	background: transparent url(s_ur.png) 0 0 no-repeat;	
+}
+
+.zoombox .s4{
+	left: 0;
+	top: 20px;
+	bottom: 20px;
+	width: 20px;
+	background: transparent url(s_left.png) 0 0 repeat-y;		
+}
+* html .zoombox .s4{
+	height:expression(this.parentNode.clientHeight-40);	
+	bottom: auto;
+}
+.zoombox .s5{
+	right: 0;
+	top: 20px;
+	bottom: 20px;
+	width: 20px;
+	background: transparent url(s_right.png) 0 0 repeat-y;		
+}
+* html .zoombox .s5{
+	height:expression(this.parentNode.clientHeight-40);	
+	bottom: auto;
+}
+
+.zoombox .s6{
+	width: 20px;
+	height: 20px;
+	background: transparent url(s_bl.png) 0 0 no-repeat;
+	left: 0;
+	bottom:0;
+}
+.zoombox .s7{
+	height: 20px;
+	background: transparent url(s_bottom.png) 0 0 repeat-x;	
+	left: 20px;
+	bottom: 0;
+	right: 20px;
+}
+* html .zoombox .s7{
+	right: auto;
+	width:expression(this.parentNode.clientWidth-40);	
+}
+
+.zoombox .s8{
+	width: 20px;
+	height: 20px;
+	bottom: 0;
+	right: 0;	
+	background: transparent url(s_br.png) 0 0 no-repeat;	
+}
+.zoombox .s9{
+	top: 20px;
+	left: 20px;
+	height: 1px;
+	right: 20px;
+	background: white;
+	opacity: 0.1;
+	-moz-opacity:0.1;
+}
+.zoombox .s10{
+	top: 20px;
+	left: 20px;
+	width: 1px;
+	bottom: 20px;
+	background: white;
+	opacity: 0.1;
+	-moz-opacity:0.1;
+}
+.zoombox .s11{
+	bottom: 20px;
+	left: 20px;
+	height: 1px;
+	right: 20px;
+	background: black;
+	opacity: 0.2;
+	-moz-opacity:0.2;
+}
+.zoombox .s12{
+	top: 20px;
+	bottom: 20px;
+	width: 1px;
+	right: 20px;
+	background: black;
+	opacity: 0.2;
+	-moz-opacity:0.2;
+}
+* html .zoombox .s9,
+* html .zoombox .s10,
+* html .zoombox .s11,
+* html .zoombox .s12{
+	display:none;
+}
+* + html .zoombox .s9,
+* + html .zoombox .s10,
+* + html .zoombox .s11,
+* + html .zoombox .s12{
+	display:none;
+}
+.zoombox .caption{
+	font-family: "Lucida Grande", Geneva, Arial, Verdana, sans-serif;
+	color: white;
+	font-size: 12px;
+	font-weight: bold;
+	position: absolute;
+	bottom: -30px;
+	margin-left: 0;
+	height: 36px;
+	white-space: nowrap;
+	color: white;
+}
+.zoombox .caption table{
+	height: 36px;
+	padding: 0;
+}
+.zoombox .caption .left{
+	width: 16px;
+	padding-left: 16px;
+	background: url(title_left.png) right 0 no-repeat;
+}
+.zoombox .caption .text{
+	background: url(title_bg.png) 0 0 repeat-x;
+}
+.zoombox .caption .right{
+	width: 16px;
+	padding-left: 16px;
+	background: url(title_right.png) left 0 no-repeat;
+} 
+* html .zoombox .caption .right,
+* html .zoombox .caption .left{
+	padding: 0;
+}
+.zoombox .caption a{
+	color: #00FFFF;
+	text-decoration: none;
+}
+#zoomBoxContent{
+	margin-top: -20px;
+}
+#zoomBoxLoadPod{
+	position: absolute;
+	z-index: 9999;
+	top: 0;
+	left: -9000px;
+}
+#zoomBoxLoadPod .normal{
+	width: 50px;
+	height: 50px;
+	position: relative;
+	background: url(load_pod.png) 0 0 no-repeat;
+	overflow: hidden;
+}
+#zoomBoxLoadPod .thumb{
+	width: 22px;
+	height: 22px;
+	background: url(load_pod_thumb.png) 0 0 no-repeat;
+}
+#zoomBoxLoadPod.thumb{
+	margin: -11px 0 0 -11px;	
+}
+#zoomBoxLoadPod.normal{
+	margin: -25px 0 0 -25px;	
+}
+#zoomBoxLoadPod .thumb,
+#zoomBoxLoadPod.thumb .normal{
+	display: none;
+}
+#zoomBoxLoadPod.thumb .thumb{
+	display: block;
+}
+#zoomBoxLoadPod .normal div{
+	width: 50px;
+	height: 50px;
+	background:url(loading.gif) 0 0 no-repeat;
+}
+#zoomBoxLoadPod .thumb div{
+	width: 22px;
+	height: 22px;
+	background: url(thumb_loading.gif) center center no-repeat;
+}
+#zoomBoxLoadPod.error .thumb div{
+	width: 22px;
+	height: 22px;	
+	background: url(thumb_alert.gif) 0 0 no-repeat !important;	
+}
+#zoomBoxLoadPod.error .normal div{
+	background: url(alert.gif) 0 0 no-repeat !important;	
+}
+
+* html .zoombox .close,
+* html .zoombox .deco,
+* html .zoombox .caption *,
+* html #zoomBoxLoadPod .normal,
+* html #zoomBoxLoadPod .thumb{
+	behavior: expression(
+		(
+		this.origBg = this.origBg? 
+			this.origBg 
+			: 
+			this.currentStyle.backgroundImage.toString().replace('url("','').replace('")','')
+		),	
+		(
+			this.origBg.toLowerCase().indexOf('.png')>-1?
+			(this.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + this.origBg + "', sizingMethod='scale')",
+			this.runtimeStyle.backgroundImage = "none")
+			:
+			null
+		)
+		,
+		this.style.behavior='none', 
+		this.runtimeStyle.behavior='none'
+	);
+}
