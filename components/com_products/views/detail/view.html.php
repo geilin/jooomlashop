@@ -32,7 +32,7 @@ class ProductViewDetail extends JView
 		$document->addScript('components/com_products/js/jquery-1.3.2.js');
 		$document->addScript('components/com_products/js/colorbox/jquery.colorbox.js');
 		$document->addStyleSheet('components/com_products/js/colorbox/colorbox.css');        
-		$document->addScriptDeclaration('if($===jQuery){jQuery.noConflict();} jQuery(document).ready(function(){ jQuery("a[rel=\'product_image\']").colorbox(); });');
+		$document->addScriptDeclaration('if($===jQuery){jQuery.noConflict();} jQuery(document).ready(function(){ jQuery("a[rel=\'product_image\']").colorbox({current: "Ảnh {current} / {total}"}); });');
 
 		$titleSEO = '';		
 		if ($product->name) {

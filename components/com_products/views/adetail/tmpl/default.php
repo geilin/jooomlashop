@@ -1,13 +1,4 @@
 <?php 
-/**
-* @version		1.0  - 	Joomla 1.5.x
-* @package		Component Com Products
-* @copyright	Wampvn Group
-* @license		GNU/GPL
-* @website          http://wampvn.com
-* @description    tpl accessory detail.
-*/
-
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 $tmpl_path = JURI::base().'templates/bbsaigon/';
 ?>
@@ -15,20 +6,17 @@ $tmpl_path = JURI::base().'templates/bbsaigon/';
 <script src="<?php echo $tmpl_path; ?>js/jquery.zoombox-min.js" type="text/javascript"></script>
 <!-- javascript for tab -->
 		<script type="text/javascript" charset="utf-8">
-				jQuery(function () {
-			             var tabContainers = jQuery('div.tabs > div');
-			             tabContainers.hide().filter(':first').show();
-			             jQuery('div.tabs ul.tabNavigation span').click(function () {
-			                     tabContainers.hide();
-			                     tabContainers.filter(jQuery(this).attr('rel')).show();
-			                     jQuery('div.tabs ul.tabNavigation span').removeClass('selected');
-			                     jQuery(this).addClass('selected');
-			                     return false;
-			             }).filter(':first').click();
-			     });
-				jQuery(document).ready(function(){
-					jQuery("a[rel='product']").colorbox();
-				});
+			jQuery(function () {
+					 var tabContainers = jQuery('div.tabs > div');
+					 tabContainers.hide().filter(':first').show();
+					 jQuery('div.tabs ul.tabNavigation span').click(function () {
+							 tabContainers.hide();
+							 tabContainers.filter(jQuery(this).attr('rel')).show();
+							 jQuery('div.tabs ul.tabNavigation span').removeClass('selected');
+							 jQuery(this).addClass('selected');
+							 return false;
+					 }).filter(':first').click();
+			 });
         </script>
 <div id="wp_pathway">
 	<table cellspacing="0" cellpadding="0" width="100%">
