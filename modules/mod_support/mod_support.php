@@ -1,5 +1,22 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
+//require helper file
+require_once (dirname(__FILE__).DS.'helper.php');
+
+
+
+
+$yahoos = trim($params->get('yahooID', ''));
+$names 	= trim($params->get('nameYahoo', ''));
+
+$yh_supports = modSupportHelper::proccess_yahoo_support($yahoos, $names);
+
+//echo '<pre>' . print_r($yahoo_support, true). '</pre>'; exit;
+
+require(JModuleHelper::getLayoutPath('mod_support'));
+
+/*
+
 // Yahoo
 $yahooID = trim($params->get('yahooID', ''));
 $nameYahoo = trim($params->get('nameYahoo', ''));
@@ -58,4 +75,4 @@ for($i=0;$i<$count;$i++)
 	}
 }
 
-?>
+?>*/
