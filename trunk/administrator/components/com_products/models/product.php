@@ -64,8 +64,12 @@ class ModelProductProduct extends JModel
 				' OR p.id = ' . (int) $search .	')';
 		}
 		// Build the where clause of the content record query
-		$where      = (count($where) ? ' WHERE '.implode(' AND ', $where) : '');			
-		$orderby 	= ' ORDER BY '.$filter_order.' '. $filter_order_Dir;
+		$where      = (count($where) ? ' WHERE '.implode(' AND ', $where) : '');
+		
+		$orderby 	= '';
+		if ( $filter_order && $filter_order_Dir) {
+			$orderby 	= ' ORDER BY '.$filter_order.' '. $filter_order_Dir;
+		}
 	
 		
 		$query = 'SELECT p.id, p.catid, p.discount, p.discount_price, p.stock'
