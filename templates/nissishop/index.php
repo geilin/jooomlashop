@@ -1,7 +1,11 @@
 <?php
 defined( '_JEXEC' ) or die( 'Restricted access' );
 include_once (dirname(__FILE__).DS.'/ja_vars.php');
-$hasRight = $this->countModules('right');
+
+$mod_right = $this->countModules('right');
+$mod_banner_right = $this->countModules('banner_right');
+
+$hasRight = $mod_right+$mod_banner_right;
 $columClass = ($hasRight > 0) ? 'hasright ': '';
 $siteName = $tmpTools->sitename();
 ?>
@@ -21,9 +25,15 @@ $siteName = $tmpTools->sitename();
     <div id="container">
         <!-- header -->
         <div id="header">
-            <h1 class="logo">
+            <h1 id="logo" class="logo">
                 <a href="index.php" title="<?php echo $siteName; ?>"><span><?php echo $siteName; ?></span></a>
             </h1>
+			<?php if ($this->countModules('banner')): ?>
+                <div id="banner" class="clearfix">	
+					<jdoc:include type="modules" name="banner" style="banner" />
+                </div>
+			<?php endif; ?>
+			
         </div>
         <!-- /header -->
         <!-- navigation -->
@@ -53,12 +63,14 @@ $siteName = $tmpTools->sitename();
                     </div>
                     <?php endif ; ?>
                     <?php if($tmpTools->isFrontPage()) : ?>	
-                    <div id="selloff">
-                        <!-- product selloff -->
-                        <image src="<?php echo $tmpTools->templateurl(); ?>/my_images/selloff.jpg" alt="đang khuyến mãi" style="margin-bottom:10px;" />						
-                        <!-- /product selloff -->
-                        <?php if ($this->countModules('selloff')) : ?>                        
-                        <jdoc:include type="modules" name="selloff"  style="missishop"  />
+                    <div id="front_product">
+						<?php if ($this->countModules('front_banner')) : ?>
+							<!-- product discount -->
+							<jdoc:include type="modules" name="front_banner"  style="banner"  />
+							<!-- /product discount -->
+                        <?php endif; ?>
+						<?php if ($this->countModules('front_product')) : ?>                        
+							<jdoc:include type="modules" name="front_product"  style="missishop"  />
                         <?php endif; ?>
                     </div>
                     <?php endif ; ?>
@@ -69,8 +81,14 @@ $siteName = $tmpTools->sitename();
             <!-- /main content -->
             <!-- right -->
             <?php if ($hasRight): ?>
-            <div id="right"  class="clearfix">
-                <jdoc:include type="modules" name="right" style="lr" />
+            <div id="right"  class="clearfix">                
+				<?php if ($mod_right > 0): ?>
+					<jdoc:include type="modules" name="right" style="lr" />               
+				<?php endif; ?>
+				
+				<?php if ($mod_banner_right > 0): ?>
+					<jdoc:include type="modules" name="banner_right" style="banner" />               
+				<?php endif; ?>
             </div>
             <?php endif; ?>
             <!-- /right -->

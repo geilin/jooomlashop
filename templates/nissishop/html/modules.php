@@ -53,4 +53,14 @@ function modChrome_lr($module, &$params, &$attribs)
     </div>       
 	<?php
 }
+/**
+ * render module conten only
+ *
+ *
+ */
+function modChrome_banner($module, &$params, &$attribs)
+{  
+	echo $module->content; 
+}
+
 

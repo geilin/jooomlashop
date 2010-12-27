@@ -334,13 +334,13 @@
 	<positions>
 		<position>hornav</position>
 		<position>breadcrumbs</position>
-        <position>selloff</position>
+        <position>front_product</position>
+        <position>front_banner</position>
 		<position>banner</position>
 		<position>left</position>
 		<position>right</position>
 		<position>top</position>
-		<position>user1</position>
-		<position>user2</position>
+		<position>banner_right</position>
 		<position>footerlinks</position>
 		<position>user4</position>
 		<position>user5</position>
