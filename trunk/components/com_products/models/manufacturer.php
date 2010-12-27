@@ -32,7 +32,7 @@ class ModelProductManufacturer extends JModel
 			if ($this->_mid > 0){
 				$query .= ' AND p.manufacturerid = '. $this->_mid;				
 			}			
-			$query .= " ORDER BY p.frontpage DESC, p.id DESC ";
+			$query .= " ORDER BY p.frontpage DESC, p.ordering ASC, p.id DESC";
 			$db->setQuery( $query, $limitstart, $limit);
 			$this->_product_m = $db->loadObjectList();
 		}
