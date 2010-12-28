@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+    <name>Simple Banner</name>
+    <creationDate>Sep 2010</creationDate>
+    <author>Son Nguyen</author>
+    <copyright>This template is released under the GNU/GPL License</copyright>
+    <authorEmail>phplaw@gmail.com</authorEmail>
+    <authorUrl>www.facebook.com/minhsonnguyen</authorUrl>
+    <version>1.0</version>
+    <description></description>
+     <files>
+         <filename module="mod_simple_banner">mod_simple_banner.php</filename>
+		 <filename>helper.php</filename>
+		 <filename>index.html</filename>
+		 <folder>element</folder>
+		 <folder>tmpl</folder>
+     </files>
+		<params addpath="/modules/mod_simple_banner/element">
+		<param name="banner" type="banner"  default="" label="Banner Image" description="Select Banner Image That You Want to Show" />
+		<param name="preview" type="preview"  default="" label="Banner Preview" description="Preview Banner" />	
+		
+		
+		<param name="banner_width" type="text" default="" label="Banner Width" description="Banner Width"/>
+		<param name="banner_height" type="text" default="" label="Banner Height" description="Banner Height"/>
+		<param name="banner_link" type="text" default="" label="Banner Link" description="Link to open when user click on the banner" size="80px" />
+
+		<param name="isflash" type="list" default="0" label="Flash Banner" description="">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		
+	 </params>
+</install>
