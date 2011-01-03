@@ -8,16 +8,15 @@ class JElementCategories extends JElement {
   {
     $db = &JFactory::getDBO();
 	
-	$query = 'SELECT c.id AS value, c.name AS text, c.parentid' .
+	$query = 'SELECT c.id AS value, c.name AS text' .
         ' FROM #__w_categories AS c' .
-        ' WHERE c.published = 1' .
-        ' ORDER BY c.parentid';
+        ' WHERE c.published = 1 AND c.parentid=0';
 	
 	
     $db->setQuery($query);
     $options = $db->loadObjectList();
     
-    $optionlist = array();
+    /*$optionlist = array();
     $optgroup   = array();
     foreach ( $options as $opt ) {
         
@@ -33,8 +32,7 @@ class JElementCategories extends JElement {
             $optionlist[] = JHTML::_('select.option', $opt->value . '#' . $opt->text, $opt->text);
         }
 
-    } 
-    
+    }  
     
     return JHTML::_(
      'select.genericlist', // Because we are creating a 'select' element
@@ -45,14 +43,10 @@ class JElementCategories extends JElement {
      'text',               // The name of the object variable for the option text
      $value,       // The key that is selected (accepts an array or a string)
      false                 // Translate the option results?
-    );
-    
-    
-
-
-  
+    );*/
+	
     return JHTML::_('select.genericlist',  $options, ''.$control_name.'['.$name.'][]', 
-      'class="inputbox" size="15" multiple="multiple"',
+      'class="inputbox"',
       'value', 'text', $value, $control_name.$name);
   
   }

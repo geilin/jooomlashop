@@ -16,16 +16,14 @@ class modCategoryMenuHelper
 	
 	function generateCategoryList($params)
 	{
-		$baseurl = JURI::base();
-		$categories = $params->get('categories');
 		
-		$list = array();
+		$category	= $params->get('category', 0);
+		$database = & JFactory::getDBO();
 		
-		foreach( $categories as $cat ) {		
-			$cat 			= explode('#', $cat);			
-			$list[$cat[0]]	= $cat[1];
-		
-		}		
-		return $list;
+		$query = 'SELECT c.id, c.name FROM #__w_categories AS c'
+				.' WHERE c.published=1 AND c.parentid = ' . $category
+				.' ORDER BY c.ordering ASC';		 
+		$database->setQuery($query);
+		return $database->loadObjectList();		
 	}
 }

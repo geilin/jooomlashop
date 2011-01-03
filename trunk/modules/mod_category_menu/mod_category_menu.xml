@@ -15,6 +15,6 @@
 		 <folder>tmpl</folder>
      </files>
 	 <params addpath="/modules/mod_category_menu/element">
-		<param name="categories" type="categories"  default="" label="Categories" description="Categories" />
+		<param name="category" type="categories"  default="" label="Categories" description="Categories" />
 	 </params>
 </install>
