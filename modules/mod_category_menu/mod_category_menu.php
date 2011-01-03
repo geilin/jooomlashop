@@ -17,7 +17,4 @@ require_once ('modules/mod_category_menu/helper.php');
 
 $categories = modCategoryMenuHelper::generateCategoryList($params);
 
-$catid = JRequest::getVar('catid', '0', 'get', 'int');
-
-
 require(JModuleHelper::getLayoutPath('mod_category_menu'));
