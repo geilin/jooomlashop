@@ -24,10 +24,12 @@
 		<param name="banner_height" type="text" default="" label="Banner Height" description="Banner Height"/>
 		<param name="banner_link" type="text" default="" label="Banner Link" description="Link to open when user click on the banner" size="80px" />
 
-		<param name="isflash" type="list" default="0" label="Flash Banner" description="">
-			<option value="1">Yes</option>
-			<option value="0">No</option>
+		
+		 <param name="isflash" type="radio" default="0" label="Banner type" description="Type of banner.">			
+			<option value="1">Flash</option>
+			<option value="0">Image</option>
 		</param>
+
 		
 	 </params>
 </install>
