@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <install type="module" version="1.5.0">
-    <name>Category Select</name>
-    <creationDate>Sep 2008</creationDate>
-    <author>Kulendra Janaka</author>
+    <name>Product category menu</name>
+    <creationDate>Jan 2011</creationDate>
+    <author>SonNguyen</author>
     <copyright>This template is released under the GNU/GPL License</copyright>
-    <authorEmail>kulendra@gmail.com</authorEmail>
-    <authorUrl>www.kulendra.net</authorUrl>
+    <authorEmail>phplaw@gmail.com</authorEmail>
+    <authorUrl>www.facebook.com/minhsonnguyen</authorUrl>
     <version>1.0</version>
-    <description></description>
+    <description>Simple way to create Product category</description>
      <files>
-         <filename module="mod_catselect">mod_catselect.php</filename>
+         <filename module="mod_category_menu">mod_category_menu.php</filename>
+         <filename>helper.php</filename>
 		 <folder>element</folder>
+		 <folder>tmpl</folder>
      </files>
-	 <params addpath="/modules/mod_catselect/element">
-		<param name="catids" type="categories"  default="" label="Categories" description="Categories" />
-	 <param name="linkmenu" type="text" label="Linked Menu" description="Menu item to be linked for formatting"/>
+	 <params addpath="/modules/mod_category_menu/element">
+		<param name="categories" type="categories"  default="" label="Categories" description="Categories" />
 	 </params>
 </install>
