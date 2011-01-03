@@ -12,37 +12,8 @@ class JElementCategories extends JElement {
         ' FROM #__w_categories AS c' .
         ' WHERE c.published = 1' .
         ' ORDER BY c.parentid';
-	/*
-    $section  = $node->attributes('section');
-    $class    = $node->attributes('class');
-    if (!$class) {
-      $class = "inputbox";
-    }
-
-    if (!isset ($section)) {
-      // alias for section
-      $section = $node->attributes('scope');
-      if (!isset ($section)) {
-        $section = 'content';
-      }
-    }
-
-    if ($section == 'content') {
-      // This might get a conflict with the dynamic translation
-      // - TODO: search for better solution
-      $query = 'SELECT c.id AS value, CONCAT_WS( "/",s.title, c.title ) AS text' .
-        ' FROM #__categories AS c' .
-        ' LEFT JOIN #__sections AS s ON s.id=c.section' .
-        ' WHERE c.published = 1' .
-        ' AND s.scope = '.$db->Quote($section).
-        ' ORDER BY s.title, c.title';
-    } else {
-      $query = 'SELECT c.id AS value, c.title AS text' .
-        ' FROM #__categories AS c' .
-        ' WHERE c.published = 1' .
-        ' AND c.section = '.$db->Quote($section).
-        ' ORDER BY c.title';
-    }*/
+	
+	
     $db->setQuery($query);
     $options = $db->loadObjectList();
     
@@ -53,12 +24,13 @@ class JElementCategories extends JElement {
         if ( $opt->parentid == 0 ) {
             $optgroup[$opt->value] = $opt;
         }
-        else {
+        else 
+		{
             if ($optgroup[$opt->parentid]) {
                 $optionlist[] = JHTML::_('select.optgroup', $optgroup[$opt->parentid]->text);;
                 $optgroup[$opt->parentid] = FALSE;
             }
-            $optionlist[] = JHTML::_('select.option', $opt->value, $opt->text);
+            $optionlist[] = JHTML::_('select.option', $opt->value . '#' . $opt->text, $opt->text);
         }
 
     } 

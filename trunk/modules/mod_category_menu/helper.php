@@ -8,16 +8,24 @@
 * GNU General Public License or other free or open source software licenses.
 * See COPYRIGHT.php for copyright notices and details.
 */
- 
+// no direct access
 defined('_JEXEC') or die('Restricted access');
-global $mainframe;
 
-
-require_once ('modules/mod_category_menu/helper.php');
-
-$categories = modCategoryMenuHelper::generateCategoryList($params);
-
-$catid = JRequest::getVar('catid', '0', 'get', 'int');
-
-
-require(JModuleHelper::getLayoutPath('mod_category_menu'));
+class modCategoryMenuHelper
+{
+	
+	function generateCategoryList($params)
+	{
+		$baseurl = JURI::base();
+		$categories = $params->get('categories');
+		
+		$list = array();
+		
+		foreach( $categories as $cat ) {		
+			$cat 			= explode('#', $cat);			
+			$list[$cat[0]]	= $cat[1];
+		
+		}		
+		return $list;
+	}
+}
